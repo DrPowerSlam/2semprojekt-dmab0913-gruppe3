@@ -4,15 +4,15 @@ import java.util.ArrayList;
 public class Chart {
 
 	
-private int chartId, year, honeyYield, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
+private int chartID, year, honeyYield, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
  private Breeder breeder;
-private ArrayList[Queen] queens;
+private ArrayList<Queen> queens;
 
-public Chart(int chartId, int year, int honeyYield, int swarmTendency,
+public Chart(int chartID, int year, int honeyYield, int swarmTendency,
 		int nosema, int temper, int honeycomFirmness, int clensingAbility,
 		Breeder breeder) {
 	super();
-	this.chartId = chartId;
+	this.chartID = chartID;
 	this.year = year;
 	this.honeyYield = honeyYield;
 	this.swarmTendency = swarmTendency;
@@ -21,7 +21,7 @@ public Chart(int chartId, int year, int honeyYield, int swarmTendency,
 	this.honeycomFirmness = honeycomFirmness;
 	this.clensingAbility = clensingAbility;
 	this.breeder = breeder;
-	this.queens = new ArrayList[Queen];
+	this.queens = new ArrayList<Queen>;
 	
 }
 
@@ -31,8 +31,8 @@ public Chart(int chartId, int year, int honeyYield, int swarmTendency,
 /**
  * @return the chartId
  */
-public int getChartId() {
-	return chartId;
+public int getChartID() {
+	return chartID;
 }
 /**
  * @return the year
@@ -85,8 +85,8 @@ public Breeder getBreeder() {
 /**
  * @param chartId the chartId to set
  */
-public void setChartId(int chartId) {
-	this.chartId = chartId;
+public void setChartID(int chartID) {
+	this.chartID = chartID;
 }
 /**
  * @param year the year to set

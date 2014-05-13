@@ -2,7 +2,7 @@ package modellayer;
 
 public class Breeder {
 	
-	private int breederId;
+	private int breederID;
 	
 
 	private String fname, lname, address, phone, email, password;
@@ -10,7 +10,7 @@ public class Breeder {
 	private City cities;
 	
 	public Breeder(String fname, String lname, String address, String phone, String email, 
-			String password, boolean isAdmin, int breederId, City cities) 
+			String password, boolean isAdmin, int breederID, City cities) 
 	{
 		this.fname = fname;
 		this.lname = lname;
@@ -19,22 +19,22 @@ public class Breeder {
 		this.email = email;
 		this.password = password;
 		this.isAdmin = isAdmin;
-		this.breederId = breederId;
+		this.breederID = breederID;
 		this.cities = cities;
 	}
 	
 	/**
 	 * @return the breederId
 	 */
-	public int getBreederId() {
-		return breederId;
+	public int getBreederID() {
+		return breederID;
 	}
 
 	/**
 	 * @param breederId the breederId to set
 	 */
-	public void setBreederId(int breederId) {
-		this.breederId = breederId;
+	public void setBreederID(int breederID) {
+		this.breederID = breederID;
 	}
 
 	/**
