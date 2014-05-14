@@ -116,7 +116,7 @@ public class DBConnection {
 		}
 	}
 	
-	public void resetDatabase() throws FileNotFoundException
+	public void insertDatabaseData() throws FileNotFoundException
 	{
 		Connection con = getDBcon();
 		ScriptRunner runner = new ScriptRunner(con);
