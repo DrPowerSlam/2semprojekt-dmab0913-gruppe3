@@ -43,4 +43,22 @@ public class City {
 		this.city = city;
 	}
 	
+	public boolean equals(City c)
+	{
+		boolean result = false;
+		
+		if (c == null)
+		{
+			result = false;
+		}
+		if (!(c instanceof City))
+		{
+			result = false;
+		}
+		
+		result = this.zipCode == c.getZipCode() && this.city.equals(c.getCity());
+		
+		return result;
+	}
+	
 }
