@@ -70,7 +70,6 @@ public class DBCity implements IFDBCity {
      /**
       * Updates the City db
       */
-     @Override
      public int updateCity(City c) throws SQLException {
     	 City cObj = c;
     	 int controlInt = -1;
