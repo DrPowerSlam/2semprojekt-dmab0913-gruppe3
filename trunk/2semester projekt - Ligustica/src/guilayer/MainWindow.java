@@ -99,15 +99,14 @@ public class MainWindow extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-//		JPanel orderPanel = new ViewAllOrdersPanel();
-//		tabbedPane.addTab("Orders", null, orderPanel, null);
-//		
-//		JPanel newOrderPanel = new NewOrderPanel();
-//		tabbedPane.addTab("New Order", null, newOrderPanel, null);
-//		
-//		JPanel supplierPanel = SupplierPanel.getInstance();
-//		tabbedPane.addTab("Suppliers", null, supplierPanel, null);
+		JPanel chartPanel = new ChartPanel();
+		tabbedPane.addTab("Indberetning af skema", null, chartPanel, null);
+
+		JPanel queenPanel = new QueenPanel();
+		tabbedPane.addTab("Dronninger", null, queenPanel, null);
 		
+		JPanel breederPanel = new BreederPanel();
+		tabbedPane.addTab("Avler", null, breederPanel, null);
 	}
 
 }
