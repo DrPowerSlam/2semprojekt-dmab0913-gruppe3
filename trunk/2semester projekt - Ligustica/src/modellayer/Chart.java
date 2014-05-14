@@ -25,6 +25,10 @@ public Chart(int chartID, int year, int honeyYield, int swarmTendency,
 	
 }
 
+public Chart() {
+	this.queens = new ArrayList<Queen>();
+}
+
 /**
  * @return the chartId
  */
