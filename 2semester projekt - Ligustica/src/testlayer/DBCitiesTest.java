@@ -60,27 +60,29 @@ public class DBCitiesTest {
 //		
 //	}
 //	
-//	/**
-//	 * Tests if you can insert a city into the database
-//	 * @throws SQLException
-//	 */
-//	@Test
-//	public void testInsertCity() throws SQLException{
-//		
-//		assertNotSame("The city was not inserted", -1, testCitiesDB.insertCity(testCitiesInsert));
-//	}
-//
-//	/**
-//	 * Tests if you can update a variable on a city in the database
-//	 * @throws SQLException
-//	 */
-//	@Test
-//	public void testUpdateCity() throws SQLException {
-//		
-//		testCitiesUpdate.setCity("Aa2");
-//		
-//		assertNotSame("The city was not updated", -1, testCitiesDB.updateCity(testCitiesUpdate));
-//	}
+	/**
+	 * Tests if you can insert a city into the database
+	 * @throws SQLException
+	 */
+	@Test
+	public void testInsertCity() throws SQLException{
+		int zipcode = testCityInsert.getZipCode();
+		assertNotSame("The city was not inserted", -1, testCityDB.insertCity(testCityInsert));
+		assertEquals(zipcode, testCityDB.selectSingleCity(zipcode).getZipCode());
+	}
+
+	/**
+	 * Tests if you can update a variable on a city in the database
+	 * @throws SQLException
+	 */
+	@Test
+	public void testUpdateCity() throws SQLException {
+		
+		int zipcode = testCityUpdate.getZipCode();
+		testCityUpdate.setCity("Aa2");
+		assertNotSame("The city was not updated", -1, testCityDB.updateCity(testCityUpdate));
+		assertEquals("Aa2", testCityDB.selectSingleCity(zipcode).getCity());
+	}
 
 	/**
 	 * Tests if you can delete a city in the database
@@ -88,8 +90,10 @@ public class DBCitiesTest {
 	 */
 	@Test
 	public void testDeleteCity() throws SQLException {
+		int zipcode = testCityDelete.getZipCode();
 		
 		assertNotSame("The city was not deleted", -1, testCityDB.deleteCity(testCityDelete));
+		assertEquals(zipcode, testCityDB.selectSingleCity(zipcode).getZipCode());
 		
 	}
 	
