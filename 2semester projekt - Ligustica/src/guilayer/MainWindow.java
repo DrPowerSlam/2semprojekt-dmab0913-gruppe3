@@ -58,7 +58,8 @@ public class MainWindow extends JFrame {
 		initFrame();
 		initContentPane();
 		initMenuBar();
-		initTabbedPane();
+		initLoginPane();
+		//initTabbedPane();
 	}
 	
 
@@ -91,6 +92,12 @@ public class MainWindow extends JFrame {
 	private void initMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+	}
+	
+	private void initLoginPane() {
+		JPanel loginPanel = new LoginPanel();
+		contentPane.add(loginPanel);
+		
 	}
 
 	/**
