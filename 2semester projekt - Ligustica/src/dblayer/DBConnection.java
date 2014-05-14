@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.sql.*;
 
+import org.apache.ibatis.jdbc.ScriptRunner;
+
 
 public class DBConnection {
 
@@ -112,6 +114,16 @@ public class DBConnection {
 			System.out.println("fejl rollback transaction");
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public void resetDatabase() throws FileNotFoundException
+	{
+		Connection con = getDBcon();
+		ScriptRunner runner = new ScriptRunner(con);
+		InputStreamReader reader_data = new InputStreamReader(new FileInputStream("lib/sql.sql"));
+		InputStreamReader reader_zip = new InputStreamReader(new FileInputStream("lib/SQLPostnumre.sql"));
+		runner.runScript(reader_data);
+		runner.runScript(reader_zip);
 	}
 	
 
