@@ -1,5 +1,6 @@
 package dblayer;
 
+
 import modellayer.City;
 
 import java.sql.*;
@@ -215,5 +216,12 @@ public class DBCity implements IFDBCity {
          } 
          return cObj;
      }
+     
+     /**
+  	 * A arraylist with all Cities
+  	 */
+  	 public ArrayList<City> getAllCities() {
+  	 	return miscWhere("");
+  	 }
 
 }
