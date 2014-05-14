@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import modellayer.Breeder;
-import modellayer.Breeder;
 import modellayer.City;
 
 public class DBBreeder implements IFDBBreeder {
