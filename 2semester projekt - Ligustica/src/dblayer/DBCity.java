@@ -1,6 +1,6 @@
 package dblayer;
 
-import modellayer.Cities;
+import modellayer.City;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,43 +11,43 @@ import java.util.ArrayList;
  * @author Gruppe 3
  *
  */
-public class DBCities implements IFDBCities {
+public class DBCity implements IFDBCity {
 
 	 private Connection con;
 
 	 /**
 	  * 
 	  */
-     public DBCities() 
+     public DBCity() 
      {
     	 con = DBConnection.getInstance().getDBcon();
      }
      
      
      /**
- 	 * A arraylist with all Cities
+ 	 * A arraylist with all City
  	 */
- 	 public ArrayList<Cities> getAllCities() {
+ 	 public ArrayList<City> getAllCity() {
  	 	return miscWhere("");
  	 }
  	 
  	 /**
-      * Select a single Cities
+      * Select a single City
       */
-     public Cities selectSingleCity(int zipCode) throws SQLException {
+     public City selectSingleCity(int zipCode) throws SQLException {
     	 String wClause = "zipCode = " +zipCode;
          return singleWhere(wClause);
      }
      
      /**
-      * Insert a Cities to the DB
+      * Insert a City to the DB
       */
-     public int insertCity(Cities c) throws SQLException 
+     public int insertCity(City c) throws SQLException 
      {
     	 PreparedStatement pstmt = null;
     	 
     	 int controlInt = -1;
-    	 String insert = "insert into Cities(zipCode, city)"
+    	 String insert = "insert into City(zipCode, city)"
                        + "values (?,?)";
     	 //System.out.println(insert);
     	 try {
@@ -58,7 +58,7 @@ public class DBCities implements IFDBCities {
              con.commit();
     		 pstmt.close();
          } catch (SQLException sqlE) {
-             System.out.println("SQL Error, Cities not inserted");
+             System.out.println("SQL Error, City not inserted");
              System.out.println(sqlE.getMessage());
          } catch (Exception e) {
              e.getMessage();
@@ -68,16 +68,16 @@ public class DBCities implements IFDBCities {
      }
      
      /**
-      * Updates the Cities db
+      * Updates the City db
       */
      @Override
-     public int updateCity(Cities c) throws SQLException {
-    	 Cities cObj = c;
+     public int updateCity(City c) throws SQLException {
+    	 City cObj = c;
     	 int controlInt = -1;
     	 
     	 PreparedStatement pstmt = null;
 
-    	 String update = "UPDATE Cities SET "
+    	 String update = "UPDATE City SET "
     	 		+ "city = ? "
     	 		+ "WHERE zipCode = ?";
     	 
@@ -88,7 +88,7 @@ public class DBCities implements IFDBCities {
     		 controlInt = pstmt.executeUpdate();
     		 pstmt.close();
     	 } catch (SQLException sqlE) {
-    		 System.out.println("SQL Error, Cities not updated");
+    		 System.out.println("SQL Error, City not updated");
     		 System.out.println(sqlE.getMessage());
     	 } catch (Exception e) {
     		 e.getMessage();
@@ -100,11 +100,11 @@ public class DBCities implements IFDBCities {
      /**
       * Delete a City from the database
       */
-     public int deleteCity(Cities c) throws SQLException 
+     public int deleteCity(City c) throws SQLException 
      {
     	 PreparedStatement pstmt = null;
     	 int controlInt = -1;
-    	 String delete = "DELETE FROM Cities "
+    	 String delete = "DELETE FROM City "
     	 		+ "WHERE zipCode = ?";
     	 //System.out.println(delete);
     	 try {
@@ -113,7 +113,7 @@ public class DBCities implements IFDBCities {
              controlInt = pstmt.executeUpdate();
     		 pstmt.close();
          } catch (SQLException sqlE) {
-             System.out.println("SQL Error, Cities not deleted");
+             System.out.println("SQL Error, City not deleted");
              System.out.println(sqlE.getMessage());
          } catch (Exception e) {
              e.getMessage();
@@ -124,22 +124,22 @@ public class DBCities implements IFDBCities {
      /**
  	 * If more than one City is to be selected
  	 * @param wClause
- 	 * @return ArrayList with Cities objects
+ 	 * @return ArrayList with City objects
  	 */
-     private ArrayList<Cities> miscWhere(String wClause)
+     private ArrayList<City> miscWhere(String wClause)
  	 {
     	 ResultSet results;
- 	     ArrayList<Cities> list = new ArrayList<Cities>();	
+ 	     ArrayList<City> list = new ArrayList<City>();	
  		
  	     String query = buildQuery(wClause);
     
- 	     try{ // read the cities from the database
+ 	     try{ // read the city from the database
  			 Statement stmt = con.createStatement();
  		 	 stmt.setQueryTimeout(5);
  		 	 results = stmt.executeQuery(query);
  		 	
- 			 while( results.next() ){ // loop through all cities and create them as objects
- 			     Cities cObj = new Cities();
+ 			 while( results.next() ){ // loop through all city and create them as objects
+ 			     City cObj = new City();
  				 cObj = buildCity(results);	
  		         list.add(cObj);	
  			 }//end while
@@ -156,12 +156,12 @@ public class DBCities implements IFDBCities {
      /**
  	 * If only one city is to be selected
  	 * @param wClause
- 	 * @return Cities object
+ 	 * @return City object
  	 */
- 	 private Cities singleWhere(String wClause)
+ 	 private City singleWhere(String wClause)
  	 {
  	 	ResultSet results;
- 	 	Cities cObj = new Cities();
+ 	 	City cObj = new City();
  		        
  	 	String query = buildQuery(wClause);
  		//System.out.println(query);
@@ -191,7 +191,7 @@ public class DBCities implements IFDBCities {
  	 */
  	 private String buildQuery(String wClause)
  	 {
- 	     String query="SELECT * FROM Cities";
+ 	     String query="SELECT * FROM City";
  		
  	 	if (wClause.length()>0)
  	 		query=query+" WHERE "+ wClause;
@@ -200,19 +200,19 @@ public class DBCities implements IFDBCities {
  	 }
      
      /**
-      * Builds a Cities object from the data in the database
+      * Builds a City object from the data in the database
       * @param result
-      * @return Cities object
+      * @return City object
       * @throws SQLException
       */
-     private Cities buildCity(ResultSet result) throws SQLException {
-    	 Cities cObj = new Cities();
+     private City buildCity(ResultSet result) throws SQLException {
+    	 City cObj = new City();
 
     	 try {
     		 cObj.setZipCode(result.getInt("zipCode"));
     		 cObj.setCity(result.getString("city"));
     	 } catch (Exception e) {
-    		 System.out.println("building Cities object");
+    		 System.out.println("building City object");
          } 
          return cObj;
      }
