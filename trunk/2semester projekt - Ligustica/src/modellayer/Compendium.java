@@ -7,13 +7,17 @@ public class Compendium {
 	private ArrayList<Chart> charts;
 	
 	public Compendium(int compendiumID, String name, String date,
-			String droneLines, ArrayList<Chart> charts) {
+			String droneLines) {
 		super();
 		this.compendiumID = compendiumID;
 		this.name = name;
 		this.date = date;
 		this.droneLines = droneLines;
-		this.charts = charts;
+		this.charts = new ArrayList<Chart>();
+	}
+	
+	public Compendium() {
+		this.charts = new ArrayList<Chart>();
 	}
 	
 	/**

@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JTabbedPane;
 
-import dblayer.DBCities;
+import dblayer.DBCity;
 
 /**
  * @author Gruppe 3

@@ -12,8 +12,7 @@ public class Queen {
 	
 	public Queen(int queenID, int year, int honeyYield, int swarmTendency,
 			int nosema, int temper, int honeycomFirmness, int clensingAbility,
-			String name, Queen mother, Queen fathersMother, Breeder breeder,
-			ArrayList<Queen> children) {
+			String name, Queen mother, Queen fathersMother, Breeder breeder) {
 		super();
 		this.queenID = queenID;
 		this.year = year;
@@ -27,7 +26,11 @@ public class Queen {
 		this.mother = mother;
 		this.fathersMother = fathersMother;
 		this.breeder = breeder;
-		this.children = children;
+		this.children = new ArrayList<Queen>();
+	}
+	
+	public Queen() {
+		new ArrayList<Queen>();
 	}
 
 	/**

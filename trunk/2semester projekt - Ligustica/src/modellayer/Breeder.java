@@ -23,6 +23,10 @@ public class Breeder {
 		this.cities = cities;
 	}
 	
+	public Breeder() {
+		
+	}
+	
 	/**
 	 * @return the breederId
 	 */

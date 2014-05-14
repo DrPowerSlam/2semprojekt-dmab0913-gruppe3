@@ -10,6 +10,10 @@ public class City {
 		this.zipCode = zipCode;
 		this.city = city;
 	}
+	
+	public City() {
+		
+	}
 
 	/**
 	 * @return the zipCode
