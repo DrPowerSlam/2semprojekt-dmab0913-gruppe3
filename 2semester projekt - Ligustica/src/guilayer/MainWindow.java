@@ -13,13 +13,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JTabbedPane;
 
-import dblayer.DBCity;
+import modellayer.Settings;
 
 /**
  * @author Gruppe 3
  */
 public class MainWindow extends JFrame {
 
+	private Settings settings;
 	private String title = "Ligustica ";
 	private int widht = 850;
 	private int height = 525;
@@ -53,6 +54,7 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWindow() throws SQLException {
+		settings = Settings.getInstance();
 		initFrame();
 		initContentPane();
 		initMenuBar();
@@ -67,8 +69,8 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((int)d.getWidth()/4, (int)d.getHeight()/5);
-		setTitle(title);
-		setSize(widht, height);
+		setTitle(settings.getTitle());
+		setSize(settings.getWidth(), settings.getHeight());
 		setResizable(false);
 		setVisible(true);
 	}
@@ -107,6 +109,10 @@ public class MainWindow extends JFrame {
 		
 		JPanel breederPanel = new BreederPanel();
 		tabbedPane.addTab("Avler", null, breederPanel, null);
+	}
+	
+	public boolean equals(Object o) {
+		return true;
 	}
 
 }
