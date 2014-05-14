@@ -1,5 +1,7 @@
 package modellayer;
 
+import dblayer.IFDBBreeder;
+
 public class Breeder {
 	
 	private int breederID;
