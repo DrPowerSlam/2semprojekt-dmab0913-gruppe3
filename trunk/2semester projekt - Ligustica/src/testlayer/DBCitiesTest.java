@@ -66,9 +66,9 @@ public class DBCitiesTest {
 	 */
 	@Test
 	public void testInsertCity() throws SQLException{
-		int zipcode = testCityInsert.getZipCode();
+		int zipCode = testCityInsert.getZipCode();
 		assertNotSame("The city was not inserted", -1, testCityDB.insertCity(testCityInsert));
-		assertEquals(zipcode, testCityDB.selectSingleCity(zipcode).getZipCode());
+		assertEquals(testCityInsert.equals(testCityDB.selectSingleCity(zipCode)) ,true);
 	}
 
 	/**
