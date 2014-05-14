@@ -7,10 +7,10 @@ public class Breeder {
 
 	private String fname, lname, address, phone, email, password;
 	private boolean isAdmin;
-	private City cities;
+	private City city;
 	
 	public Breeder(String fname, String lname, String address, String phone, String email, 
-			String password, boolean isAdmin, int breederID, City cities) 
+			String password, boolean isAdmin, int breederID, City city) 
 	{
 		this.fname = fname;
 		this.lname = lname;
@@ -20,7 +20,7 @@ public class Breeder {
 		this.password = password;
 		this.isAdmin = isAdmin;
 		this.breederID = breederID;
-		this.cities = cities;
+		this.city = city;
 	}
 	
 	public Breeder() {
@@ -140,17 +140,17 @@ public class Breeder {
 	}
 
 	/**
-	 * @return the cities
+	 * @return the city
 	 */
-	public City getCities() {
-		return cities;
+	public City getCity() {
+		return city;
 	}
 
 	/**
-	 * @param cities the cities to set
+	 * @param city the city to set
 	 */
-	public void setCities(City cities) {
-		this.cities = cities;
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 }
