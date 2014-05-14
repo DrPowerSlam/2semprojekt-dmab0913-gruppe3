@@ -2,9 +2,9 @@ package modellayer;
 
 public class Settings {
 	
-	private String title = "Ligustica ";
-	private int width = 850;
-	private int height = 525;
+	private String title;
+	private int width;
+	private int height;
 	private Breeder breeder;
 	private static Settings instance = null;
 
