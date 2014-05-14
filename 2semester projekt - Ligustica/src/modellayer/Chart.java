@@ -21,12 +21,9 @@ public Chart(int chartID, int year, int honeyYield, int swarmTendency,
 	this.honeycomFirmness = honeycomFirmness;
 	this.clensingAbility = clensingAbility;
 	this.breeder = breeder;
-	this.queens = new ArrayList<Queen>;
+	this.queens = new ArrayList<Queen>();
 	
 }
-
-
-
 
 /**
  * @return the chartId

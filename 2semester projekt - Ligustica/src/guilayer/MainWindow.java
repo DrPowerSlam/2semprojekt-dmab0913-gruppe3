@@ -102,7 +102,6 @@ public class MainWindow extends JFrame {
 //		JPanel orderPanel = new ViewAllOrdersPanel();
 //		tabbedPane.addTab("Orders", null, orderPanel, null);
 //		
-//		
 //		JPanel newOrderPanel = new NewOrderPanel();
 //		tabbedPane.addTab("New Order", null, newOrderPanel, null);
 //		
