@@ -33,6 +33,8 @@ create table Breeder (
 	foreign key(zipCode) references City(zipCode),
 );
 
+INSERT INTO Breeder VALUES('Karsten', 'Ikke admin', 'Sofiendalsvej 60', '2500', '12345678', 'ikke@admin.dk', 'test123', 'false');
+
 create table Queen (
 	queenID  int  IDENTITY(1,1) not null, 
 	year int not null,

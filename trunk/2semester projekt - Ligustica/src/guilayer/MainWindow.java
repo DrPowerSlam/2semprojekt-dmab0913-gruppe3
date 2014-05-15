@@ -68,8 +68,6 @@ public class MainWindow extends JFrame {
 	 * initialize the frame
 	 */
 	private void initFrame() {
-		ImageIcon img = new ImageIcon("/resources/logo.png");
-		setIconImage(img.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((int)d.getWidth()/4, (int)d.getHeight()/5);

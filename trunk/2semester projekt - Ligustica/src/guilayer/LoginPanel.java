@@ -1,6 +1,7 @@
 package guilayer;
 
 import javax.swing.JPanel;
+import controllayer.BreederCtr;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -10,6 +11,9 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class LoginPanel extends JPanel {
 	private JTextField txtEmail;
@@ -27,7 +31,6 @@ public class LoginPanel extends JPanel {
 		add(lblLogo);
 		
 		initLoginPane();
-		initInfoPane();
 
 	}
 
@@ -37,10 +40,6 @@ public class LoginPanel extends JPanel {
 		pane.setBounds(242, 276, 374, 122);
 		add(pane);
 		pane.setLayout(null);
-		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(275, 84, 89, 23);
-		pane.add(btnLogin);
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(115, 53, 251, 20);
@@ -59,9 +58,32 @@ public class LoginPanel extends JPanel {
 		lblPassword.setBounds(10, 56, 94, 14);
 		pane.add(lblPassword);
 		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(275, 84, 89, 23);
+		btnLogin.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String strPassword = new String(txtPassword.getPassword());
+				validateLogin(txtEmail.getText(),  strPassword);
+			}
+			
+		});
+		pane.add(btnLogin);
+		
+		
 		
 	}
 
-	private void initInfoPane() {
+	private void validateLogin(String email, String password) {
+		BreederCtr breederCtr = new BreederCtr();
+		if(breederCtr.validateLogin(email, password)) {
+			System.out.println("Yay");
+			//Success!
+			//TODO: Sæt breeder i settings, skift loginpane til tabbedpane
+		} else {
+			System.out.println("Noo");
+			//Fejl!
+			//TODO: Indsæt en label med fejltekst
+		}
 	}
 }
