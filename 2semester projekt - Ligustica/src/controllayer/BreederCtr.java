@@ -15,6 +15,12 @@ public class BreederCtr {
 		settings = Settings.getInstance();
 	}
 	
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 * @return
+	 */
 	public boolean validateLogin(String email, String password) {
 		boolean result = false;
 		
@@ -35,8 +41,25 @@ public class BreederCtr {
 		return result;
 	}
 	
+	/**
+	 * 
+	 */
 	public void logOut() {
 		settings.setBreeder(null);
+	}
+	
+	/**
+	 * Creates initials of the breeders first and last  name.
+	 * @param breeder
+	 * @return String with breeders initials
+	 */
+	public String getInitials(Breeder breeder) {
+		String firstLetter = breeder.getFname().substring(0,1);
+		String secondLetter = breeder.getLname().substring(0,1);
+		
+		String initials = firstLetter + secondLetter;
+		
+		return initials;
 	}
 
 }

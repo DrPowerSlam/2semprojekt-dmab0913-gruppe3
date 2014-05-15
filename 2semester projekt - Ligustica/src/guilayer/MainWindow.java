@@ -5,11 +5,8 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.io.FileNotFoundException;
 import java.sql.SQLException;
-
 import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -18,9 +15,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JTabbedPane;
-
 import controllayer.BreederCtr;
-import dblayer.DBConnection;
 import modellayer.Settings;
 
 /**
@@ -113,7 +108,9 @@ public class MainWindow extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		if(settings.getBreeder() != null) {
-			JMenu menu = new JMenu("Logget ind som " + settings.getBreeder().getFname() + " " + settings.getBreeder().getLname());
+			//JMenu menu = new JMenu("Logget ind som " + settings.getBreeder().getFname() + " " + settings.getBreeder().getLname());
+			BreederCtr breederCtr = new BreederCtr(); 
+			JMenu menu = new JMenu("Logget ind som " + breederCtr.getInitials(settings.getBreeder()));
 			menuBar.add(menu);
 			
 			JMenuItem menuItem = new JMenuItem(new AbstractAction("Logud") {
