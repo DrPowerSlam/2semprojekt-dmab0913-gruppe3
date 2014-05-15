@@ -1,17 +1,17 @@
 use dmab0913_3
 
-IF OBJECT_ID('db_owner.City', 'U') IS NOT NULL
-	DROP TABLE db_owner.City;
-IF OBJECT_ID('db_owner.Breeder', 'U') IS NOT NULL
-	DROP TABLE db_owner.Breeder;
-IF OBJECT_ID('db_owner.Queen', 'U') IS NOT NULL
-	DROP TABLE db_owner.Queen;
-IF OBJECT_ID('db_owner.Compendium', 'U') IS NOT NULL
-	DROP TABLE db_owner.Compendium;
-IF OBJECT_ID('db_owner.Chart', 'U') IS NOT NULL
-	DROP TABLE db_owner.Chart;
 IF OBJECT_ID('db_owner.ChartQueens', 'U') IS NOT NULL
 	DROP TABLE db_owner.ChartQueens;
+IF OBJECT_ID('db_owner.Chart', 'U') IS NOT NULL
+	DROP TABLE db_owner.Chart;
+IF OBJECT_ID('db_owner.Compendium', 'U') IS NOT NULL
+	DROP TABLE db_owner.Compendium;
+IF OBJECT_ID('db_owner.Queen', 'U') IS NOT NULL
+	DROP TABLE db_owner.Queen;
+IF OBJECT_ID('db_owner.Breeder', 'U') IS NOT NULL
+	DROP TABLE db_owner.Breeder;
+IF OBJECT_ID('db_owner.City', 'U') IS NOT NULL
+	DROP TABLE db_owner.City;
 
 create table City (
     zipCode  int not null, 
@@ -33,7 +33,8 @@ create table Breeder (
 	foreign key(zipCode) references City(zipCode),
 );
 
-INSERT INTO Breeder VALUES('Karsten', 'Ikke admin', 'Sofiendalsvej 60', '2500', '12345678', 'ikke@admin.dk', 'test123', 'false');
+INSERT INTO Breeder VALUES('Karsten', 'IkkeAdmin', 'Sofiendalsvej 60', '2500', '12345678', 'ikke@admin.dk', 'test123', 'false');
+INSERT INTO Breeder VALUES('Jesper', 'ErAdmin', 'Sofiendalsvej 60', '2500', '12345678', 'er@admin.dk', 'test123', 'true');
 
 create table Queen (
 	queenID  int  IDENTITY(1,1) not null, 
