@@ -107,8 +107,8 @@ public class NewChartPanel extends JPanel {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-        }
-    });
+            }
+		});
 		newChartPanel.add(btnCreateChart);
 		
 		txtHoneycombFirmness = new JTextField();
