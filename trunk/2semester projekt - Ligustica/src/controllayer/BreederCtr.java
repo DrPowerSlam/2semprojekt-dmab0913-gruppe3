@@ -34,5 +34,9 @@ public class BreederCtr {
 		
 		return result;
 	}
+	
+	public void logOut() {
+		settings.setBreeder(null);
+	}
 
 }
