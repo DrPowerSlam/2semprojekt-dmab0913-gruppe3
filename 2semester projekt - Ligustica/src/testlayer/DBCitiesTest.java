@@ -105,7 +105,8 @@ public class DBCitiesTest {
 	 */
 	@Test
 	public void testSelectSingleCity() throws SQLException {
-		assertEquals(testCityInsert.equals(testCityDB.selectSingleCity(80045452)), true);
+		int zipcode = testCityInsert.getZipCode();
+		assertEquals(testCityInsert.equals(testCityDB.selectSingleCity(zipcode)), true);
 	}
 	
 	/**
