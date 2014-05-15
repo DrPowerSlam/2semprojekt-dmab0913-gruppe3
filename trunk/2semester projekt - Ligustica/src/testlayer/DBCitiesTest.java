@@ -20,6 +20,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dblayer.DBCity;
+import dblayer.DBConnection;
 
 public class DBCitiesTest {
 
@@ -27,39 +28,40 @@ public class DBCitiesTest {
 	private static City testCityUpdate = new City();
 	private static City testCityInsert = new City();
 	private static City testCityDelete = new City();
+	private static DBConnection testConnection = DBConnection.getInstance();
 	
-//	@BeforeClass
-//	/**
-//	 * 
-//	 * @throws SQLException
-//	 * @throws FileNotFoundException
-//	 */
-//	public static void testSetup() throws SQLException, FileNotFoundException{
-//		
-//		dblayer.DBConnection.getInstance().resetDatabase();
-//		
-//		testCitiesInsert.setCity("Aalborg");
-//		testCitiesInsert.setZipCode(800454521);
-//		
-//		testCitiesUpdate.setCity("Odense");
-//		testCitiesUpdate.setZipCode(79495);
-//		
-//		testCitiesDelete.setCity("Esbjerg");
-//		testCitiesDelete.setZipCode(876785);
-//		
-//		testCitiesDB.insertCity(testCitiesDelete);
-//		testCitiesDB.insertCity(testCitiesUpdate);
-//		
-//		
-//	}
+	@BeforeClass
+	/**
+	 * 
+	 * @throws SQLException
+	 * @throws FileNotFoundException
+	 */
+	public static void testSetup() throws SQLException, FileNotFoundException{
+		
+		testConnection.insertDatabaseData();
+		dblayer.DBConnection.getInstance().insertDatabaseData();
+		
+		testCityInsert.setCity("Aalborg");
+		testCityInsert.setZipCode(800454521);
+		
+		testCityUpdate.setCity("Odense");
+		testCityUpdate.setZipCode(79495);
+		
+		testCityDelete.setCity("Esbjerg");
+		testCityDelete.setZipCode(876785);
+		
+		testCityDB.insertCity(testCityDelete);
+		testCityDB.insertCity(testCityUpdate);
+		
+			}
 
-//	@AfterClass
-//	public static void testCleanup() throws SQLException, FileNotFoundException {
-//		
-//		dblayer.DBConnection.getInstance().resetDatabase();
-//		
-//	}
-//	
+	@AfterClass
+	public static void testCleanup() throws SQLException, FileNotFoundException {
+		
+		dblayer.DBConnection.getInstance().insertDatabaseData();
+		
+	}
+	
 	/**
 	 * Tests if you can insert a city into the database
 	 * @throws SQLException

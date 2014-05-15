@@ -154,5 +154,25 @@ public class Breeder {
 	public void setCity(City city) {
 		this.city = city;
 	}
+	
+	public boolean equals(Breeder b)
+	{
+		boolean result = false;
+		
+		if (b == null)
+		{
+			result = false;
+		}
+		if (!(b instanceof Breeder))
+		{
+			result = false;
+		}
+		
+		result = this.address.equals(b.address) && this.breederID == b.getBreederID() && this.fname.equals(b.fname)
+				&& this.lname.equals(b.lname)&& this.phone.equals(b.phone)&& this.email.equals(b.email)&& this.password.equals(b.password)
+				&& this.city.equals(b.city)&& this.isAdmin == b.isAdmin;
+		
+		return result;
+	}
 
 }
