@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
@@ -14,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JTabbedPane;
 
+import dblayer.DBConnection;
 import modellayer.Settings;
 
 /**
