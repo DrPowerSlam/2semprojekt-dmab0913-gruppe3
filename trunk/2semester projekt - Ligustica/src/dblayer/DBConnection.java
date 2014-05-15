@@ -121,9 +121,9 @@ public class DBConnection {
 		Connection con = getDBcon();
 		ScriptRunner runner = new ScriptRunner(con);
 		InputStreamReader reader_data = new InputStreamReader(new FileInputStream("lib/sql.sql"));
-		InputStreamReader reader_zip = new InputStreamReader(new FileInputStream("lib/SQLPostnumre.sql"));
+		//InputStreamReader reader_zip = new InputStreamReader(new FileInputStream("lib/SQLPostnumre.sql"));
 		runner.runScript(reader_data);
-		runner.runScript(reader_zip);
+		//runner.runScript(reader_zip);
 	}
 	
 
