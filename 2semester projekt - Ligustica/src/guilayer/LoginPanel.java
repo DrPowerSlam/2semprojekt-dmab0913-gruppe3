@@ -79,7 +79,7 @@ public class LoginPanel extends JPanel {
 		if(breederCtr.validateLogin(email, password)) {
 			((MainWindow)(this.getRootPane().getParent())).refreshMainWindow();
 		} else {
-			JLabel lblForkertEmailEller = new JLabel("Forkert email eller adgangskode. Pr\u00F8v igen");
+			JLabel lblForkertEmailEller = new JLabel("Forkert email eller adgangskode. Pr\u00F8v igen.");
 			lblForkertEmailEller.setForeground(Color.RED);
 			lblForkertEmailEller.setBounds(10, 88, 255, 14);
 			pane.add(lblForkertEmailEller);
