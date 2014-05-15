@@ -4,17 +4,22 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JTabbedPane;
 
+import controllayer.BreederCtr;
 import dblayer.DBConnection;
 import modellayer.Settings;
 
@@ -74,6 +79,7 @@ public class MainWindow extends JFrame {
 		} else {
 			initTabbedPane();
 		}
+		repaint();
 	}
 	
 
@@ -106,6 +112,25 @@ public class MainWindow extends JFrame {
 	private void initMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		if(settings.getBreeder() != null) {
+			JMenu menu = new JMenu("Logget ind som " + settings.getBreeder().getFname() + " " + settings.getBreeder().getLname());
+			menuBar.add(menu);
+			
+			JMenuItem menuItem = new JMenuItem(new AbstractAction("Logud") {
+			    public void actionPerformed(ActionEvent e) {
+			        BreederCtr breederCtr = new BreederCtr();
+			        breederCtr.logOut();
+			        try {
+						refreshMainWindow();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			        
+			    }
+			});
+			menu.add(menuItem);
+		}
 	}
 	
 	private void initLoginPane() {
