@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import modellayer.Compendium;
 
-public class DBCompendium {
+public class DBCompendium implements IFDBCompendium {
 	
 	private Connection con;
 	
@@ -225,5 +225,11 @@ public class DBCompendium {
 	        }
 	        return cObj;
 	    }
+
+		@Override
+		public int insertCompendium(Compendium c) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 
 }
