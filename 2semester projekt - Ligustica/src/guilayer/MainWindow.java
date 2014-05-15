@@ -126,7 +126,6 @@ public class MainWindow extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-			        
 			    }
 			});
 			menu.add(menuItem);
