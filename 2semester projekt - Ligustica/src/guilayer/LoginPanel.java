@@ -72,6 +72,18 @@ public class LoginPanel extends JPanel {
 		});
 		pane.add(btnLogin);
 		
+		JLabel lblTestdata = new JLabel("Testdata:");
+		lblTestdata.setBounds(242, 406, 81, 14);
+		add(lblTestdata);
+		
+		JLabel lblIkkeadmindkTest = new JLabel("ikke@admin.dk       test123");
+		lblIkkeadmindkTest.setBounds(242, 428, 144, 14);
+		add(lblIkkeadmindkTest);
+		
+		JLabel label = new JLabel("er@admin.dk          test123");
+		label.setBounds(242, 455, 144, 14);
+		add(label);
+		
 	}
 
 	private void validateLogin(String email, String password, JPanel pane) throws SQLException {
