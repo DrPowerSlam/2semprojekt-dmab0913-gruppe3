@@ -22,9 +22,6 @@ import modellayer.Settings;
 public class MainWindow extends JFrame {
 
 	private Settings settings;
-	private String title = "Ligustica ";
-	private int widht = 850;
-	private int height = 525;
 	
 	private static final long serialVersionUID = 7596122900802093283L;
 	private JPanel contentPane;
@@ -59,8 +56,22 @@ public class MainWindow extends JFrame {
 		initFrame();
 		initContentPane();
 		initMenuBar();
-		initLoginPane();
-		//initTabbedPane();
+		if(settings.getBreeder() == null) {
+			initLoginPane();
+		} else {
+			initTabbedPane();
+		}
+	}
+	
+	public void refreshMainWindow() throws SQLException {
+		initFrame();
+		initContentPane();
+		initMenuBar();
+		if(settings.getBreeder() == null) {
+			initLoginPane();
+		} else {
+			initTabbedPane();
+		}
 	}
 	
 
