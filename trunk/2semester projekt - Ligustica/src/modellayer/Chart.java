@@ -6,13 +6,14 @@ public class Chart {
 	
 private int chartID, year, honeyYield, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
  private Breeder breeder;
+ private Compendium compendium;
 private ArrayList<Queen> queens;
 
-public Chart(int chartID, int year, int honeyYield, int swarmTendency,
-		int nosema, int temper, int honeycomFirmness, int clensingAbility,
-		Breeder breeder) {
+public Chart(int chartID, Breeder breeder, int year, int honeyYield, int swarmTendency,
+		int nosema, int temper, int honeycomFirmness, int clensingAbility, Compendium compendium) {
 	super();
 	this.chartID = chartID;
+	this.breeder = breeder;
 	this.year = year;
 	this.honeyYield = honeyYield;
 	this.swarmTendency = swarmTendency;
@@ -20,7 +21,7 @@ public Chart(int chartID, int year, int honeyYield, int swarmTendency,
 	this.temper = temper;
 	this.honeycomFirmness = honeycomFirmness;
 	this.clensingAbility = clensingAbility;
-	this.breeder = breeder;
+	this.compendium = compendium;
 	this.queens = new ArrayList<Queen>();
 	
 }
@@ -84,6 +85,12 @@ public Breeder getBreeder() {
 	return breeder;
 }
 /**
+ * @return the compendium
+ */
+public Compendium getCompendium() {
+	return compendium;
+}
+/**
  * @param chartId the chartId to set
  */
 public void setChartID(int chartID) {
@@ -136,6 +143,12 @@ public void setClensingAbility(int clensingAbility) {
  */
 public void setBreeder(Breeder breeder) {
 	this.breeder = breeder;
+}
+/**
+ * @param compendium the compendium to set
+ */
+public void setCompendium(Compendium compendium) {
+	this.compendium = compendium;
 }
 
 }

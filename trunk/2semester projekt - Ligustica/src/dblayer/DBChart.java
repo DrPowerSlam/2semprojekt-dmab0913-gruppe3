@@ -51,7 +51,7 @@ public class DBChart {
    	 PreparedStatement pstmt = null;
    	 int controlInt = -1;
    	 String insert = "insert into Chart(breederID, year, honeyYield, swarmTendency, nosema, temper, honeycombfirmness, cleansingAbility, compendiumID)"
-                      + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                      + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
    	 //System.out.println(insert);
    	 try {
    		 pstmt = con.prepareStatement(insert);
@@ -63,6 +63,7 @@ public class DBChart {
    		 pstmt.setInt(6, c.getTemper());
    		 pstmt.setInt(7, c.getHoneycomFirmness());
    		 pstmt.setInt(8, c.getClensingAbility());
+   		 pstmt.setInt(9, c.getCompendium().getCompendiumID());
          controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
             System.out.println("SQL Error, Queen not inserted");
@@ -90,6 +91,7 @@ public class DBChart {
    	 		+ "temper = ?,"
    	 		+ "honeycombfirmness = ?,"
    	 		+ "cleansingAbility = ?, "
+   	 	    + "compendiumID = ?, "
    	 		+ "WHERE chartID = ?";
 
    	 System.out.println(update);
@@ -104,6 +106,7 @@ public class DBChart {
   		 pstmt.setInt(6, c.getTemper());
   		 pstmt.setInt(7, c.getHoneycomFirmness());
   		 pstmt.setInt(8, c.getClensingAbility());
+  		 pstmt.setInt(9, c.getCompendium().getCompendiumID());
    		 
    		 controlInt = pstmt.executeUpdate();
    	 } catch (SQLException sqlE) {
@@ -245,6 +248,7 @@ public class DBChart {
 	   		 cObj.setTemper(result.getInt("temper"));
 	   		 cObj.setHoneycomFirmness(result.getInt("honeycombfirmness"));
 	   		 cObj.setClensingAbility(result.getInt("cleansingAbility"));
+	   	    //cObj.setCompendium(select); Er ikke helt sikker på hvordan vi får hentet ham
 	   		 
 
 	   	 } catch (Exception e) {
