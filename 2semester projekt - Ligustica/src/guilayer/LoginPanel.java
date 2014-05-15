@@ -8,12 +8,10 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.awt.Color;
 
 public class LoginPanel extends JPanel {
 	private JTextField txtEmail;
@@ -35,9 +33,9 @@ public class LoginPanel extends JPanel {
 	}
 
 	private void initLoginPane() {
-		JPanel pane = new JPanel();
+		final JPanel pane = new JPanel();
 		pane.setBorder(new TitledBorder(null, "Login", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pane.setBounds(242, 276, 374, 122);
+		pane.setBounds(242, 276, 374, 119);
 		add(pane);
 		pane.setLayout(null);
 		
@@ -64,26 +62,28 @@ public class LoginPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String strPassword = new String(txtPassword.getPassword());
-				validateLogin(txtEmail.getText(),  strPassword);
+				try {
+					validateLogin(txtEmail.getText(),  strPassword, pane);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 			
 		});
 		pane.add(btnLogin);
 		
-		
-		
 	}
 
-	private void validateLogin(String email, String password) {
+	private void validateLogin(String email, String password, JPanel pane) throws SQLException {
 		BreederCtr breederCtr = new BreederCtr();
 		if(breederCtr.validateLogin(email, password)) {
-			System.out.println("Yay");
-			//Success!
-			//TODO: Sæt breeder i settings, skift loginpane til tabbedpane
+			((MainWindow)(this.getRootPane().getParent())).refreshMainWindow();
 		} else {
-			System.out.println("Noo");
-			//Fejl!
-			//TODO: Indsæt en label med fejltekst
+			JLabel lblForkertEmailEller = new JLabel("Forkert email eller adgangskode. Pr\u00F8v igen");
+			lblForkertEmailEller.setForeground(Color.RED);
+			lblForkertEmailEller.setBounds(10, 88, 255, 14);
+			pane.add(lblForkertEmailEller);
+			pane.repaint();
 		}
 	}
 }
