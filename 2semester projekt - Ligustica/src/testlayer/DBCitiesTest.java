@@ -95,7 +95,7 @@ public class DBCitiesTest {
 		int zipcode = testCityDelete.getZipCode();
 		
 		assertNotSame("The city was not deleted", -1, testCityDB.deleteCity(testCityDelete));
-		assertEquals(zipcode, testCityDB.selectSingleCity(zipcode).getZipCode());
+		assertNull(testCityDB.deleteCity(testCityDB.selectSingleCity(zipcode)));
 		
 	}
 	
@@ -105,7 +105,7 @@ public class DBCitiesTest {
 	 */
 	@Test
 	public void testSelectSingleCity() throws SQLException {
-		assertEquals(6000, testCityDB.selectSingleCity(6000).getZipCode());		
+		assertEquals(testCityInsert.equals(testCityDB.selectSingleCity(80045452)), true);
 	}
 	
 	/**
