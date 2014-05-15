@@ -12,11 +12,9 @@ import modellayer.Compendium;
  * Jeg har ingen anelse om hvorfor denne her kommer med fejl
  */
 
-public class IFDBCompendium {
+public interface IFDBCompendium {
 	
-	public ArrayList<Compendium> getAllCompendiums(boolean retriveAssociation) {
-		return null; //Det giver ingen mening at dette skal med før der ikke kommer fejl, eller hvad?
-	} 
+	public ArrayList<Compendium> getAllCompendiums(boolean retriveAssociation);
 
 	public Compendium searchCompendiumOnName(String name, boolean retriveAssociation) throws SQLException;
 
