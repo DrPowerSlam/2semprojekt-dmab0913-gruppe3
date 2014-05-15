@@ -214,5 +214,25 @@ public class Queen {
 	public void setChildren(ArrayList<Queen> children) {
 		this.children = children;
 	}
+	
+	public boolean equals(Queen q)
+	{
+		boolean result = false;
+		
+		if (q == null)
+		{
+			result = false;
+		}
+		if (!(q instanceof Queen))
+		{
+			result = false;
+		}
+		 result = this.queenID == q.queenID && this.year == q.year && this.honeyYield == q.honeyYield && this.swarmTendency == q.swarmTendency
+				 && this.nosema == q.nosema && this.temper == q.temper && this.honeycomFirmness == q.honeycomFirmness && this.clensingAbility == q.clensingAbility
+				 && this.name.equals(q.name)&& this.mother.equals(q.mother)&& this.fathersMother.equals(q.fathersMother)&& this.breeder.equals(q.breeder)
+				 && this.children.equals(q.children);
+		
+		return result;
+	}
 
 }
