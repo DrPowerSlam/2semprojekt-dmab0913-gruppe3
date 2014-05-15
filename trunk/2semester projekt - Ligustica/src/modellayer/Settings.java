@@ -11,7 +11,7 @@ public class Settings {
 	private Settings() {
 		title = "Ligustica ";
 		width = 850;
-		height = 525;
+		height = 545;
 	}
 	
 	public static Settings getInstance() {
