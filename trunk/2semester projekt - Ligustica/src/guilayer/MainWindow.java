@@ -152,8 +152,16 @@ public class MainWindow extends JFrame {
 		JPanel queenPanel = new QueenPanel();
 		tabbedPane.addTab("Dronninger", null, queenPanel, null);
 		
-		JPanel breederPanel = new BreederPanel();
-		tabbedPane.addTab("Avler", null, breederPanel, null);
+		if(settings.getBreeder() != null && settings.getBreeder().isAdmin()) {
+			JPanel breederPanel = new BreederPanel();
+			tabbedPane.addTab("Avlere", null, breederPanel, null);
+			
+			JPanel makeCompendiumPanel = new MakeCompendiumPanel();
+			tabbedPane.addTab("Saml kompendie", null, makeCompendiumPanel, null);
+		} else {
+			JPanel breederPanel = new BreederPanel();
+			tabbedPane.addTab("Avler", null, breederPanel, null);
+		}
 	}
 	
 	public boolean equals(Object o) {
