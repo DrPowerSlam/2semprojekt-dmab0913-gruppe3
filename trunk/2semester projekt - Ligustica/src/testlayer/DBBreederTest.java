@@ -23,7 +23,7 @@ public class DBBreederTest {
 	private static Breeder testBreederDelete = new Breeder();
 	private static DBCity testCityDB = new DBCity();
 	private static DBConnection testConnection = DBConnection.getInstance();
-	private static City testCity = new City();
+	private static City testCity = new City(2500, "Valby");
 
 	
 	@BeforeClass
@@ -39,12 +39,12 @@ public class DBBreederTest {
 		
 		testConnection.insertDatabaseData();
 		
-		testBreederInsert.setFname("Klaus");
-		testBreederInsert.setLname("Klausen");
-		testBreederInsert.setAddress("Sofiendalsvej");
-		testBreederInsert.setPhone("24657621");
-		testBreederInsert.setEmail("asdoasdk@goms.dk");
-		testBreederInsert.setPassword("pass1234");
+		testBreederInsert.setFname("Karsten");
+		testBreederInsert.setLname("IkkeAdmin");
+		testBreederInsert.setAddress("Sofiendalsvej 60");
+		testBreederInsert.setPhone("12345678");
+		testBreederInsert.setEmail("ikke@admin.dk");
+		testBreederInsert.setPassword("test123");
 		testBreederInsert.setAdmin(false);
 		testBreederInsert.setBreederID(1);
 		testBreederInsert.setCity(testCity);
@@ -123,7 +123,8 @@ public class DBBreederTest {
 	 */
 	@Test
 	public void testSelectSingleBreeder() throws SQLException {
-		assertEquals(testBreederInsert.equals(testBreederDB.selectSingleBreeder(1, true)), true);		
+		//assertEquals(testBreederInsert.equals(testBreederDB.selectSingleBreeder(1, true)), true);
+		assertTrue( testBreederInsert.equals(testBreederDB.selectSingleBreeder(1, true)) );
 	}
 	
 	/**
