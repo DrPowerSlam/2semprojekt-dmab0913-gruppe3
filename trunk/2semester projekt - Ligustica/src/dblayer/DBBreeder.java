@@ -194,7 +194,7 @@ public class DBBreeder implements IFDBBreeder {
 			results = stmt.executeQuery(query);
 			if( results.next() ){
 				bObj = buildBreeder(results);
-				stmt.close();
+				//stmt.close();
 				if(retrieveAssociation) {
 					 int zipCode = results.getInt("zipCode");
 					 IFDBCity dbCity = new DBCity();
@@ -205,6 +205,7 @@ public class DBBreeder implements IFDBBreeder {
 			}else{ //No breeder found
 				bObj = null;
 			}
+			stmt.close();
 		}//end try	
 		
 		catch(Exception e){
@@ -238,6 +239,7 @@ public class DBBreeder implements IFDBBreeder {
    	 Breeder bObj = new Breeder();
 
    	 try {
+   		 bObj.setBreederID(result.getInt("breederID"));
    		 bObj.setFname(result.getString("fname"));
    		 bObj.setLname(result.getString("lname"));
    		 bObj.setAddress(result.getString("address"));
