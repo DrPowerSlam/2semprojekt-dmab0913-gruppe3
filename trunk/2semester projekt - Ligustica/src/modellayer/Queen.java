@@ -9,6 +9,7 @@ public class Queen {
 	private Queen fathersMother;
 	private Breeder breeder;
 	private ArrayList<Queen> children;
+	private boolean isAlive;
 	
 	public Queen(int queenID, int year, int honeyYield, int swarmTendency,
 			int nosema, int temper, int honeycomFirmness, int clensingAbility,
@@ -31,6 +32,20 @@ public class Queen {
 	
 	public Queen() {
 		new ArrayList<Queen>();
+	}
+
+	/**
+	 * @return the isAlive
+	 */
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	/**
+	 * @param isAlive the isAlive to set
+	 */
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
 	}
 
 	/**
