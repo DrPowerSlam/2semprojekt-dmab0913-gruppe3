@@ -12,7 +12,7 @@ public class Breeder {
 	private City city;
 	
 	public Breeder(String fname, String lname, String address, String phone, String email, 
-			String password, boolean isAdmin, int breederID, City city) 
+			String password, boolean isAdmin, int breederID) 
 	{
 		this.fname = fname;
 		this.lname = lname;
@@ -22,7 +22,7 @@ public class Breeder {
 		this.password = password;
 		this.isAdmin = isAdmin;
 		this.breederID = breederID;
-		this.city = city;
+		
 	}
 	
 	public Breeder() {
