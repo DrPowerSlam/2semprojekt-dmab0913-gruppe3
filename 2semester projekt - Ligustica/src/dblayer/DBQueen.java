@@ -55,7 +55,7 @@ public class DBQueen {
 	   		 pstmt.setInt(6, q.getTemper());
 	   		 pstmt.setInt(7, q.getHoneycomFirmness());
 	   		 pstmt.setInt(8, q.getClensingAbility());
-	   		 pstmt.setString(9, "true"); //Burde der ikke være en isAlive i Queen klassen?
+	   		 pstmt.setBoolean(9, q.isAlive());
 	   		 pstmt.setInt(10, q.getMother().getQueenID());
 	   		 pstmt.setInt(11, q.getFathersMother().getQueenID());
 	   		 pstmt.setInt(12, q.getBreeder().getBreederID());
@@ -104,7 +104,7 @@ public class DBQueen {
 	   		 pstmt.setInt(6, q.getTemper());
 	   		 pstmt.setInt(7, q.getHoneycomFirmness());
 	   		 pstmt.setInt(8, q.getClensingAbility());
-	   		 pstmt.setString(9, "true");
+	   		 pstmt.setBoolean(9, q.isAlive());
 	   		 pstmt.setInt(10, q.getMother().getQueenID());
 	   		 pstmt.setInt(11, q.getFathersMother().getQueenID());
 	   		 pstmt.setInt(12, q.getBreeder().getBreederID());
@@ -249,7 +249,7 @@ public class DBQueen {
 	   		 qObj.setTemper(result.getInt("temper"));
 	   		 qObj.setHoneycomFirmness(result.getInt("honeycombfirmness"));
 	   		 qObj.setClensingAbility(result.getInt("cleansingAbility"));
-	   		 //qObj.setIsAlive(result.getString("isAlive")); den har ikke én i modellaget
+	   		 qObj.setAlive(result.getBoolean("isAlive")); 
 	   		 qObj.setMother(selectSingleQueen(result.getInt("lParent"), false));
 	   		 qObj.setFathersMother(selectSingleQueen(result.getInt("rParent"), false));
 	   		 //qObj.setBreeder(selectSingleBreeder(result.getInt("breederID"), false)); Er ikke helt sikker på hvordan vi får hentet ham avleren ned.
