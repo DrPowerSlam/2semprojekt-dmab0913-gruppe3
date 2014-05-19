@@ -36,6 +36,7 @@ public class BreederPanel extends JPanel {
 		//TODO Lav tablemodel og smid den i scrollpane
 		ArrayList<Breeder> breeders =  new ArrayList<Breeder>();
 		breeders.add(new Breeder("Hhh", "l", "address", "phone", "email", "password", true, 1));
+		
 		BreederTableModel model = new BreederTableModel(breeders);
         JTable table = new JTable(model);
 		scrollPane = new JScrollPane(table);

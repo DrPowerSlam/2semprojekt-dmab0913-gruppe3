@@ -8,6 +8,7 @@ private int chartID, year, honeyYield, swarmTendency, nosema, temper, honeycomFi
  private Breeder breeder;
  private Compendium compendium;
 private ArrayList<Queen> queens;
+private Queen queen;
 
 public Chart(int chartID, Breeder breeder, int year, int honeyYield, int swarmTendency,
 		int nosema, int temper, int honeycomFirmness, int clensingAbility, Compendium compendium) {
@@ -150,5 +151,21 @@ public void setBreeder(Breeder breeder) {
 public void setCompendium(Compendium compendium) {
 	this.compendium = compendium;
 }
+
+/**
+ * @return the queen
+ */
+public Queen getQueen() {
+	return queen;
+}
+
+/**
+ * @param queen the queen to set
+ */
+public void setQueen(Queen queen) {
+	this.queen = queen;
+}
+
+
 
 }
