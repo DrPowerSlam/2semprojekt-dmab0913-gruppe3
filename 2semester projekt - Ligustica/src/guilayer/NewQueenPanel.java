@@ -33,7 +33,6 @@ public class NewQueenPanel extends JPanel {
 	private JTextField txtHoneycombFirmness;
 	private JLabel lblHoneycombFirmness;
 	private JTextField txtYearHoneyYield;
-	private JTextField txtHoneyYield;
 	private JTextField txtNosema;
 	private JTextField txtCleansingAbility;
 
@@ -89,11 +88,11 @@ public class NewQueenPanel extends JPanel {
 		lblYear.setBounds(10, 58, 110, 14);
 		newQueenPanel.add(lblYear);
 		
-		lblSwarmTendency = new JLabel("\u00C5rskarakter sv\u00E6rmetendens:");
+		lblSwarmTendency = new JLabel("Sv\u00E6rmetendens:");
 		lblSwarmTendency.setBounds(10, 89, 149, 14);
 		newQueenPanel.add(lblSwarmTendency);
 		
-		lblTemper = new JLabel("\u00C5rskarakter temperament:");
+		lblTemper = new JLabel("Temperament:");
 		lblTemper.setBounds(10, 120, 159, 14);
 		newQueenPanel.add(lblTemper);
 		
@@ -116,7 +115,7 @@ public class NewQueenPanel extends JPanel {
 		txtHoneycombFirmness.setBounds(179, 148, 165, 20);
 		newQueenPanel.add(txtHoneycombFirmness);
 		
-		lblHoneycombFirmness = new JLabel("\u00C5rskarakter tavlefasthed:");
+		lblHoneycombFirmness = new JLabel("Tavlefasthed:");
 		lblHoneycombFirmness.setBounds(10, 151, 159, 14);
 		newQueenPanel.add(lblHoneycombFirmness);
 		
@@ -125,35 +124,26 @@ public class NewQueenPanel extends JPanel {
 		txtYearHoneyYield.setBounds(179, 179, 165, 20);
 		newQueenPanel.add(txtYearHoneyYield);
 		
-		txtHoneyYield = new JTextField();
-		txtHoneyYield.setColumns(10);
-		txtHoneyYield.setBounds(179, 210, 165, 20);
-		newQueenPanel.add(txtHoneyYield);
-		
 		txtNosema = new JTextField();
 		txtNosema.setColumns(10);
-		txtNosema.setBounds(179, 241, 165, 20);
+		txtNosema.setBounds(179, 212, 165, 20);
 		newQueenPanel.add(txtNosema);
 		
 		txtCleansingAbility = new JTextField();
 		txtCleansingAbility.setColumns(10);
-		txtCleansingAbility.setBounds(179, 272, 165, 20);
+		txtCleansingAbility.setBounds(179, 245, 165, 20);
 		newQueenPanel.add(txtCleansingAbility);
 		
-		JLabel lblYearHoneyYield = new JLabel("\u00C5rskarakter honningudbytte:");
+		JLabel lblYearHoneyYield = new JLabel("Honningudbytte:");
 		lblYearHoneyYield.setBounds(10, 182, 159, 14);
 		newQueenPanel.add(lblYearHoneyYield);
 		
-		JLabel lblHoneyYield = new JLabel("Honningudbytte:");
-		lblHoneyYield.setBounds(10, 213, 159, 14);
-		newQueenPanel.add(lblHoneyYield);
-		
 		JLabel lblNosema = new JLabel("Nosema:");
-		lblNosema.setBounds(10, 244, 159, 14);
+		lblNosema.setBounds(10, 215, 159, 14);
 		newQueenPanel.add(lblNosema);
 		
 		JLabel lblCleansingAbility = new JLabel("Udrensningsevne:");
-		lblCleansingAbility.setBounds(10, 275, 159, 14);
+		lblCleansingAbility.setBounds(10, 248, 159, 14);
 		newQueenPanel.add(lblCleansingAbility);
 	}
 	
