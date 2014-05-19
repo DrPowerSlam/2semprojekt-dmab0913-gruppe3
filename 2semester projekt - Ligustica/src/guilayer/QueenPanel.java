@@ -1,13 +1,17 @@
 package guilayer;
 
+import modellayer.Queen;
+
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class QueenPanel extends JPanel {
 
@@ -30,7 +34,10 @@ public class QueenPanel extends JPanel {
 	private void initTable() {
 		
 		//TODO Lav tablemodel og smid den i scrollpane
-		scrollPane = new JScrollPane(null);
+		ArrayList<Queen> queens =  new ArrayList<Queen>();	
+		QueenTableModel model = new QueenTableModel(queens);
+        JTable table = new JTable(model);
+		scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 11, 445, 400);
         add(scrollPane);
         
