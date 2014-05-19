@@ -4,10 +4,14 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import modellayer.Breeder;
 
 public class BreederPanel extends JPanel {
 
@@ -30,7 +34,11 @@ public class BreederPanel extends JPanel {
 	private void initTable() {
 		
 		//TODO Lav tablemodel og smid den i scrollpane
-		scrollPane = new JScrollPane(null);
+		ArrayList<Breeder> breeders =  new ArrayList<Breeder>();
+		breeders.add(new Breeder("Hhh", "l", "address", "phone", "email", "password", true, 1));
+		BreederTableModel model = new BreederTableModel(breeders);
+        JTable table = new JTable(model);
+		scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 11, 445, 400);
         add(scrollPane);
         
