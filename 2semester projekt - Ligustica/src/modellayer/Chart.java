@@ -1,150 +1,89 @@
 package modellayer;
-import java.util.ArrayList;
 
 public class Chart {
 
 	
-private int chartID, year, honeyYield, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
- private Breeder breeder;
- private Compendium compendium;
-private ArrayList<Queen> queens;
-private Queen queen;
+private int chartID, year;
+private boolean isSisterChart;
+private Breeder breeder;
+private Compendium compendium;
+private String pedigree;
 
-public Chart(int chartID, Breeder breeder, int year, int honeyYield, int swarmTendency,
-		int nosema, int temper, int honeycomFirmness, int clensingAbility, Compendium compendium) {
-	super();
+public Chart(int chartID, String pedigree, boolean isSisterChart, int year, Breeder breeder, Compendium compendium) {
 	this.chartID = chartID;
-	this.breeder = breeder;
 	this.year = year;
-	this.honeyYield = honeyYield;
-	this.swarmTendency = swarmTendency;
-	this.nosema = nosema;
-	this.temper = temper;
-	this.honeycomFirmness = honeycomFirmness;
-	this.clensingAbility = clensingAbility;
+	this.isSisterChart = isSisterChart;
+	this.breeder = breeder;
 	this.compendium = compendium;
-	this.queens = new ArrayList<Queen>();
-	
+	this.pedigree = pedigree;
 }
 
 public Chart() {
-	this.queens = new ArrayList<Queen>();
-}
+	}
 
 /**
- * @return the chartId
+ * @return the chartID
  */
 public int getChartID() {
 	return chartID;
 }
+
+/**
+ * @param chartID the chartID to set
+ */
+public void setChartID(int chartID) {
+	this.chartID = chartID;
+}
+
 /**
  * @return the year
  */
 public int getYear() {
 	return year;
 }
-/**
- * @return the honeyYield
- */
-public int getHoneyYield() {
-	return honeyYield;
-}
-/**
- * @return the swarmTendency
- */
-public int getSwarmTendency() {
-	return swarmTendency;
-}
-/**
- * @return the nosema
- */
-public int getNosema() {
-	return nosema;
-}
-/**
- * @return the temper
- */
-public int getTemper() {
-	return temper;
-}
-/**
- * @return the honeycomFirmness
- */
-public int getHoneycomFirmness() {
-	return honeycomFirmness;
-}
-/**
- * @return the clensingAbility
- */
-public int getClensingAbility() {
-	return clensingAbility;
-}
-/**
- * @return the breeder
- */
-public Breeder getBreeder() {
-	return breeder;
-}
-/**
- * @return the compendium
- */
-public Compendium getCompendium() {
-	return compendium;
-}
-/**
- * @param chartId the chartId to set
- */
-public void setChartID(int chartID) {
-	this.chartID = chartID;
-}
+
 /**
  * @param year the year to set
  */
 public void setYear(int year) {
 	this.year = year;
 }
+
 /**
- * @param honeyYield the honeyYield to set
+ * @return the isSisterChart
  */
-public void setHoneyYield(int honeyYield) {
-	this.honeyYield = honeyYield;
+public boolean isSisterChart() {
+	return isSisterChart;
 }
+
 /**
- * @param swarmTendency the swarmTendency to set
+ * @param isSisterChart the isSisterChart to set
  */
-public void setSwarmTendency(int swarmTendency) {
-	this.swarmTendency = swarmTendency;
+public void setSisterChart(boolean isSisterChart) {
+	this.isSisterChart = isSisterChart;
 }
+
 /**
- * @param nosema the nosema to set
+ * @return the breeder
  */
-public void setNosema(int nosema) {
-	this.nosema = nosema;
+public Breeder getBreeder() {
+	return breeder;
 }
-/**
- * @param temper the temper to set
- */
-public void setTemper(int temper) {
-	this.temper = temper;
-}
-/**
- * @param honeycomFirmness the honeycomFirmness to set
- */
-public void setHoneycomFirmness(int honeycomFirmness) {
-	this.honeycomFirmness = honeycomFirmness;
-}
-/**
- * @param clensingAbility the clensingAbility to set
- */
-public void setClensingAbility(int clensingAbility) {
-	this.clensingAbility = clensingAbility;
-}
+
 /**
  * @param breeder the breeder to set
  */
 public void setBreeder(Breeder breeder) {
 	this.breeder = breeder;
 }
+
+/**
+ * @return the compendium
+ */
+public Compendium getCompendium() {
+	return compendium;
+}
+
 /**
  * @param compendium the compendium to set
  */
@@ -153,19 +92,17 @@ public void setCompendium(Compendium compendium) {
 }
 
 /**
- * @return the queen
+ * @return the pedigree
  */
-public Queen getQueen() {
-	return queen;
+public String getPedigree() {
+	return pedigree;
 }
 
 /**
- * @param queen the queen to set
+ * @param pedigree the pedigree to set
  */
-public void setQueen(Queen queen) {
-	this.queen = queen;
+public void setPedigree(String pedigree) {
+	this.pedigree = pedigree;
 }
-
-
 
 }

@@ -3,16 +3,14 @@ import java.util.ArrayList;
 
 public class Compendium {
 	private int compendiumID;
-	private String name, date, droneLines;
+	private String name, date;
 	private ArrayList<Chart> charts;
 	
-	public Compendium(int compendiumID, String name, String date,
-			String droneLines) {
+	public Compendium(int compendiumID, String name, String date) {
 		super();
 		this.compendiumID = compendiumID;
 		this.name = name;
 		this.date = date;
-		this.droneLines = droneLines;
 		this.charts = new ArrayList<Chart>();
 	}
 	
@@ -38,12 +36,7 @@ public class Compendium {
 	public String getDate() {
 		return date;
 	}
-	/**
-	 * @return the droneLines
-	 */
-	public String getDroneLines() {
-		return droneLines;
-	}
+	
 	/**
 	 * @return the charts
 	 */
@@ -68,12 +61,7 @@ public class Compendium {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	/**
-	 * @param droneLines the droneLines to set
-	 */
-	public void setDroneLines(String droneLines) {
-		this.droneLines = droneLines;
-	}
+	
 	/**
 	 * @param charts the charts to set
 	 */
