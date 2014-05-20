@@ -24,6 +24,7 @@ public class BreederPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public BreederPanel() {
+		breederCtr = new BreederCtr();
 		setLayout(null);
 		initTable();
 		initSeconPanel();

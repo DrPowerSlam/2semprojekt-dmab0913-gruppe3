@@ -58,12 +58,12 @@ public class MainWindow extends JFrame {
 		initFrame();
 		initContentPane();
 		initMenuBar();
-//		if(settings.getBreeder() == null) {
-//			initLoginPane();
-//		} else {
-//			initTabbedPane();
-//		}
-		initTabbedPane();
+		if(settings.getBreeder() == null) {
+			initLoginPane();
+		} else {
+			initTabbedPane();
+		}
+		
 	}
 	
 	public void refreshMainWindow() throws SQLException {
