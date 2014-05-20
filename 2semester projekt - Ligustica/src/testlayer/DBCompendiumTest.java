@@ -25,7 +25,7 @@ import dblayer.DBConnection;
 public class DBCompendiumTest {
 
 	private static dblayer.DBCompendium testCompendiumDB = new DBCompendium();
-	private static Compendium testCompendiumUpdate = new Compendium();
+	private static Compendium testCompendiumUpdate;
 	private static Compendium testCompendiumInsert = new Compendium();
 	private static Compendium testCompendiumDelete = new Compendium();
 	private static DBConnection testConnection = DBConnection.getInstance();
@@ -38,18 +38,18 @@ public class DBCompendiumTest {
 	 */
 	public static void testSetup() throws SQLException, FileNotFoundException{
 		
-		testConnection.insertDatabaseData();
-		dblayer.DBConnection.getInstance().insertDatabaseData();
+		//testConnection.insertDatabaseData();
 		
 		testCompendiumInsert.setCompendiumID(1);
 		testCompendiumInsert.setName("Compendie 2013");
 		testCompendiumInsert.setDate("30.feb. 2013");
 		testCompendiumInsert.setDroneLines("sda");
 		
-		testCompendiumUpdate.setCompendiumID(2);
+		testCompendiumUpdate = testCompendiumDB.selectSingleCompendium(1, true);
+		/*testCompendiumUpdate.setCompendiumID(2);
 		testCompendiumUpdate.setName("Compendie 2013");
 		testCompendiumUpdate.setDate("30.feb. 2013");
-		testCompendiumUpdate.setDroneLines("sda");
+		testCompendiumUpdate.setDroneLines("sda");*/
 		
 		testCompendiumDelete.setCompendiumID(3);
 		testCompendiumDelete.setName("Compendie 2013");
@@ -65,7 +65,7 @@ public class DBCompendiumTest {
 	@AfterClass
 	public static void testCleanup() throws SQLException, FileNotFoundException {
 		
-		dblayer.DBConnection.getInstance().insertDatabaseData();
+		//dblayer.DBConnection.getInstance().insertDatabaseData();
 		
 	}
 	
@@ -75,8 +75,7 @@ public class DBCompendiumTest {
 	 */
 	@Test
 	public void testInsertCompendium() throws SQLException{
-		assertNotSame("The compendium was not inserted", -1, testCompendiumDB.insertCompendium(testCompendiumInsert));
-		//assertEquals(testCompendiumInsert.equals(testCompendiumDB.selectSingleCompendium(1,true)) ,true);
+		assertEquals("Insert failed", 1, testCompendiumDB.insertCompendium(testCompendiumInsert));
 	}
 
 	/**
@@ -85,10 +84,11 @@ public class DBCompendiumTest {
 	 */
 	@Test
 	public void testUpdateCompendium() throws SQLException {
-		
-		testCompendiumUpdate.setDroneLines("Aa2");
-		assertNotSame("The compendium was not updated", -1, testCompendiumDB.updateCompendium(testCompendiumUpdate));
-		assertEquals("Aa2", testCompendiumDB.selectSingleCompendium(2,true).getDroneLines());
+		testCompendiumUpdate.setName("TEST");
+		testCompendiumUpdate.setDate("TEST");
+		testCompendiumUpdate.setDroneLines("TEST");
+		assertEquals("Update failed", 1, testCompendiumDB.updateCompendium(testCompendiumUpdate));
+		assertTrue("Updated object are not equal to object before update", testCompendiumUpdate.equals(testCompendiumDB.selectSingleCompendium(testCompendiumUpdate.getCompendiumID(), true)));
 	}
 
 	/**
@@ -96,11 +96,8 @@ public class DBCompendiumTest {
 	 * @throws SQLException
 	 */
 	@Test
-	public void testDeleteCompendium() throws SQLException {
-		
-		assertNotSame("The compendium was not deleted", -1, testCompendiumDB.deleteCompendium(testCompendiumDelete));
-		assertNull(testCompendiumDB.deleteCompendium(testCompendiumDB.selectSingleCompendium(3,true)));
-		
+	public void testDeleteCompendium() throws SQLException {		
+		assertEquals("Delete failed", 1, testCompendiumDB.deleteCompendium(testCompendiumDelete));		
 	}
 	
 	/**
@@ -108,9 +105,8 @@ public class DBCompendiumTest {
 	 * @throws SQLException
 	 */
 	@Test
-	public void testSelectSingleCompendium() throws SQLException {
-	
-		assertEquals(testCompendiumInsert.equals(testCompendiumDB.selectSingleCompendium(1,true)), true);
+	public void testSearchCompendiumOnName() throws SQLException {	
+		assertTrue("Objects are not equal", testCompendiumInsert.equals(testCompendiumDB.searchCompendiumOnName("Compendie 2013", true)));
 	}
 	
 	/**
