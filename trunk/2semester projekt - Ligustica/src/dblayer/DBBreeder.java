@@ -82,10 +82,10 @@ public class DBBreeder implements IFDBBreeder {
    			+ "lname = ?,"
    	 		+ "address = ?, "
    	 		+ "zipCode = ?,"
-   	 		+ "phoneNo = ?, "
+   	 		+ "phone = ?, "
    	 		+ "email = ?,"
    	 		+ "password = ?,"
-   	 		+ "isAdmin = ?, "
+   	 		+ "isAdmin = ? "
    	 		+ "WHERE breederID = ?";
 
    	 System.out.println(update);
@@ -194,7 +194,7 @@ public class DBBreeder implements IFDBBreeder {
 			results = stmt.executeQuery(query);
 			if( results.next() ){
 				bObj = buildBreeder(results);
-				//stmt.close();
+				//stmt.close(); NEDENSTÅENDE KAN IKKE KØRES HVIS DEN LUKKES HER
 				if(retrieveAssociation) {
 					 int zipCode = results.getInt("zipCode");
 					 IFDBCity dbCity = new DBCity();
@@ -205,7 +205,7 @@ public class DBBreeder implements IFDBBreeder {
 			}else{ //No breeder found
 				bObj = null;
 			}
-			stmt.close();
+			stmt.close(); //KAN LUKKES HER
 		}//end try	
 		
 		catch(Exception e){
