@@ -89,7 +89,7 @@ public class DBQueen {
 	   	 		+ "isAlive = ?, "
 	   	 		+ "lParent = ?, "
 	   	 		+ "rParent = ?, "
-	   	 		+ "breederID = ?, "
+	   	 		+ "breederID = ? "
 	   	 		+ "WHERE queenID = ?";
 
 	   	 System.out.println(update);
