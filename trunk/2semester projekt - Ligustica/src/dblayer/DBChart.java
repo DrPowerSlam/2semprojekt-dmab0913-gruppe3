@@ -91,7 +91,7 @@ public class DBChart {
    	 		+ "temper = ?,"
    	 		+ "honeycombfirmness = ?,"
    	 		+ "cleansingAbility = ?, "
-   	 	    + "compendiumID = ?, "
+   	 	    + "compendiumID = ? "
    	 		+ "WHERE chartID = ?";
 
    	 System.out.println(update);

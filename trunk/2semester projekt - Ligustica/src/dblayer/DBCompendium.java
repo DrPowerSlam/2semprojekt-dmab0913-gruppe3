@@ -73,7 +73,7 @@ public class DBCompendium implements IFDBCompendium {
 	   	 String update = "UPDATE Compendium SET "
 	   	 		+ "name = ?, "
 	   			+ "date = ?,"
-	   	 		+ "droneLines = ?, "
+	   	 		+ "droneLines = ? "
 	   	 		+ "WHERE compendiumID = ?";
 
 	   	 System.out.println(update);
