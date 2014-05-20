@@ -15,12 +15,15 @@ import java.sql.SQLException;
 
 import modellayer.Breeder;
 import modellayer.Chart;
+import modellayer.Compendium;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import dblayer.DBBreeder;
 import dblayer.DBChart;
+import dblayer.DBCompendium;
 import dblayer.DBConnection;
 
 public class DBChartTest {
@@ -30,7 +33,10 @@ public class DBChartTest {
 	private static Chart testChartInsert = new Chart();
 	private static Chart testChartDelete = new Chart();
 	private static DBConnection testConnection = DBConnection.getInstance();
-	private static Breeder testBreeder = new Breeder();
+	private static Breeder testBreeder;
+	private static dblayer.DBBreeder testBreederDB = new DBBreeder();
+	private static Compendium testCompendium = new Compendium(1, "test", "23-09", "test");
+	private static dblayer.DBCompendium testCompendiumDB = new DBCompendium();
 	
 	@BeforeClass
 	/**
@@ -40,11 +46,12 @@ public class DBChartTest {
 	 */
 	public static void testSetup() throws SQLException, FileNotFoundException{
 		
-		testConnection.insertDatabaseData();
-		dblayer.DBConnection.getInstance().insertDatabaseData();
+		//testConnection.insertDatabaseData();		
 		
+		testBreeder = testBreederDB.selectSingleBreeder(1, true);
+		testCompendiumDB.insertCompendium(testCompendium);
 		
-		testChartInsert.setChartID(1);
+		//testChartInsert.setChartID(1);
 		testChartInsert.setBreeder(testBreeder);
 		testChartInsert.setYear(2012);
 		testChartInsert.setHoneyYield(4);
@@ -53,8 +60,9 @@ public class DBChartTest {
 		testChartInsert.setTemper(3);
 		testChartInsert.setHoneycomFirmness(5);
 		testChartInsert.setClensingAbility(4);
+		testChartInsert.setCompendium(testCompendium);
 		
-		testChartUpdate.setChartID(2);
+		//testChartUpdate.setChartID(2);
 		testChartUpdate.setBreeder(testBreeder);
 		testChartUpdate.setYear(2012);
 		testChartUpdate.setHoneyYield(5);
@@ -63,8 +71,9 @@ public class DBChartTest {
 		testChartUpdate.setTemper(4);
 		testChartUpdate.setHoneycomFirmness(5);
 		testChartUpdate.setClensingAbility(4);
+		testChartUpdate.setCompendium(testCompendium);
 		
-		testChartDelete.setChartID(3);
+		//testChartDelete.setChartID(3);
 		testChartDelete.setBreeder(testBreeder);
 		testChartDelete.setYear(2012);
 		testChartDelete.setHoneyYield(4);
@@ -73,6 +82,7 @@ public class DBChartTest {
 		testChartDelete.setTemper(3);
 		testChartDelete.setHoneycomFirmness(5);
 		testChartDelete.setClensingAbility(4);
+		testChartDelete.setCompendium(testCompendium);
 		
 		
 		
@@ -86,7 +96,7 @@ public class DBChartTest {
 	@AfterClass
 	public static void testCleanup() throws SQLException, FileNotFoundException {
 		
-		dblayer.DBConnection.getInstance().insertDatabaseData();
+		//dblayer.DBConnection.getInstance().insertDatabaseData();
 		
 	}
 	
