@@ -11,12 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import controllayer.BreederCtr;
 import modellayer.Breeder;
 
 public class BreederPanel extends JPanel {
 
 	private JScrollPane scrollPane;
 	private JPanel cardPanel, newBreederPanel;
+	private BreederCtr breederCtr;
 	
 	/**
 	 * Create the panel.
@@ -33,10 +35,7 @@ public class BreederPanel extends JPanel {
 	 */
 	private void initTable() {
 		
-		//TODO Lav tablemodel og smid den i scrollpane
-		ArrayList<Breeder> breeders =  new ArrayList<Breeder>();
-		breeders.add(new Breeder("Hhh", "l", "address", "phone", "email", "password", true, 1));
-		
+		ArrayList<Breeder> breeders =  breederCtr.getAllBreeders();		
 		BreederTableModel model = new BreederTableModel(breeders);
         JTable table = new JTable(model);
 		scrollPane = new JScrollPane(table);
