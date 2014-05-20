@@ -61,5 +61,9 @@ public class BreederCtr {
 		
 		return initials;
 	}
+	
+	public ArrayList<Breeder> getAllBreeders() {
+		return dbB.getAllBreeders(true);
+	}
 
 }
