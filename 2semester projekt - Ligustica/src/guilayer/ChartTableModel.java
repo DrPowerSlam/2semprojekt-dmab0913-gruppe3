@@ -66,13 +66,13 @@ public class ChartTableModel extends AbstractTableModel {
                 value = chart.getChartID();
                 break;
             case 1:
-                value = chart.getQueen().getName();
+                //value = chart.getPartChart().getQueen().getName();
                 break;
             case 2:
             	value = chart.getYear();
             	break;
             case 3:
-            	value = chart.getTemper(); //TODO: Lav om så man kan se om den er indberettet
+            	//value = chart.getTemper(); //TODO: Lav om så man kan se om den er indberettet
             	break;
         }
         return value;

@@ -8,6 +8,7 @@ private boolean isSisterChart;
 private Breeder breeder;
 private Compendium compendium;
 private String pedigree;
+private PartChart partChart;
 
 public Chart(int chartID, String pedigree, boolean isSisterChart, int year, Breeder breeder, Compendium compendium) {
 	this.chartID = chartID;

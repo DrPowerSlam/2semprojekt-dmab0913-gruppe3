@@ -43,7 +43,6 @@ public class DBCompendiumTest {
 		testCompendiumInsert.setCompendiumID(1);
 		testCompendiumInsert.setName("Compendie 2013");
 		testCompendiumInsert.setDate("30.feb. 2013");
-		testCompendiumInsert.setDroneLines("sda");
 		
 		testCompendiumUpdate = testCompendiumDB.selectSingleCompendium(1, true);
 		/*testCompendiumUpdate.setCompendiumID(2);
@@ -54,7 +53,6 @@ public class DBCompendiumTest {
 		testCompendiumDelete.setCompendiumID(3);
 		testCompendiumDelete.setName("Compendie 2013");
 		testCompendiumDelete.setDate("30.feb. 2013");
-		testCompendiumDelete.setDroneLines("sda");
 	
 		
 		testCompendiumDB.insertCompendium(testCompendiumDelete);
@@ -86,7 +84,6 @@ public class DBCompendiumTest {
 	public void testUpdateCompendium() throws SQLException {
 		testCompendiumUpdate.setName("TEST");
 		testCompendiumUpdate.setDate("TEST");
-		testCompendiumUpdate.setDroneLines("TEST");
 		assertEquals("Update failed", 1, testCompendiumDB.updateCompendium(testCompendiumUpdate));
 		assertTrue("Updated object are not equal to object before update", testCompendiumUpdate.equals(testCompendiumDB.selectSingleCompendium(testCompendiumUpdate.getCompendiumID(), true)));
 	}
