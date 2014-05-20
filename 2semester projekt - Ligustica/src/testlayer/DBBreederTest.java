@@ -18,11 +18,9 @@ import dblayer.DBConnection;
 public class DBBreederTest {
 	
 	private static dblayer.DBBreeder testBreederDB = new DBBreeder();
-	private static Breeder testBreederUpdate = new Breeder();
+	private static Breeder testBreederUpdate;
 	private static Breeder testBreederInsert = new Breeder();
-	private static Breeder testBreederDelete = new Breeder();
-	private static DBCity testCityDB = new DBCity();
-	private static DBConnection testConnection = DBConnection.getInstance();
+	private static Breeder testBreederDelete;
 	private static City testCity = new City(2500, "Valby");
 
 	
@@ -35,44 +33,30 @@ public class DBBreederTest {
 	public static void testSetup() throws SQLException, FileNotFoundException{
 		
 		dblayer.DBConnection.getInstance().insertDatabaseData();
-		
-		
-		testConnection.insertDatabaseData();
-		
-		testBreederInsert.setFname("Karsten");
-		testBreederInsert.setLname("IkkeAdmin");
+				
+		testBreederUpdate = testBreederDB.selectSingleBreeder(1, true);
+				
+		testBreederInsert.setFname("INSERT");
+		testBreederInsert.setLname("TEST");
 		testBreederInsert.setAddress("Sofiendalsvej 60");
 		testBreederInsert.setPhone("12345678");
 		testBreederInsert.setEmail("ikke@admin.dk");
 		testBreederInsert.setPassword("test123");
 		testBreederInsert.setAdmin(false);
-		testBreederInsert.setBreederID(1);
 		testBreederInsert.setCity(testCity);
 		
-		testBreederUpdate.setFname("Christian");
-		testBreederUpdate.setLname("Christiansen");
+		testBreederUpdate.setFname("UPDATE");
+		testBreederUpdate.setLname("SUCCESS");
 		testBreederUpdate.setAddress("Sofiendalsvej");
 		testBreederUpdate.setPhone("24657622");
 		testBreederUpdate.setEmail("afq@goms.dk");
 		testBreederUpdate.setPassword("pass1234");
 		testBreederUpdate.setAdmin(false);
-		testBreederUpdate.setBreederID(2);
 		testBreederUpdate.setCity(testCity);
 		
-		
-		testBreederDelete.setFname("Hans");
-		testBreederDelete.setLname("Hansen");
-		testBreederDelete.setAddress("Sofiendalsvej");
-		testBreederDelete.setPhone("24657623");
-		testBreederDelete.setEmail("afg@goms.dk");
-		testBreederDelete.setPassword("pass1234");
-		testBreederDelete.setAdmin(false);
-		testBreederDelete.setBreederID(3);
-		testBreederDelete.setCity(testCity);
-		
-		
-		testBreederDB.insertBreeder(testBreederDelete);
-		testBreederDB.insertBreeder(testBreederUpdate);	
+		testBreederDelete = testBreederDB.selectSingleBreeder(2, true);
+				
+		testBreederDB.insertBreeder(testBreederDelete);	
 	}
 
 	@AfterClass
@@ -88,44 +72,27 @@ public class DBBreederTest {
 	 */
 	@Test
 	public void testInsertBreeder() throws SQLException{
-		assertNotSame("The Breeder was not inserted", -1, testBreederDB.insertBreeder(testBreederInsert));
-		assertEquals(testBreederInsert.equals(testBreederDB.selectSingleBreeder(1, true)) ,true);
+		assertEquals("Insert failed", 1, testBreederDB.insertBreeder(testBreederInsert));
 	}
 
 	/**
-	 * Tests if you can update a variable on a city in the database
+	 * Tests if you can update a variable on a breeder in the database
 	 * @throws SQLException
 	 */
 	@Test
-	public void testUpdateCity() throws SQLException {
-		
-		testBreederUpdate.setFname("Klaus");
-		assertNotSame("The Breeder was not updated", -1, testBreederDB.updateBreeder(testBreederUpdate));
-		assertEquals(testBreederInsert.equals(testBreederDB.selectSingleBreeder(2, true)) ,true);
+	public void testUpdateBreeder() throws SQLException {
+		assertEquals("update failed", 1, testBreederDB.updateBreeder(testBreederUpdate));
 	}
 
 	/**
-	 * Tests if you can delete a city in the database
+	 * Tests if you can delete a breeder in the database
 	 * @throws SQLException
 	 */
 	@Test
-	public void testDeleteBreeder() throws SQLException {
-		
-		
-		assertNotSame("The Breeder was not deleted", -1, testBreederDB.deleteBreeder(testBreederDelete));
-		assertNull(testBreederDB.selectSingleBreeder(3, true));
-		
+	public void testDeleteBreeder() throws SQLException {		
+		assertEquals("The Breeder was not deleted", 1, testBreederDB.deleteBreeder(testBreederDelete));	
 	}
 	
-	/**
-	 * Tests if you can select a city in the database
-	 * @throws SQLException
-	 */
-	@Test
-	public void testSelectSingleBreeder() throws SQLException {
-		//assertEquals(testBreederInsert.equals(testBreederDB.selectSingleBreeder(1, true)), true);
-		assertTrue( testBreederInsert.equals(testBreederDB.selectSingleBreeder(1, true)) );
-	}
 	
 	/**
 	 * Tests if you can select all cities in the database
