@@ -1,7 +1,7 @@
 use dmab0913_3
 
-IF OBJECT_ID('db_owner.ChartQueens', 'U') IS NOT NULL
-	DROP TABLE db_owner.ChartQueens;
+IF OBJECT_ID('db_owner.PartChart', 'U') IS NOT NULL
+	DROP TABLE db_owner.PartChart;
 IF OBJECT_ID('db_owner.Chart', 'U') IS NOT NULL
 	DROP TABLE db_owner.Chart;
 IF OBJECT_ID('db_owner.Compendium', 'U') IS NOT NULL
@@ -44,12 +44,12 @@ create table Queen (
 	honeycombfirmness int,
 	cleansingAbility int,
 	isAlive varchar(10) not null,
-	lParent int,
-	rParent int, 
+	mother int,
+	fathersMother int, 
 	breederID int,
-    primary key (queenID),
-	foreign key(lParent) references Queen(queenID),
-	foreign key(rParent) references Queen(queenID),
+    	primary key (queenID),
+	foreign key(mother) references Queen(queenID),
+	foreign key(fathersMother) references Queen(queenID),
 	foreign key(breederID) references Breeder(breederID),
 );
 
@@ -64,28 +64,33 @@ create table Chart (
 	chartID  int  IDENTITY(1,1) not null, 
 	breederID int not null,
 	year int not null,
+	pedigree varchar(255) not null,
+	type varchar(50) not null,
+	compendiumID int not null,
+    	primary key (chartID),
+	foreign key(breederID) references Breeder(breederID),
+	foreign key(compendiumID) references Compendium(compendiumID),
+);
+
+create table PartChart (
+	partChartID  int  IDENTITY(1,1) not null, 
 	honeyYield int not null,
+	honeyYieldYear int not null,
 	swarmTendency int not null,
 	nosema int not null,
 	temper int not null,
 	honeycombfirmness int not null,
 	cleansingAbility int not null,
-	compendiumID int not null,
-    primary key (chartID),
-	foreign key(breederID) references Breeder(breederID),
-	foreign key(compendiumID) references Compendium(compendiumID),
-);
-
-
-create table ChartQueens (
 	chartID int not null,
-	queenID int not null,
-	primary key(chartID,queenID),
+	queenID int not null
+    	primary key (partChartID),
 	foreign key(chartID) references Chart(chartID),
 	foreign key(queenID) references Queen(queenID),
 );
 
-use dmab0913_3
+
+
+
 
 INSERT INTO City VALUES(800, 'Høje Taastrup');
 INSERT INTO City VALUES(877, 'Valby');

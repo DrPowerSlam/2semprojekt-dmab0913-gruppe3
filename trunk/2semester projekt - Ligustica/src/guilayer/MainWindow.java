@@ -115,7 +115,8 @@ public class MainWindow extends JFrame {
 			menuBar.add(menu);
 			
 			JMenuItem menuItem = new JMenuItem(new AbstractAction("Logud") {
-			    public void actionPerformed(ActionEvent e) {
+
+				public void actionPerformed(ActionEvent e) {
 			        BreederCtr breederCtr = new BreederCtr();
 			        breederCtr.logOut();
 			        try {
