@@ -31,7 +31,7 @@ public class ChooseQueenPanel extends JPanel {
 	private QueenCtr qCtr;
 	private JButton btnAddQueen;
 	private JTextField filterText;
-	TableRowSorter sorter;
+	TableRowSorter<ChooseQueenTableModel> sorter;
 	
 	private Chart chart;
 	/**
@@ -101,23 +101,7 @@ public class ChooseQueenPanel extends JPanel {
 		sorter = new TableRowSorter<ChooseQueenTableModel>(model);
         final JTable table = new JTable(model);
         table.setRowSorter(sorter);
-        table.setAutoCreateRowSorter(true);
-        table.setFillsViewportHeight(true);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-//        table.getSelectionModel().addListSelectionListener(
-//                new ListSelectionListener() {
-//                    public void valueChanged(ListSelectionEvent event) {
-//                        int viewRow = table.getSelectedRow();
-//                        if (viewRow < 0) {        
-//                        } else {
-//                            int modelRow = 
-//                                table.convertRowIndexToModel(viewRow);             
-//                        }
-//                    }
-//                }
-//        );
-        
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 31, 339, 230);
 		queenInfoPanel.add(scrollPane);
@@ -128,11 +112,12 @@ public class ChooseQueenPanel extends JPanel {
 	    RowFilter<ChooseQueenTableModel, Object> rf = null;
 	    //If current expression doesn't parse, don't update.
 	    try {
-	        rf = RowFilter.regexFilter(filterText.getText(), 0);
+	        rf = RowFilter.regexFilter(filterText.getText(), 1);
 	    } catch (java.util.regex.PatternSyntaxException e) {
-	        
+	        System.out.println("FEJL!");
 	    }
 	    sorter.setRowFilter(rf);
+	    System.out.println("Jaa: " + rf);
 	}
 	
 	public void chooseQueen() {
