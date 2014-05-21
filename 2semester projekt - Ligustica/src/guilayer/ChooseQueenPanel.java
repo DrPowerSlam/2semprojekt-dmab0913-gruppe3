@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.border.TitledBorder;
 
 import controllayer.ChartCtr;
+import controllayer.QueenCtr;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,11 +23,12 @@ import javax.swing.JScrollPane;
 
 import modellayer.Chart;
 import modellayer.PartChart;
+import modellayer.Queen;
 
 public class ChooseQueenPanel extends JPanel {
 	private JPanel queenInfoPanel;
 	
-	private ChartCtr cCtr;
+	private QueenCtr qCtr;
 	private JButton btnAddQueen;
 	private JTextField textField;
 	
@@ -36,7 +38,7 @@ public class ChooseQueenPanel extends JPanel {
 	 * @throws SQLException 
 	 */
 	public ChooseQueenPanel(Chart chart) throws SQLException {
-		cCtr = new ChartCtr();
+		qCtr = new QueenCtr();
 		this.chart = chart;
 		initPanel();
 		initComponents();
@@ -80,8 +82,8 @@ public class ChooseQueenPanel extends JPanel {
 	}
 
 	private void initTable() {
-		ArrayList<PartChart> partCharts =  chart.getAllPartCharts();
-		PartChartTableModel model = new PartChartTableModel(partCharts);
+		ArrayList<Queen> queens =  qCtr.getAllQueens();
+		ChooseQueenTableModel model = new ChooseQueenTableModel(queens);
         JTable table = new JTable(model);
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 31, 339, 230);
