@@ -249,9 +249,13 @@ public class DBPartChart implements IFDBPartChart {
 
 	   	 try {
 	   		 cObj.setPartChartID(result.getInt("partPartChartID"));
-	   		 cObj.setYear(result.getInt("year"));
-	   		 cObj.setPedigree(result.getString("pedigree"));
-	   		 cObj.setPedigree(result.getString("type"));  		 
+	   		 cObj.setHoneyYield(result.getInt("honeyYield"));
+	   		 cObj.setHoneyYieldYear(result.getInt("honeyYieldYear"));
+	   	   	 cObj.setSwarmTendency(result.getInt("swarmTendency"));	 
+	   	     cObj.setNosema(result.getInt("nosema"));	 
+	   	     cObj.setTemper(result.getInt("temper"));	 
+	   	     cObj.setHoneycomFirmness(result.getInt("honeycombfirmness"));	 
+	   	     cObj.setClensingAbility(result.getInt("cleansingAbility"));	 
 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building PartChart object, " +e);
