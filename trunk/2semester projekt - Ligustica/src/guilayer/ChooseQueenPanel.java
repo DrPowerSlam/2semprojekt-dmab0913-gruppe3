@@ -31,7 +31,8 @@ public class ChooseQueenPanel extends JPanel {
 	private QueenCtr qCtr;
 	private JButton btnAddQueen;
 	private JTextField filterText;
-	TableRowSorter<ChooseQueenTableModel> sorter;
+	private TableRowSorter<ChooseQueenTableModel> sorter;
+	private JTable table;
 	
 	private Chart chart;
 	/**
@@ -60,12 +61,15 @@ public class ChooseQueenPanel extends JPanel {
 	}
 
 	private void initComponents() throws SQLException {
-	
 		btnAddQueen = new JButton("Vælg dronning");
 		btnAddQueen.setBounds(184, 300, 165, 23);
 		btnAddQueen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-				chooseQueen();
+				try {
+					chooseQueen();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
             }
 		});
 		queenInfoPanel.add(btnAddQueen);
@@ -96,10 +100,11 @@ public class ChooseQueenPanel extends JPanel {
 	}
 
 	private void initTable() {
+		//TODO: Gør så man kun kan se avlerens (settings.getBreeder()) dronninger
 		ArrayList<Queen> queens =  qCtr.getAllQueens();
 		ChooseQueenTableModel model = new ChooseQueenTableModel(queens);
 		sorter = new TableRowSorter<ChooseQueenTableModel>(model);
-        final JTable table = new JTable(model);
+        table = new JTable(model);
         table.setRowSorter(sorter);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane scrollPane = new JScrollPane(table);
@@ -119,15 +124,22 @@ public class ChooseQueenPanel extends JPanel {
 	    sorter.setRowFilter(rf);
 	}
 	
-	public void chooseQueen() {
+	public void chooseQueen() throws SQLException {
 		ChartPanel chartPanel = ChartPanel.getInstance();
 		try {
-			//TODO: send chart og queen objektet til queenInfoPanel (check om queen er valgt først)
-			//TODO: under queenInfoPanel opret nyt CHartPart, sæt Queen til den og vis queens årskarakter hvis de er der
-			//TODO  Når info gemmes valideres det, hvis det går igennem gemmes chartpart objektet, tilføjes til chart og chart sendes med til newsistercharpanel
-			chartPanel.addQueenInfoPanel();
-		} catch (SQLException e) {
-			e.printStackTrace();
+			Queen queen = qCtr.getQueenByID(Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString()));
+			if(queen == null) {
+				//TODO: Fejl - "vælg en dronning"
+			} else {
+				//TODO: send chart og queen objektet til queenInfoPanel (check om queen er valgt først)
+				//TODO: under queenInfoPanel opret nyt CHartPart, sæt Queen til den og vis queens årskarakter hvis de er der
+				//TODO  Når info gemmes valideres det, hvis det går igennem gemmes chartpart objektet, tilføjes til chart og chart sendes med til newsistercharpanel
+				chartPanel.addQueenInfoPanel(chart, queen);
+			}
+		//} catch (SQLException e) {
+		//	e.printStackTrace();
+		} catch(IndexOutOfBoundsException e){
+            
 		}
 	}
 }
