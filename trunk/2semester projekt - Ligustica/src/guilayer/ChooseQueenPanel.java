@@ -1,8 +1,9 @@
 package guilayer;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.table.TableRowSorter;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -10,14 +11,13 @@ import java.util.ArrayList;
 
 import javax.swing.border.TitledBorder;
 
-import controllayer.ChartCtr;
 import controllayer.QueenCtr;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.RowFilter;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 
@@ -30,7 +30,8 @@ public class ChooseQueenPanel extends JPanel {
 	
 	private QueenCtr qCtr;
 	private JButton btnAddQueen;
-	private JTextField textField;
+	private JTextField filterText;
+	TableRowSorter sorter;
 	
 	private Chart chart;
 	/**
@@ -47,12 +48,13 @@ public class ChooseQueenPanel extends JPanel {
 
 	private void initPanel() {
 		setLayout(null);
-		
+		setOpaque(true);
 		queenInfoPanel = new JPanel();
 		queenInfoPanel.setBounds(0, 0, 359, 429);
 		queenInfoPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Dronninge info", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		add(queenInfoPanel);
 		queenInfoPanel.setLayout(null);
+		queenInfoPanel.setOpaque(true);
 		
 		
 	}
@@ -70,10 +72,22 @@ public class ChooseQueenPanel extends JPanel {
 		
 		initTable();
 		
-		textField = new JTextField();
-		textField.setBounds(47, 269, 302, 20);
-		queenInfoPanel.add(textField);
-		textField.setColumns(10);
+		filterText = new JTextField();
+		filterText.setBounds(47, 269, 302, 20);
+		filterText.getDocument().addDocumentListener(
+                new DocumentListener() {
+                    public void changedUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                    public void insertUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                    public void removeUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                });
+		queenInfoPanel.add(filterText);
+		filterText.setColumns(10);
 		
 		JLabel lblSg = new JLabel("S\u00F8g:");
 		lblSg.setBounds(10, 272, 46, 14);
@@ -84,10 +98,41 @@ public class ChooseQueenPanel extends JPanel {
 	private void initTable() {
 		ArrayList<Queen> queens =  qCtr.getAllQueens();
 		ChooseQueenTableModel model = new ChooseQueenTableModel(queens);
-        JTable table = new JTable(model);
+		sorter = new TableRowSorter<ChooseQueenTableModel>(model);
+        final JTable table = new JTable(model);
+        table.setRowSorter(sorter);
+        table.setAutoCreateRowSorter(true);
+        table.setFillsViewportHeight(true);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+//        table.getSelectionModel().addListSelectionListener(
+//                new ListSelectionListener() {
+//                    public void valueChanged(ListSelectionEvent event) {
+//                        int viewRow = table.getSelectedRow();
+//                        if (viewRow < 0) {        
+//                        } else {
+//                            int modelRow = 
+//                                table.convertRowIndexToModel(viewRow);             
+//                        }
+//                    }
+//                }
+//        );
+        
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 31, 339, 230);
 		queenInfoPanel.add(scrollPane);
+		
+	}
+	
+	private void newFilter() {
+	    RowFilter<ChooseQueenTableModel, Object> rf = null;
+	    //If current expression doesn't parse, don't update.
+	    try {
+	        rf = RowFilter.regexFilter(filterText.getText(), 0);
+	    } catch (java.util.regex.PatternSyntaxException e) {
+	        
+	    }
+	    sorter.setRowFilter(rf);
 	}
 	
 	public void chooseQueen() {
