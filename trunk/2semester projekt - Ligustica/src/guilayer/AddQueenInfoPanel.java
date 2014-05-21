@@ -83,17 +83,17 @@ public class AddQueenInfoPanel extends JPanel {
 		txtQueen.setEditable(false);
 		queenInfoPanel.add(txtQueen);
 		
-		txtYear = new JTextField();
+		txtYear = new JTextField(queen.getYear());
 		txtYear.setColumns(10);
 		txtYear.setBounds(184, 54, 165, 20);
 		queenInfoPanel.add(txtYear);
 		
-		txtSwarmTendency = new JTextField();
+		txtSwarmTendency = new JTextField(queen.getSwarmTendency());
 		txtSwarmTendency.setColumns(10);
 		txtSwarmTendency.setBounds(184, 85, 165, 20);
 		queenInfoPanel.add(txtSwarmTendency);
 		
-		txtTemper = new JTextField();
+		txtTemper = new JTextField(queen.getTemper());
 		txtTemper.setColumns(10);
 		txtTemper.setBounds(184, 116, 165, 20);
 		queenInfoPanel.add(txtTemper);
@@ -124,7 +124,7 @@ public class AddQueenInfoPanel extends JPanel {
 		});
 		queenInfoPanel.add(btnAddQueen);
 		
-		txtHoneycombFirmness = new JTextField();
+		txtHoneycombFirmness = new JTextField(queen.getHoneycomFirmness());
 		txtHoneycombFirmness.setColumns(10);
 		txtHoneycombFirmness.setBounds(184, 147, 165, 20);
 		queenInfoPanel.add(txtHoneycombFirmness);
@@ -133,22 +133,22 @@ public class AddQueenInfoPanel extends JPanel {
 		lblHoneycombFirmness.setBounds(10, 150, 159, 14);
 		queenInfoPanel.add(lblHoneycombFirmness);
 		
-		txtYearHoneyYield = new JTextField();
+		txtYearHoneyYield = new JTextField(queen.getHoneyYield());
 		txtYearHoneyYield.setColumns(10);
 		txtYearHoneyYield.setBounds(184, 178, 165, 20);
 		queenInfoPanel.add(txtYearHoneyYield);
 		
-		txtHoneyYield = new JTextField();
+		txtHoneyYield = new JTextField(queen.getHoneyYield());
 		txtHoneyYield.setColumns(10);
 		txtHoneyYield.setBounds(184, 211, 165, 20);
 		queenInfoPanel.add(txtHoneyYield);
 		
-		txtNosema = new JTextField();
+		txtNosema = new JTextField(queen.getNosema());
 		txtNosema.setColumns(10);
 		txtNosema.setBounds(184, 245, 165, 20);
 		queenInfoPanel.add(txtNosema);
 		
-		txtCleansingAbility = new JTextField();
+		txtCleansingAbility = new JTextField(queen.getClensingAbility());
 		txtCleansingAbility.setColumns(10);
 		txtCleansingAbility.setBounds(184, 276, 165, 20);
 		queenInfoPanel.add(txtCleansingAbility);
