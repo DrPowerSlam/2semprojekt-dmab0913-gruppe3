@@ -132,7 +132,7 @@ public class DBChartTest {
 	 */
 	@Test
 	public void testSelectSingleChart() throws SQLException {
-		assertEquals(testChartInsert.equals(testChartDB.selectSingleChart(1,true)), true);
+		assertEquals(testChartInsert.equals(testChartDB.selectSingleChart(1, false)), true);
 	}
 	
 	/**
