@@ -68,7 +68,7 @@ public class DBCitiesTest {
 	@Test
 	public void testInsertCity() throws SQLException{
 		int zipCode = testCityInsert.getZipCode();
-		assertNotSame("The city was not inserted", -1, testCityDB.insertCity(testCityInsert));
+		assertEquals("The city was not inserted", 1, testCityDB.insertCity(testCityInsert));
 		assertEquals(testCityInsert.equals(testCityDB.selectSingleCity(zipCode)) ,true);
 	}
 
@@ -93,21 +93,12 @@ public class DBCitiesTest {
 	public void testDeleteCity() throws SQLException {
 		int zipcode = testCityDelete.getZipCode();
 		
-		assertNotSame("The city was not deleted", -1, testCityDB.deleteCity(testCityDelete));
-		assertNull(testCityDB.deleteCity(testCityDB.selectSingleCity(zipcode)));
+		assertEquals("The city was not deleted", 1, testCityDB.deleteCity(testCityDelete));
+		assertNull(testCityDB.selectSingleCity(zipcode));
 		
 	}
 	
-	/**
-	 * Tests if you can select a city in the database
-	 * @throws SQLException
-	 */
-	@Test
-	public void testSelectSingleCity() throws SQLException {
-		int zipcode = testCityInsert.getZipCode();
-		assertEquals(testCityInsert.equals(testCityDB.selectSingleCity(zipcode)), true);
-	}
-	
+
 	/**
 	 * Tests if you can select all cities in the database
 	 * @throws SQLException
