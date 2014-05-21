@@ -12,10 +12,12 @@ import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modellayer.Breeder;
 import modellayer.Chart;
 import modellayer.Compendium;
+import modellayer.PartChart;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -35,7 +37,7 @@ public class DBChartTest {
 	private static DBConnection testConnection = DBConnection.getInstance();
 	private static Breeder testBreeder;
 	private static dblayer.DBBreeder testBreederDB = new DBBreeder();
-	private static Compendium testCompendium = new Compendium(1, "test", "23-09", "test");
+	private static Compendium testCompendium = new Compendium(1, "test", "23-09");
 	private static dblayer.DBCompendium testCompendiumDB = new DBCompendium();
 	
 	@BeforeClass
@@ -46,43 +48,32 @@ public class DBChartTest {
 	 */
 	public static void testSetup() throws SQLException, FileNotFoundException{
 		
-		//testConnection.insertDatabaseData();		
+		testConnection.insertDatabaseData();		
 		
 		testBreeder = testBreederDB.selectSingleBreeder(1, true);
 		testCompendiumDB.insertCompendium(testCompendium);
 		
-		//testChartInsert.setChartID(1);
+		testChartInsert.setChartID(1);
 		testChartInsert.setBreeder(testBreeder);
 		testChartInsert.setYear(2012);
-		testChartInsert.setHoneyYield(4);
-		testChartInsert.setSwarmTendency(4);
-		testChartInsert.setNosema(5);
-		testChartInsert.setTemper(3);
-		testChartInsert.setHoneycomFirmness(5);
-		testChartInsert.setClensingAbility(4);
+		testChartInsert.setSisterChart(true);
 		testChartInsert.setCompendium(testCompendium);
+		testChartInsert.setPedigree("blah");
+	
 		
-		//testChartUpdate.setChartID(2);
+		testChartUpdate.setChartID(1);
 		testChartUpdate.setBreeder(testBreeder);
 		testChartUpdate.setYear(2012);
-		testChartUpdate.setHoneyYield(5);
-		testChartUpdate.setSwarmTendency(4);
-		testChartUpdate.setNosema(5);
-		testChartUpdate.setTemper(4);
-		testChartUpdate.setHoneycomFirmness(5);
-		testChartUpdate.setClensingAbility(4);
+		testChartUpdate.setSisterChart(true);
 		testChartUpdate.setCompendium(testCompendium);
+		testChartUpdate.setPedigree("blah");
 		
-		//testChartDelete.setChartID(3);
+		testChartDelete.setChartID(1);
 		testChartDelete.setBreeder(testBreeder);
 		testChartDelete.setYear(2012);
-		testChartDelete.setHoneyYield(4);
-		testChartDelete.setSwarmTendency(4);
-		testChartDelete.setNosema(5);
-		testChartDelete.setTemper(3);
-		testChartDelete.setHoneycomFirmness(5);
-		testChartDelete.setClensingAbility(4);
+		testChartDelete.setSisterChart(true);
 		testChartDelete.setCompendium(testCompendium);
+		testChartDelete.setPedigree("blah");
 		
 		
 		
@@ -108,7 +99,7 @@ public class DBChartTest {
 	public void testInsertChart() throws SQLException{
 		
 		assertNotSame("The chart was not inserted", -1, testChartDB.insertChart(testChartInsert));
-		//assertEquals(testChartInsert.equals(testChartDB.selectSingleChart(1)) ,true);
+		assertEquals(testChartInsert.equals(testChartDB.selectSingleChart(1,true )) ,true);
 	}
 
 	/**
@@ -118,9 +109,9 @@ public class DBChartTest {
 	@Test
 	public void testUpdateChart() throws SQLException {
 		
-		testChartUpdate.setTemper(3);
+		testChartUpdate.setPedigree("blah2");
 		assertNotSame("The chart was not updated", -1, testChartDB.updateChart(testChartUpdate));
-		assertEquals(3, testChartDB.selectSingleChart(2,true).getTemper());
+		assertEquals(3, testChartDB.selectSingleChart(2,true).getPedigree());
 	}
 
 	/**
