@@ -19,7 +19,7 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 
 public class ChooseQueenPanel extends JPanel {
-	private JPanel newChartPanel;
+	private JPanel queenInfoPanel;
 	
 	private ChartCtr cCtr;
 	private JTextField txtQueen;
@@ -49,12 +49,13 @@ public class ChooseQueenPanel extends JPanel {
 	}
 
 	private void initPanel() {
-		setLayout(new BorderLayout(0, 0));
+		setLayout(null);
 		
-		newChartPanel = new JPanel();
-		newChartPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Indberetning af skema", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		add(newChartPanel, BorderLayout.CENTER);
-		newChartPanel.setLayout(null);
+		queenInfoPanel = new JPanel();
+		queenInfoPanel.setBounds(0, 0, 359, 418);
+		queenInfoPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Indberetning af skema", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		add(queenInfoPanel);
+		queenInfoPanel.setLayout(null);
 		
 		
 	}
@@ -63,39 +64,39 @@ public class ChooseQueenPanel extends JPanel {
 		
 		JLabel lblQueen = new JLabel("Dronning:");
 		lblQueen.setBounds(10, 27, 110, 14);
-		newChartPanel.add(lblQueen);
+		queenInfoPanel.add(lblQueen);
 		
 		txtQueen = new JTextField();
 		txtQueen.setColumns(10);
 		txtQueen.setBounds(179, 24, 165, 20);
-		newChartPanel.add(txtQueen);
+		queenInfoPanel.add(txtQueen);
 		
 		txtYear = new JTextField();
 		txtYear.setColumns(10);
 		txtYear.setBounds(179, 55, 165, 20);
-		newChartPanel.add(txtYear);
+		queenInfoPanel.add(txtYear);
 		
 		txtSwarmTendency = new JTextField();
 		txtSwarmTendency.setColumns(10);
 		txtSwarmTendency.setBounds(179, 86, 165, 20);
-		newChartPanel.add(txtSwarmTendency);
+		queenInfoPanel.add(txtSwarmTendency);
 		
 		txtTemper = new JTextField();
 		txtTemper.setColumns(10);
 		txtTemper.setBounds(179, 117, 165, 20);
-		newChartPanel.add(txtTemper);
+		queenInfoPanel.add(txtTemper);
 		
 		lblYear = new JLabel("\u00C5r:");
 		lblYear.setBounds(10, 58, 110, 14);
-		newChartPanel.add(lblYear);
+		queenInfoPanel.add(lblYear);
 		
 		lblSwarmTendency = new JLabel("\u00C5rskarakter sv\u00E6rmetendens:");
 		lblSwarmTendency.setBounds(10, 89, 149, 14);
-		newChartPanel.add(lblSwarmTendency);
+		queenInfoPanel.add(lblSwarmTendency);
 		
 		lblTemper = new JLabel("\u00C5rskarakter temperament:");
 		lblTemper.setBounds(10, 120, 159, 14);
-		newChartPanel.add(lblTemper);
+		queenInfoPanel.add(lblTemper);
 		
 		btnCreateChart = new JButton("Indberet skema");
 		btnCreateChart.setBounds(223, 303, 121, 23);
@@ -109,52 +110,52 @@ public class ChooseQueenPanel extends JPanel {
 				}
             }
 		});
-		newChartPanel.add(btnCreateChart);
+		queenInfoPanel.add(btnCreateChart);
 		
 		txtHoneycombFirmness = new JTextField();
 		txtHoneycombFirmness.setColumns(10);
 		txtHoneycombFirmness.setBounds(179, 148, 165, 20);
-		newChartPanel.add(txtHoneycombFirmness);
+		queenInfoPanel.add(txtHoneycombFirmness);
 		
 		lblHoneycombFirmness = new JLabel("\u00C5rskarakter tavlefasthed:");
 		lblHoneycombFirmness.setBounds(10, 151, 159, 14);
-		newChartPanel.add(lblHoneycombFirmness);
+		queenInfoPanel.add(lblHoneycombFirmness);
 		
 		txtYearHoneyYield = new JTextField();
 		txtYearHoneyYield.setColumns(10);
 		txtYearHoneyYield.setBounds(179, 179, 165, 20);
-		newChartPanel.add(txtYearHoneyYield);
+		queenInfoPanel.add(txtYearHoneyYield);
 		
 		txtHoneyYield = new JTextField();
 		txtHoneyYield.setColumns(10);
 		txtHoneyYield.setBounds(179, 210, 165, 20);
-		newChartPanel.add(txtHoneyYield);
+		queenInfoPanel.add(txtHoneyYield);
 		
 		txtNosema = new JTextField();
 		txtNosema.setColumns(10);
 		txtNosema.setBounds(179, 241, 165, 20);
-		newChartPanel.add(txtNosema);
+		queenInfoPanel.add(txtNosema);
 		
 		txtCleansingAbility = new JTextField();
 		txtCleansingAbility.setColumns(10);
 		txtCleansingAbility.setBounds(179, 272, 165, 20);
-		newChartPanel.add(txtCleansingAbility);
+		queenInfoPanel.add(txtCleansingAbility);
 		
 		JLabel lblYearHoneyYield = new JLabel("\u00C5rskarakter honningudbytte:");
 		lblYearHoneyYield.setBounds(10, 182, 159, 14);
-		newChartPanel.add(lblYearHoneyYield);
+		queenInfoPanel.add(lblYearHoneyYield);
 		
 		JLabel lblHoneyYield = new JLabel("Honningudbytte:");
 		lblHoneyYield.setBounds(10, 213, 159, 14);
-		newChartPanel.add(lblHoneyYield);
+		queenInfoPanel.add(lblHoneyYield);
 		
 		JLabel lblNosema = new JLabel("Nosema:");
 		lblNosema.setBounds(10, 244, 159, 14);
-		newChartPanel.add(lblNosema);
+		queenInfoPanel.add(lblNosema);
 		
 		JLabel lblCleansingAbility = new JLabel("Udrensningsevne:");
 		lblCleansingAbility.setBounds(10, 275, 159, 14);
-		newChartPanel.add(lblCleansingAbility);
+		queenInfoPanel.add(lblCleansingAbility);
 	}
 	
 	public void createChart() throws SQLException {
@@ -169,7 +170,7 @@ public class ChooseQueenPanel extends JPanel {
 			//cCtr.createChart(name, address, country, phoneNo, email);
 			//chartPanel.updateTable();
 		}else {
-			JOptionPane.showMessageDialog(newChartPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(queenInfoPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
