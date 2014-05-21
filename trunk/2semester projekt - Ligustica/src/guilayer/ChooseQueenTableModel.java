@@ -7,11 +7,11 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-public class PartChartTableModel extends AbstractTableModel {
+public class ChooseQueenTableModel extends AbstractTableModel {
 	
 	private List<PartChart> partCharts;
 
-    public PartChartTableModel(List<PartChart> partCharts) {
+    public ChooseQueenTableModel(List<PartChart> partCharts) {
         this.partCharts = new ArrayList<>(partCharts);
     }
 
