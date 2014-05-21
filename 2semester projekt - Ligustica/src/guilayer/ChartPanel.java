@@ -103,7 +103,7 @@ public class ChartPanel extends JPanel {
 	}
 	
 	public void addQueenInfoPanel(Chart chart, Queen queen) throws SQLException {
-		addQueenInfoPanel = new AddQueenInfoPanel();
+		addQueenInfoPanel = new AddQueenInfoPanel(chart, queen);
 		cardPanel.add(addQueenInfoPanel);
 		CardLayout cl = (CardLayout)(cardPanel.getLayout());
 		cl.last(cardPanel);

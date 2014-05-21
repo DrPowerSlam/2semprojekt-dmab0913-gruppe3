@@ -15,14 +15,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
+
+import modellayer.Chart;
+import modellayer.PartChart;
+import modellayer.Queen;
 
 public class AddQueenInfoPanel extends JPanel {
 	private JPanel queenInfoPanel;
 	
 	private ChartCtr cCtr;
+	
 	private JTextField txtQueen;
 	private JButton btnAddQueen;
 	private JTextField txtYear;
@@ -37,13 +41,20 @@ public class AddQueenInfoPanel extends JPanel {
 	private JTextField txtHoneyYield;
 	private JTextField txtNosema;
 	private JTextField txtCleansingAbility;
+	
+	private Chart chart;
+	private Queen queen;
+	private PartChart partChart;
 
 	/**
 	 * Create the panel.
 	 * @throws SQLException 
 	 */
-	public AddQueenInfoPanel() throws SQLException {
+	public AddQueenInfoPanel(Chart chart, Queen queen) throws SQLException {
 		cCtr = new ChartCtr();
+		this.chart = chart;
+		this.queen = queen;
+		partChart = new PartChart(chart, queen);
 		initPanel();
 		initComponents();
 		
@@ -67,9 +78,10 @@ public class AddQueenInfoPanel extends JPanel {
 		lblQueen.setBounds(10, 26, 110, 14);
 		queenInfoPanel.add(lblQueen);
 		
-		txtQueen = new JTextField();
+		txtQueen = new JTextField(queen.getName());
 		txtQueen.setColumns(10);
 		txtQueen.setBounds(184, 23, 165, 20);
+		txtQueen.setEditable(false);
 		queenInfoPanel.add(txtQueen);
 		
 		txtYear = new JTextField();
@@ -168,7 +180,7 @@ public class AddQueenInfoPanel extends JPanel {
 		String email = txtHoneycombFirmness.getText();
 		
 		if(!name.isEmpty() && !address.isEmpty() && !country.isEmpty() && !phoneNo.isEmpty() && !email.isEmpty()) {
-			//cCtr.createChart(name, address, country, phoneNo, email);
+			//Ctr.createPartChart(name, address, country, phoneNo, email, chart); //TODO: add partchart to chart arraylist
 			//chartPanel.updateTable();
 		}else {
 			JOptionPane.showMessageDialog(queenInfoPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
