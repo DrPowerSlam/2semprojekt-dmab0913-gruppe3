@@ -3,6 +3,7 @@ package dblayer;
 import java.sql.*;
 import java.util.ArrayList;
 
+import modellayer.City;
 import modellayer.Queen;
 
 public class DBQueen {
@@ -166,7 +167,11 @@ public class DBQueen {
 				     Queen qObj = new Queen();
 					 qObj = buildQueen(results);	
 					 if(retrieveAssociation) {
-						  //er ikke sikker på om breederen skal med her. 
+						 Queen motherObj = selectSingleQueen(results.getInt("mother"), false);
+						 qObj.setMother(motherObj);
+						 
+						 Queen fathersMotherObj = selectSingleQueen(results.getInt("fathersMother"), false);
+						 qObj.setMother(fathersMotherObj);
 					 }				 
 			         list.add(qObj);	
 				 }//end while
@@ -202,7 +207,11 @@ public class DBQueen {
 					qObj = buildQueen(results);
 					stmt.close();
 					if(retrieveAssociation) {
-						 //igen er jeg ikke sikker på at jeg ved hvad der skal med
+						Queen motherObj = selectSingleQueen(results.getInt("mother"), false);
+						 qObj.setMother(motherObj);
+						 
+						 Queen fathersMotherObj = selectSingleQueen(results.getInt("fathersMother"), false);
+						 qObj.setMother(fathersMotherObj);
 					 }	
 					
 				}else{ //No queen found
