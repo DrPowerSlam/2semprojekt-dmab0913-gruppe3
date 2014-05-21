@@ -63,43 +63,9 @@ public class ChooseQueenInfoPanel extends JPanel {
 
 	private void initComponents() throws SQLException {
 		
-		JLabel lblQueen = new JLabel("Dronning:");
-		lblQueen.setBounds(10, 26, 110, 14);
-		queenInfoPanel.add(lblQueen);
 		
-		txtQueen = new JTextField();
-		txtQueen.setColumns(10);
-		txtQueen.setBounds(184, 23, 165, 20);
-		queenInfoPanel.add(txtQueen);
 		
-		txtYear = new JTextField();
-		txtYear.setColumns(10);
-		txtYear.setBounds(184, 54, 165, 20);
-		queenInfoPanel.add(txtYear);
-		
-		txtSwarmTendency = new JTextField();
-		txtSwarmTendency.setColumns(10);
-		txtSwarmTendency.setBounds(184, 85, 165, 20);
-		queenInfoPanel.add(txtSwarmTendency);
-		
-		txtTemper = new JTextField();
-		txtTemper.setColumns(10);
-		txtTemper.setBounds(184, 116, 165, 20);
-		queenInfoPanel.add(txtTemper);
-		
-		lblYear = new JLabel("\u00C5r:");
-		lblYear.setBounds(10, 57, 110, 14);
-		queenInfoPanel.add(lblYear);
-		
-		lblSwarmTendency = new JLabel("\u00C5rskarakter sv\u00E6rmetendens:");
-		lblSwarmTendency.setBounds(10, 88, 149, 14);
-		queenInfoPanel.add(lblSwarmTendency);
-		
-		lblTemper = new JLabel("\u00C5rskarakter temperament:");
-		lblTemper.setBounds(10, 119, 159, 14);
-		queenInfoPanel.add(lblTemper);
-		
-		btnAddQueen = new JButton("Tilf\u00F8j dronning til skema");
+		btnAddQueen = new JButton("Vælg dronning");
 		btnAddQueen.setBounds(184, 307, 165, 23);
 		btnAddQueen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -113,50 +79,6 @@ public class ChooseQueenInfoPanel extends JPanel {
 		});
 		queenInfoPanel.add(btnAddQueen);
 		
-		txtHoneycombFirmness = new JTextField();
-		txtHoneycombFirmness.setColumns(10);
-		txtHoneycombFirmness.setBounds(184, 147, 165, 20);
-		queenInfoPanel.add(txtHoneycombFirmness);
-		
-		lblHoneycombFirmness = new JLabel("\u00C5rskarakter tavlefasthed:");
-		lblHoneycombFirmness.setBounds(10, 150, 159, 14);
-		queenInfoPanel.add(lblHoneycombFirmness);
-		
-		txtYearHoneyYield = new JTextField();
-		txtYearHoneyYield.setColumns(10);
-		txtYearHoneyYield.setBounds(184, 178, 165, 20);
-		queenInfoPanel.add(txtYearHoneyYield);
-		
-		txtHoneyYield = new JTextField();
-		txtHoneyYield.setColumns(10);
-		txtHoneyYield.setBounds(184, 211, 165, 20);
-		queenInfoPanel.add(txtHoneyYield);
-		
-		txtNosema = new JTextField();
-		txtNosema.setColumns(10);
-		txtNosema.setBounds(184, 245, 165, 20);
-		queenInfoPanel.add(txtNosema);
-		
-		txtCleansingAbility = new JTextField();
-		txtCleansingAbility.setColumns(10);
-		txtCleansingAbility.setBounds(184, 276, 165, 20);
-		queenInfoPanel.add(txtCleansingAbility);
-		
-		JLabel lblYearHoneyYield = new JLabel("\u00C5rskarakter honningudbytte:");
-		lblYearHoneyYield.setBounds(10, 181, 159, 14);
-		queenInfoPanel.add(lblYearHoneyYield);
-		
-		JLabel lblHoneyYield = new JLabel("Honningudbytte:");
-		lblHoneyYield.setBounds(10, 214, 159, 14);
-		queenInfoPanel.add(lblHoneyYield);
-		
-		JLabel lblNosema = new JLabel("Nosema:");
-		lblNosema.setBounds(10, 248, 159, 14);
-		queenInfoPanel.add(lblNosema);
-		
-		JLabel lblCleansingAbility = new JLabel("Udrensningsevne:");
-		lblCleansingAbility.setBounds(10, 279, 159, 14);
-		queenInfoPanel.add(lblCleansingAbility);
 	}
 	
 	public void createChart() throws SQLException {
