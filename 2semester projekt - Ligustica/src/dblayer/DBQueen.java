@@ -15,7 +15,7 @@ public class DBQueen {
 	}
 	
 	 /**
-		 * A arraylist with all Queens
+		 * A arraylist with all Queens 
 		 */
 		 public ArrayList<Queen> getAllQueens(boolean retriveAssociation) {
 		 	return miscWhere("", retriveAssociation);
