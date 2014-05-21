@@ -23,7 +23,7 @@ public class DBQueen implements IFDBQueen {
 		 }
 		 
 		public Queen searchQueenOnName(String name, boolean retriveAssociation) {
-			String wClause = "name like % "+name+" %";
+			String wClause = "name like '%"+name+"%'";
 			return singleWhere(wClause, retriveAssociation);
 			 
 		}
