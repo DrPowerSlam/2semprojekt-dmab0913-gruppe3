@@ -38,7 +38,7 @@ public class DBCompendium implements IFDBCompendium {
 	    /**
 	     * Insert a Compendium to the DB
 	     */
-	    public int insertQueen(Compendium c) throws SQLException 
+	    public int insertCompendium(Compendium c) throws SQLException 
 	    {
 	   	 PreparedStatement pstmt = null;
 	   	 int controlInt = -1;
@@ -223,10 +223,6 @@ public class DBCompendium implements IFDBCompendium {
 	        return cObj;
 	    }
 
-		@Override
-		public int insertCompendium(Compendium c) throws SQLException {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+
 
 }

@@ -104,8 +104,9 @@ public class DBPartChart implements IFDBPartChart {
   		 pstmt.setInt(5, c.getTemper());
   		 pstmt.setInt(6, c.getHoneycomFirmness());
   		 pstmt.setInt(7, c.getClensingAbility());
-  		 pstmt.setInt(8, c.getCh); 
-  		 pstmt.setInt(9, c.getPartChartID());
+  		 pstmt.setInt(8, c.getChart().getChartID()); 
+  		 pstmt.setInt(9, c.getQueen().getQueenID()); 
+  		 pstmt.setInt(10, c.getPartChartID());
    		 controlInt = pstmt.executeUpdate();
    	 } catch (SQLException sqlE) {
    		 System.out.println("SQL Error, Queen not updated");
@@ -163,12 +164,12 @@ public class DBPartChart implements IFDBPartChart {
 			     PartChart cObj = new PartChart();
 				 cObj = buildPartChart(results);	
 				 if(retrieveAssociation) {
-					 IFDBBreeder dbBreeder = new DBBreeder();
-					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
+					 IFDBChart dbChart = new DBChart();
+					 cObj.setChart(dbChart.selectSingleChart(results.getInt("chartID"), false));
 					 
-					 IFDBCompendium dbComp = new DBCompendium();
-					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
-					  //TODO Loop igennem dbPartPartCharts, hvis de har partPartChartId lig med denne, add til partPartCharts
+					 IFDBQueen dbQueen = new DBQueen();
+					 cObj.setQueen(dbQueen.selectSingleQueen(results.getInt("queenID"), false));
+
 				 }				 
 		         list.add(cObj);	
 			 }//end while
@@ -204,12 +205,11 @@ public class DBPartChart implements IFDBPartChart {
 				cObj = buildPartChart(results);
 				stmt.close();
 				if(retrieveAssociation) {
-					 IFDBBreeder dbBreeder = new DBBreeder();
-					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
+					IFDBChart dbChart = new DBChart();
+					 cObj.setChart(dbChart.selectSingleChart(results.getInt("chartID"), false));
 					 
-					 IFDBCompendium dbComp = new DBCompendium();
-					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
-					 //igen er jeg ikke sikker på at jeg ved hvad der skal med
+					 IFDBQueen dbQueen = new DBQueen();
+					 cObj.setQueen(dbQueen.selectSingleQueen(results.getInt("queenID"), false));
 				 }	
 				
 			}else{ //No partPartChart found
