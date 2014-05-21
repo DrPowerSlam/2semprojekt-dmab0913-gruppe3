@@ -42,15 +42,14 @@ public class DBCompendium implements IFDBCompendium {
 	    {
 	   	 PreparedStatement pstmt = null;
 	   	 int controlInt = -1;
-	   	 String insert = "insert into Queen(name, date, droneLines)"
-	                      + "values (?, ?, ?)";
+	   	 String insert = "insert into Compendium(name, date)"
+	                      + "values (?, ?)";
 	   	 //System.out.println(insert);
 	   	 try {
 	   		 pstmt = con.prepareStatement(insert);
 	   		 
 	   		 pstmt.setString(1, c.getName());
 	   		 pstmt.setString(2, c.getDate());
-	   		 pstmt.setString(3, c.getDroneLines());
 	   		 
 	         controlInt = pstmt.executeUpdate();
 	        } catch (SQLException sqlE) {
@@ -72,8 +71,7 @@ public class DBCompendium implements IFDBCompendium {
 
 	   	 String update = "UPDATE Compendium SET "
 	   	 		+ "name = ?, "
-	   			+ "date = ?,"
-	   	 		+ "droneLines = ? "
+	   			+ "date = ?"
 	   	 		+ "WHERE compendiumID = ?";
 
 	   	 System.out.println(update);
@@ -83,7 +81,6 @@ public class DBCompendium implements IFDBCompendium {
 	   		 
 	   		 pstmt.setString(1, c.getName());
 	   		 pstmt.setString(2, c.getDate());
-	   		 pstmt.setString(3, c.getDroneLines());
 	   	   		 
 	   		 controlInt = pstmt.executeUpdate();
 	   	 } catch (SQLException sqlE) {
@@ -104,7 +101,7 @@ public class DBCompendium implements IFDBCompendium {
 	   	 PreparedStatement pstmt = null;
 	   	 int controlInt = -1;
 	   	 
-	   	 String delete = "DELETE FROM Queen WHERE queenID = ?";
+	   	 String delete = "DELETE FROM Compendium WHERE compendiumID = ?";
 	   	 //System.out.println(delete);
 	   	 try {
 	   		 pstmt = con.prepareStatement(delete);
@@ -216,9 +213,9 @@ public class DBCompendium implements IFDBCompendium {
 	    	Compendium cObj = new Compendium();
 
 	   	 try {
+	   		 cObj.setCompendiumID(result.getInt("compendiumID"));
 	   		 cObj.setName(result.getString("name"));
 	   		 cObj.setDate(result.getString("date"));
-	   		 cObj.setDroneLines(result.getString("droneLines"));
 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building Compendium object, " +e);
