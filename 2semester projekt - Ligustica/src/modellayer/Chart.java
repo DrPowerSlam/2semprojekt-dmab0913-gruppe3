@@ -26,6 +26,12 @@ public class Chart {
 		this.partCharts = new ArrayList<PartChart>();
 	}
 	
+	public Chart(Breeder breeder, String type) {
+		this.breeder = breeder;
+		this.type = type;
+		this.partCharts = new ArrayList<PartChart>();
+	}
+	
 	/**
 	 * @return the chartID
 	 */
