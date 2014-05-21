@@ -114,10 +114,9 @@ public class ChooseQueenPanel extends JPanel {
 	    try {
 	        rf = RowFilter.regexFilter(filterText.getText(), 1);
 	    } catch (java.util.regex.PatternSyntaxException e) {
-	        System.out.println("FEJL!");
+
 	    }
 	    sorter.setRowFilter(rf);
-	    System.out.println("Jaa: " + rf);
 	}
 	
 	public void chooseQueen() {
