@@ -6,8 +6,13 @@ public class PartChart {
 	private Chart chart;
 	private Queen queen;
 	
+	public PartChart(Chart chart, Queen queen) {
+		this.chart = chart;
+		this.queen = queen;
+	}
+	
 	public PartChart() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
