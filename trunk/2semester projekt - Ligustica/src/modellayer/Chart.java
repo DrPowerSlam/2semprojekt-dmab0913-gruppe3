@@ -9,7 +9,7 @@ public class Chart {
 	private boolean isSisterChart;
 	private Breeder breeder;
 	private Compendium compendium;
-	private String pedigree;
+	private String pedigree, type;
 	private ArrayList<PartChart> partCharts;
 	
 	public Chart(int chartID, String pedigree, boolean isSisterChart, int year, Breeder breeder, Compendium compendium) {
@@ -117,5 +117,20 @@ public class Chart {
 	public void addPartChart(PartChart pChart) {
 		partCharts.add(pChart);
 	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 
 }
