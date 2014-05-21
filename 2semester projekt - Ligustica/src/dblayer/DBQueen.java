@@ -208,7 +208,7 @@ public class DBQueen implements IFDBQueen {
 				results = stmt.executeQuery(query);
 				if( results.next() ){
 					qObj = buildQueen(results);
-					stmt.close();
+					
 					if(retrieveAssociation) {
 						Queen motherObj = selectSingleQueen(results.getInt("mother"), false);
 						 qObj.setMother(motherObj);
@@ -219,7 +219,7 @@ public class DBQueen implements IFDBQueen {
 						 IFDBBreeder dbBreeder = new DBBreeder();
 						 qObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
 					 }	
-					
+					stmt.close();
 				}else{ //No queen found
 					qObj = null;
 				}
