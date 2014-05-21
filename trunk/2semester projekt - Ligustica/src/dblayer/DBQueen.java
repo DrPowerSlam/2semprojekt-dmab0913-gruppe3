@@ -42,7 +42,7 @@ public class DBQueen {
 	    {
 	   	 PreparedStatement pstmt = null;
 	   	 int controlInt = -1;
-	   	 String insert = "insert into Queen(year, name, honeyYield, swarmTendency, nosema, temper, honeycombfirmness, cleansingAbility, isAlive, lParent, rParent, breederID)"
+	   	 String insert = "insert into Queen(year, name, honeyYield, swarmTendency, nosema, temper, honeycombfirmness, cleansingAbility, isAlive, mother, fathersMother, breederID)"
 	                      + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	   	 //System.out.println(insert);
 	   	 try {
@@ -87,8 +87,8 @@ public class DBQueen {
 	   	 		+ "honeycombfirmness = ?,"
 	   	 		+ "cleansingAbility = ?, "
 	   	 		+ "isAlive = ?, "
-	   	 		+ "lParent = ?, "
-	   	 		+ "rParent = ?, "
+	   	 		+ "mother = ?, "
+	   	 		+ "fathersMother = ?, "
 	   	 		+ "breederID = ? "
 	   	 		+ "WHERE queenID = ?";
 
@@ -250,8 +250,8 @@ public class DBQueen {
 	   		 qObj.setHoneycomFirmness(result.getInt("honeycombfirmness"));
 	   		 qObj.setClensingAbility(result.getInt("cleansingAbility"));
 	   		 qObj.setAlive(result.getBoolean("isAlive")); 
-	   		 qObj.setMother(selectSingleQueen(result.getInt("lParent"), false));
-	   		 qObj.setFathersMother(selectSingleQueen(result.getInt("rParent"), false));
+	   		 qObj.setMother(selectSingleQueen(result.getInt("mother"), false));
+	   		 qObj.setFathersMother(selectSingleQueen(result.getInt("fathersMother"), false));
 	   		 //qObj.setBreeder(selectSingleBreeder(result.getInt("breederID"), false)); Er ikke helt sikker på hvordan vi får hentet ham avleren ned.
 
 	   	 } catch (Exception e) {
