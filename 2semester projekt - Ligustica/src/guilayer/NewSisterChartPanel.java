@@ -94,6 +94,11 @@ public class NewSisterChartPanel extends JPanel {
 		
 		JButton btnTilfjDronning = new JButton("Tilf\u00F8j dronning");
 		btnTilfjDronning.setBounds(223, 354, 121, 23);
+		btnTilfjDronning.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+				chooseQueen();
+            }
+		});
 		newChartPanel.add(btnTilfjDronning);
 		
 		JLabel lblTilfjedeDronninger = new JLabel("Tilf\u00F8jede dronninger:");
@@ -107,6 +112,16 @@ public class NewSisterChartPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 119, 334, 225);
 		newChartPanel.add(scrollPane);
+	}
+	
+	public void chooseQueen() {
+		ChartPanel chartPanel = ChartPanel.getInstance();
+		try {
+			chartPanel.chooseQueenPanel();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void createChart() throws SQLException {
