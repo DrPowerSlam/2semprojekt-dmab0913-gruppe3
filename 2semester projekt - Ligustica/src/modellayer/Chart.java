@@ -26,9 +26,9 @@ public class Chart {
 		this.partCharts = new ArrayList<PartChart>();
 	}
 	
-	public Chart(Breeder breeder, String type) {
+	public Chart(Breeder breeder, boolean isSisterChart) {
 		this.breeder = breeder;
-		this.type = type;
+		this.isSisterChart = isSisterChart;
 		this.partCharts = new ArrayList<PartChart>();
 	}
 	
