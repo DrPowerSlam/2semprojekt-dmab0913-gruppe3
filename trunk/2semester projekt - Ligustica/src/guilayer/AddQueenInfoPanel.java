@@ -84,6 +84,7 @@ public class AddQueenInfoPanel extends JPanel {
 		queenInfoPanel.add(txtQueen);
 		
 		txtYear = new JTextField(queen.getYear());
+		txtYear.setEditable(false);
 		txtYear.setColumns(10);
 		txtYear.setBounds(184, 54, 165, 20);
 		queenInfoPanel.add(txtYear);
