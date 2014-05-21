@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import modellayer.Chart;
+import modellayer.Queen;
 import modellayer.Settings;
 
 public class ChartPanel extends JPanel {
@@ -101,7 +102,7 @@ public class ChartPanel extends JPanel {
 		cl.last(cardPanel);
 	}
 	
-	public void addQueenInfoPanel() throws SQLException {
+	public void addQueenInfoPanel(Chart chart, Queen queen) throws SQLException {
 		addQueenInfoPanel = new AddQueenInfoPanel();
 		cardPanel.add(addQueenInfoPanel);
 		CardLayout cl = (CardLayout)(cardPanel.getLayout());
