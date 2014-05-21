@@ -16,7 +16,7 @@ import modellayer.Chart;
 public class ChartPanel extends JPanel {
 
 	private JScrollPane scrollPane;
-	private JPanel cardPanel, newChartPanel;
+	private JPanel cardPanel, newSisterChartPanel;
 	
 	/**
 	 * Create the panel.
@@ -54,13 +54,13 @@ public class ChartPanel extends JPanel {
 	}
 	
 	public void initButtons() {
-		JButton btnNewChart = new JButton("Ny skema");
-        btnNewChart.setBounds(366, 422, 89, 23);
+		JButton btnNewChart = new JButton("Ny søster skema");
+        btnNewChart.setBounds(328, 422, 127, 23);
         btnNewChart.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					newChart();
+					newSisterChart();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -83,9 +83,9 @@ public class ChartPanel extends JPanel {
 	 * @param forestName
 	 * @throws SQLException 
 	 */
-	public void newChart() throws SQLException {
-		newChartPanel = new NewChartPanel();
-		cardPanel.add(newChartPanel);
+	public void newSisterChart() throws SQLException {
+		newSisterChartPanel = new NewSisterChartPanel();
+		cardPanel.add(newSisterChartPanel);
 		CardLayout cl = (CardLayout)(cardPanel.getLayout());
 		cl.last(cardPanel);
 	}
