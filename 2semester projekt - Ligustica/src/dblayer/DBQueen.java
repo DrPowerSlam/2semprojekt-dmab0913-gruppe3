@@ -172,6 +172,9 @@ public class DBQueen {
 						 
 						 Queen fathersMotherObj = selectSingleQueen(results.getInt("fathersMother"), false);
 						 qObj.setMother(fathersMotherObj);
+						 
+						 IFDBBreeder dbBreeder = new DBBreeder();
+						 qObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
 					 }				 
 			         list.add(qObj);	
 				 }//end while
@@ -212,6 +215,9 @@ public class DBQueen {
 						 
 						 Queen fathersMotherObj = selectSingleQueen(results.getInt("fathersMother"), false);
 						 qObj.setMother(fathersMotherObj);
+						 
+						 IFDBBreeder dbBreeder = new DBBreeder();
+						 qObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
 					 }	
 					
 				}else{ //No queen found
@@ -250,6 +256,7 @@ public class DBQueen {
 	   	 Queen qObj = new Queen();
 
 	   	 try {
+	   		 qObj.setQueenID(result.getInt("queenID"));
 	   		 qObj.setYear(result.getInt("year"));
 	   		 qObj.setName(result.getString("name"));
 	   		 qObj.setHoneyYield(result.getInt("honeyYield"));
@@ -261,7 +268,6 @@ public class DBQueen {
 	   		 qObj.setAlive(result.getBoolean("isAlive")); 
 	   		 qObj.setMother(selectSingleQueen(result.getInt("mother"), false));
 	   		 qObj.setFathersMother(selectSingleQueen(result.getInt("fathersMother"), false));
-	   		 //qObj.setBreeder(selectSingleBreeder(result.getInt("breederID"), false)); Er ikke helt sikker på hvordan vi får hentet ham avleren ned.
 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building Queen object, " +e);

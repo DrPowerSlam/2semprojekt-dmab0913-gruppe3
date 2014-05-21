@@ -50,20 +50,16 @@ public class DBChart {
     {
    	 PreparedStatement pstmt = null;
    	 int controlInt = -1;
-   	 String insert = "insert into Chart(breederID, year, honeyYield, swarmTendency, nosema, temper, honeycombfirmness, cleansingAbility, compendiumID)"
-                      + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+   	 String insert = "insert into Chart(breederID, year, pedigree, type, compendiumID)"
+                      + "values (?, ?, ?, ?, ?)";
    	 //System.out.println(insert);
    	 try {
    		 pstmt = con.prepareStatement(insert);
    		 pstmt.setInt(1, c.getBreeder().getBreederID());
    		 pstmt.setInt(2, c.getYear());
-   		 pstmt.setInt(3, c.getHoneyYield());
-   		 pstmt.setInt(4, c.getSwarmTendency());
-   		 pstmt.setInt(5, c.getNosema());
-   		 pstmt.setInt(6, c.getTemper());
-   		 pstmt.setInt(7, c.getHoneycomFirmness());
-   		 pstmt.setInt(8, c.getClensingAbility());
-   		 pstmt.setInt(9, c.getCompendium().getCompendiumID());
+   		 pstmt.setString(3, c.getPedigree());
+   		 pstmt.setString(4, c.getType());
+   		 pstmt.setInt(5, c.getCompendium().getCompendiumID());
          controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
             System.out.println("SQL Error, Queen not inserted");
@@ -85,12 +81,8 @@ public class DBChart {
    	 String update = "UPDATE Chart SET "
     	 	+ "breederID = ?, "
    	 		+ "year = ?, "
-   	 		+ "honeyYield = ?, "
-   	 		+ "swarmTendency = ?,"
-   	 		+ "nosema = ?, "
-   	 		+ "temper = ?,"
-   	 		+ "honeycombfirmness = ?,"
-   	 		+ "cleansingAbility = ?, "
+   	 		+ "pedigree = ?, "
+   	 		+ "type = ?,"
    	 	    + "compendiumID = ? "
    	 		+ "WHERE chartID = ?";
 
@@ -100,14 +92,10 @@ public class DBChart {
    		 pstmt = con.prepareStatement(update);
    		 pstmt.setInt(1, c.getBreeder().getBreederID());
   		 pstmt.setInt(2, c.getYear());
-  		 pstmt.setInt(3, c.getHoneyYield());
-  		 pstmt.setInt(4, c.getSwarmTendency());
-  		 pstmt.setInt(5, c.getNosema());
-  		 pstmt.setInt(6, c.getTemper());
-  		 pstmt.setInt(7, c.getHoneycomFirmness());
-  		 pstmt.setInt(8, c.getClensingAbility());
-  		 pstmt.setInt(9, c.getCompendium().getCompendiumID());
-   		 
+  		 pstmt.setString(3, c.getPedigree());
+  		 pstmt.setString(4, c.getType());
+  		 pstmt.setInt(5, c.getCompendium().getCompendiumID());
+  		 pstmt.setInt(6, c.getChartID());
    		 controlInt = pstmt.executeUpdate();
    	 } catch (SQLException sqlE) {
    		 System.out.println("SQL Error, Queen not updated");
@@ -156,16 +144,18 @@ public class DBChart {
 		
 	     String query = buildQuery(wClause);
    
-	     try{ // read the cities from the database
+	     try{ 
 			 Statement stmt = con.createStatement();
 		 	 stmt.setQueryTimeout(5);
 		 	 results = stmt.executeQuery(query);
 		 	
-			 while( results.next() ){ // loop through all Queens and create them as objects
+			 while( results.next() ){ 
 			     Chart cObj = new Chart();
 				 cObj = buildChart(results);	
 				 if(retrieveAssociation) {
-					  //er ikke sikker på om breederen skal med her. 
+					 IFDBBreeder dbBreeder = new DBBreeder();
+					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
+					  //TODO Loop igennem dbPartCharts, hvis de har chartId lig med denne, add til partCharts
 				 }				 
 		         list.add(cObj);	
 			 }//end while
@@ -201,6 +191,8 @@ public class DBChart {
 				cObj = buildChart(results);
 				stmt.close();
 				if(retrieveAssociation) {
+					IFDBBreeder dbBreeder = new DBBreeder();
+					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
 					 //igen er jeg ikke sikker på at jeg ved hvad der skal med
 				 }	
 				
@@ -240,7 +232,6 @@ public class DBChart {
 	   	 Chart cObj = new Chart();
 
 	   	 try {
-	   	   //cObj.setBreeder(selectSingleBreeder(result.getInt("breederID"), false)); Er ikke helt sikker på hvordan vi får hentet ham avleren ned.
 	   		 cObj.setYear(result.getInt("year"));
 	   		 cObj.setHoneyYield(result.getInt("honeyYield"));
 	   		 cObj.setSwarmTendency(result.getInt("swarmTendency"));
