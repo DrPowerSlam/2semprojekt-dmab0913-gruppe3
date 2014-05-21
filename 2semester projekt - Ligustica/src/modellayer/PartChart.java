@@ -2,7 +2,9 @@ package modellayer;
 
 public class PartChart {
 
-	private int partChartID, year, honeyYield, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
+	private int partChartID, year, honeyYield, honeyYieldYear, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
+	private Chart chart;
+	private Queen queen;
 	
 	public PartChart() {
 		// TODO Auto-generated constructor stub
@@ -120,4 +122,48 @@ public class PartChart {
 		this.clensingAbility = clensingAbility;
 	}
 
+	/**
+	 * @return the honeyYieldYear
+	 */
+	public int getHoneyYieldYear() {
+		return honeyYieldYear;
+	}
+
+	/**
+	 * @param honeyYieldYear the honeyYieldYear to set
+	 */
+	public void setHoneyYieldYear(int honeyYieldYear) {
+		this.honeyYieldYear = honeyYieldYear;
+	}
+
+	/**
+	 * @return the chart
+	 */
+	public Chart getChart() {
+		return chart;
+	}
+
+	/**
+	 * @param chart the chart to set
+	 */
+	public void setChart(Chart chart) {
+		this.chart = chart;
+	}
+
+	/**
+	 * @return the queen
+	 */
+	public Queen getQueen() {
+		return queen;
+	}
+
+	/**
+	 * @param queen the queen to set
+	 */
+	public void setQueen(Queen queen) {
+		this.queen = queen;
+	}
+
+	
+	
 }

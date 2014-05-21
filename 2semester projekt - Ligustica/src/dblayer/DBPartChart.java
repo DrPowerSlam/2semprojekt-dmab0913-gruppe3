@@ -19,7 +19,7 @@ public class DBPartChart implements IFDBPartChart {
 	
 	private Connection con;
 	
-	public DBPartPartChart() {
+	public DBPartChart() {
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
@@ -50,19 +50,22 @@ public class DBPartChart implements IFDBPartChart {
     {
    	 PreparedStatement pstmt = null;
    	 int controlInt = -1;
-   	 String insert = "insert into PartChart(breederID, year, pedigree, type, compendiumID)"
+   	 String insert = "insert into PartChart(honeyYield, honeyYieldYear, swarmTendency, nosema, temper,"
+   	 				+ "honeycomfirmness, cleansingAbility)"
                       + "values (?, ?, ?, ?, ?)";
    	 //System.out.println(insert);
    	 try {
    		 pstmt = con.prepareStatement(insert);
-   		 pstmt.setInt(1, c.getBreeder().getBreederID());
-   		 pstmt.setInt(2, c.getYear());
-   		 pstmt.setString(3, c.getPedigree());
-   		 pstmt.setString(4, c.getType());
-   		 pstmt.setInt(5, c.getCompendium().getCompendiumID());
+   		 pstmt.setInt(1, c.getHoneyYield());
+   		 pstmt.setInt(2, c.getHoneyYieldYear());
+   		 pstmt.setInt(3, c.getSwarmTendency());
+   		 pstmt.setInt(4, c.getNosema());
+   		 pstmt.setInt(5, c.getTemper());
+   		 pstmt.setInt(6, c.getHoneycomFirmness());
+   		 pstmt.setInt(7, c.getClensingAbility());
          controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
-            System.out.println("SQL Error, Queen not inserted");
+            System.out.println("SQL Error, PartChart not inserted");
             System.out.println(sqlE.getMessage());
         } catch (Exception e) {
             e.getMessage();
@@ -79,23 +82,30 @@ public class DBPartChart implements IFDBPartChart {
    	 int controlInt = -1;
 
    	 String update = "UPDATE PartChart SET "
-    	 	+ "breederID = ?, "
-   	 		+ "year = ?, "
-   	 		+ "pedigree = ?, "
-   	 		+ "type = ?,"
-   	 	    + "compendiumID = ? "
+    	 	+ "honeyYield = ?, "
+   	 		+ "honeyYieldYear = ?, "
+   	 		+ "swarmTendency = ?, "
+   	 		+ "nosema = ?,"
+   	 		+ "temper = ?, "
+   	 		+ "honeycombfirmness = ?,"
+   	 	    + "cleansingAbility = ?,"
+   	 	    + "chartID = ?,"
+   	 	    + "queenID = ? "
    	 		+ "WHERE partPartChartID = ?";
 
    	 System.out.println(update);
    	 try {
    		 PreparedStatement pstmt = null;
    		 pstmt = con.prepareStatement(update);
-   		 pstmt.setInt(1, c.getBreeder().getBreederID());
-  		 pstmt.setInt(2, c.getYear());
-  		 pstmt.setString(3, c.getPedigree());
-  		 pstmt.setString(4, c.getType());
-  		 pstmt.setInt(5, c.getCompendium().getCompendiumID());
-  		 pstmt.setInt(6, c.getPartChartID());
+   		 pstmt.setInt(1, c.getHoneyYield());
+  		 pstmt.setInt(2, c.getHoneyYieldYear());
+  		 pstmt.setInt(3, c.getSwarmTendency());
+  		 pstmt.setInt(4, c.getNosema());
+  		 pstmt.setInt(5, c.getTemper());
+  		 pstmt.setInt(6, c.getHoneycomFirmness());
+  		 pstmt.setInt(7, c.getClensingAbility());
+  		 pstmt.setInt(8, c.getCh); 
+  		 pstmt.setInt(9, c.getPartChartID());
    		 controlInt = pstmt.executeUpdate();
    	 } catch (SQLException sqlE) {
    		 System.out.println("SQL Error, Queen not updated");
