@@ -32,12 +32,10 @@ public class DBQueenTest {
 	 * @throws SQLException
 	 * @throws FileNotFoundException
 	 */
-	public static void testSetup() throws SQLException, FileNotFoundException{
+	public static void testSetup() throws SQLException, FileNotFoundException{		
 		
-		dblayer.DBConnection.getInstance().insertDatabaseData();
-		
-		
-		testConnection.insertDatabaseData();
+		testBreeder.setBreederID(1);
+		//testConnection.insertDatabaseData();
 		
 		testQueenInsert.setQueenID(1);
 		testQueenInsert.setYear(2012);
@@ -87,8 +85,7 @@ public class DBQueenTest {
 	@AfterClass
 	public static void testCleanup() throws SQLException, FileNotFoundException {
 		
-		dblayer.DBConnection.getInstance().insertDatabaseData();
-		
+		//testConnection.insertDatabaseData();		
 	}
 	
 	/**
@@ -97,8 +94,7 @@ public class DBQueenTest {
 	 */
 	@Test
 	public void testInsertQueen() throws SQLException{
-		assertNotSame("The Queen was not inserted", -1, testQueenDB.insertQueen(testQueenInsert));
-		assertEquals(testQueenInsert.equals(testQueenDB.selectSingleQueen(1, true)) ,true);
+		assertEquals("Insert failed", 1, testQueenDB.insertQueen(testQueenInsert));
 	}
 
 	/**
@@ -107,10 +103,9 @@ public class DBQueenTest {
 	 */
 	@Test
 	public void testUpdateQueen() throws SQLException {
-		
-		testQueenUpdate.setName("KS022");
-		assertNotSame("The Queen was not updated", -1, testQueenDB.updateQueen(testQueenUpdate));
-		assertEquals(testQueenUpdate.equals(testQueenDB.selectSingleQueen(2, true)) ,true);
+		assertEquals("Update failed", 1, testQueenDB.updateQueen(testQueenUpdate));
+		int id = testQueenDB.searchQueenOnName("KS024", true).getQueenID();
+		assertTrue("Updated object is not equal to test object", testQueenUpdate.equals(testQueenDB.selectSingleQueen(id, true)));
 	}
 
 	/**
@@ -132,7 +127,7 @@ public class DBQueenTest {
 	 */
 	@Test
 	public void testSelectSingleQueen() throws SQLException {
-		assertEquals(testQueenInsert.equals(testQueenDB.selectSingleQueen(1, true)), true);		
+		assertEquals(testQueenInsert.equals(testQueenDB.selectSingleQueen(2, true)), true);		
 	}
 	
 	/**

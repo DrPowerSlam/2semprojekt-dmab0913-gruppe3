@@ -39,16 +39,15 @@ public class DBCitiesTest {
 	public static void testSetup() throws SQLException, FileNotFoundException{
 		
 		testConnection.insertDatabaseData();
-		dblayer.DBConnection.getInstance().insertDatabaseData();
 		
-		testCityInsert.setCity("Aalborg");
-		testCityInsert.setZipCode(800454521);
+		testCityInsert.setCity("test1");
+		testCityInsert.setZipCode(9999);
 		
-		testCityUpdate.setCity("Odense");
-		testCityUpdate.setZipCode(79495);
+		testCityUpdate.setCity("test2");
+		testCityUpdate.setZipCode(9998);
 		
-		testCityDelete.setCity("Esbjerg");
-		testCityDelete.setZipCode(876785);
+		testCityDelete.setCity("test3");
+		testCityDelete.setZipCode(9997);
 		
 		testCityDB.insertCity(testCityDelete);
 		testCityDB.insertCity(testCityUpdate);
@@ -58,7 +57,7 @@ public class DBCitiesTest {
 	@AfterClass
 	public static void testCleanup() throws SQLException, FileNotFoundException {
 		
-		dblayer.DBConnection.getInstance().insertDatabaseData();
+		//testConnection.insertDatabaseData();
 		
 	}
 	
