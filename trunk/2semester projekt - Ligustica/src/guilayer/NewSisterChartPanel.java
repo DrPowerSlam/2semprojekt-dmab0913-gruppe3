@@ -37,13 +37,11 @@ public class NewSisterChartPanel extends JPanel {
 	 * Create the panel.
 	 * @throws SQLException 
 	 */
-	public NewSisterChartPanel() throws SQLException {
-		Settings settings = Settings.getInstance();
+	public NewSisterChartPanel(Chart chart) throws SQLException {
+		this.chart = chart;
 		cCtr = new ChartCtr();
-		chart = new Chart(settings.getBreeder(), true);
 		initPanel();
-		initComponents();
-		
+		initComponents();		
 	}
 
 	private void initPanel() {
@@ -60,12 +58,12 @@ public class NewSisterChartPanel extends JPanel {
 
 	private void initComponents() throws SQLException {
 		
-		txtYear = new JTextField();
+		txtYear = new JTextField(chart.getYear());
 		txtYear.setColumns(10);
 		txtYear.setBounds(179, 24, 165, 20);
 		newChartPanel.add(txtYear);
 		
-		txtPedigree = new JTextField();
+		txtPedigree = new JTextField(chart.getPedigree());
 		txtPedigree.setColumns(10);
 		txtPedigree.setBounds(179, 55, 165, 20);
 		newChartPanel.add(txtPedigree);
@@ -85,7 +83,6 @@ public class NewSisterChartPanel extends JPanel {
                 try {
 					createChart();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }
@@ -96,7 +93,7 @@ public class NewSisterChartPanel extends JPanel {
 		btnTilfjDronning.setBounds(223, 354, 121, 23);
 		btnTilfjDronning.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-				chooseQueen();
+				chooseQueen(chart);
             }
 		});
 		newChartPanel.add(btnTilfjDronning);
@@ -114,10 +111,12 @@ public class NewSisterChartPanel extends JPanel {
 		newChartPanel.add(scrollPane);
 	}
 	
-	public void chooseQueen() {
+	public void chooseQueen(Chart chart) {
 		ChartPanel chartPanel = ChartPanel.getInstance();
 		try {
-			chartPanel.chooseQueenPanel();
+			//TODO gem year og pedigree i chart objektet
+			//TODO valider først den data. evt. lav validering i ctr
+			chartPanel.chooseQueenPanel(chart);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
