@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import modellayer.City;
 import modellayer.Queen;
 
-public class DBQueen {
+public class DBQueen implements IFDBQueen {
 	
 	private Connection con;
 	
