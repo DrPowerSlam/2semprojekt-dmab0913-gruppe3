@@ -27,9 +27,8 @@ public class AddQueenInfoPanel extends JPanel {
 	
 	private ChartCtr cCtr;
 	
-	private JTextField txtQueen;
 	private JButton btnAddQueen;
-	private JTextField txtYear;
+	private JTextField txtYear, txtQueen;
 	private JTextField txtSwarmTendency;
 	private JTextField txtTemper;
 	private JLabel lblYear;
