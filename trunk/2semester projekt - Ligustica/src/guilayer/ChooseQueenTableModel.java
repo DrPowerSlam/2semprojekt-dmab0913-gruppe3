@@ -1,6 +1,6 @@
 package guilayer;
 
-import modellayer.PartChart;
+import modellayer.Queen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +9,15 @@ import javax.swing.table.AbstractTableModel;
 
 public class ChooseQueenTableModel extends AbstractTableModel {
 	
-	private List<PartChart> partCharts;
+	private List<Queen> queens;
 
-    public ChooseQueenTableModel(List<PartChart> partCharts) {
-        this.partCharts = new ArrayList<>(partCharts);
+    public ChooseQueenTableModel(List<Queen> queens) {
+        this.queens = new ArrayList<>(queens);
     }
 
     @Override
     public int getRowCount() {
-        return partCharts.size();
+        return queens.size();
     }
 
     @Override
@@ -62,23 +62,23 @@ public class ChooseQueenTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        PartChart partChart = partCharts.get(rowIndex);
+        Queen queen = queens.get(rowIndex);
         Object value = null;
         switch (columnIndex) {
             case 0:
-                value = partChart.getPartChartID();
+                value = queen.getQueenID();
                 break;
             case 1:
-                value = partChart.getQueen().getName();
+                value = queen.getName();
                 break;
             case 2:
-            	value = partChart.getHoneyYield();
+            	value = queen.getHoneyYield();
             	break;
             case 3:
-            	value = partChart.getSwarmTendency();
+            	value = queen.getSwarmTendency();
             	break;
             case 4:
-            	value = partChart.getTemper();
+            	value = queen.getTemper();
             	break;
         }
         return value;
