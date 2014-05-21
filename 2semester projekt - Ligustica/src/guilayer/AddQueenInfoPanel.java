@@ -83,18 +83,18 @@ public class AddQueenInfoPanel extends JPanel {
 		txtQueen.setEditable(false);
 		queenInfoPanel.add(txtQueen);
 		
-		txtYear = new JTextField(queen.getYear());
+		txtYear = new JTextField(Integer.toString(queen.getYear()));
 		txtYear.setEditable(false);
 		txtYear.setColumns(10);
 		txtYear.setBounds(184, 54, 165, 20);
 		queenInfoPanel.add(txtYear);
 		
-		txtSwarmTendency = new JTextField(queen.getSwarmTendency());
+		txtSwarmTendency = new JTextField(Integer.toString(queen.getSwarmTendency()));
 		txtSwarmTendency.setColumns(10);
 		txtSwarmTendency.setBounds(184, 85, 165, 20);
 		queenInfoPanel.add(txtSwarmTendency);
 		
-		txtTemper = new JTextField(queen.getTemper());
+		txtTemper = new JTextField(Integer.toString(queen.getTemper()));
 		txtTemper.setColumns(10);
 		txtTemper.setBounds(184, 116, 165, 20);
 		queenInfoPanel.add(txtTemper);

@@ -40,7 +40,7 @@ public class DBQueenTest {
 		
 		testBreeder.setBreederID(1);
 		
-		//testConnection.insertDatabaseData();
+		testConnection.insertDatabaseData();
 		
 		testQueenInsert.setQueenID(4);
 		testQueenInsert.setYear(2014);
@@ -119,14 +119,6 @@ public class DBQueenTest {
 		assertNotSame("The queen was not deleted", -1, testQueenDB.deleteQueen(testQueenDelete));
 	}
 	
-	/**
-	 * Tests if you can select a queen in the database
-	 * @throws SQLException
-	 */
-	@Test
-	public void testSelectSingleQueen() throws SQLException {
-		assertTrue(testQueenInsert.equals(testQueenDB.selectSingleQueen(2, true)));		
-	}
 	
 	/**
 	 * Tests if you can select all cities in the database
