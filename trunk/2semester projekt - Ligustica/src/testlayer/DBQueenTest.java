@@ -106,7 +106,7 @@ public class DBQueenTest {
 	 * @throws SQLException
 	 */
 	@Test
-	public void testUpdateCity() throws SQLException {
+	public void testUpdateQueen() throws SQLException {
 		
 		testQueenUpdate.setName("KS022");
 		assertNotSame("The Queen was not updated", -1, testQueenDB.updateQueen(testQueenUpdate));
