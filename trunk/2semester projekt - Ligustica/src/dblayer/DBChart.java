@@ -155,6 +155,9 @@ public class DBChart {
 				 if(retrieveAssociation) {
 					 IFDBBreeder dbBreeder = new DBBreeder();
 					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
+					 
+					 IFDBCompendium dbComp = new DBCompendium();
+					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
 					  //TODO Loop igennem dbPartCharts, hvis de har chartId lig med denne, add til partCharts
 				 }				 
 		         list.add(cObj);	
@@ -191,8 +194,11 @@ public class DBChart {
 				cObj = buildChart(results);
 				stmt.close();
 				if(retrieveAssociation) {
-					IFDBBreeder dbBreeder = new DBBreeder();
+					 IFDBBreeder dbBreeder = new DBBreeder();
 					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
+					 
+					 IFDBCompendium dbComp = new DBCompendium();
+					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
 					 //igen er jeg ikke sikker på at jeg ved hvad der skal med
 				 }	
 				
@@ -232,15 +238,10 @@ public class DBChart {
 	   	 Chart cObj = new Chart();
 
 	   	 try {
+	   		 cObj.setChartID(result.getInt("chartID"));
 	   		 cObj.setYear(result.getInt("year"));
-	   		 cObj.setHoneyYield(result.getInt("honeyYield"));
-	   		 cObj.setSwarmTendency(result.getInt("swarmTendency"));
-	   		 cObj.setNosema(result.getInt("nosema"));
-	   		 cObj.setTemper(result.getInt("temper"));
-	   		 cObj.setHoneycomFirmness(result.getInt("honeycombfirmness"));
-	   		 cObj.setClensingAbility(result.getInt("cleansingAbility"));
-	   	    //cObj.setCompendium(select); Er ikke helt sikker på hvordan vi får hentet ham
-	   		 
+	   		 cObj.setPedigree(result.getString("pedigree"));
+	   		 cObj.setPedigree(result.getString("type"));  		 
 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building Chart object, " +e);
