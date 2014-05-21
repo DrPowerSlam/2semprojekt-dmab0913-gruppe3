@@ -16,16 +16,24 @@ import modellayer.Chart;
 public class ChartPanel extends JPanel {
 
 	private JScrollPane scrollPane;
-	private JPanel cardPanel, newSisterChartPanel;
+	private JPanel cardPanel, newSisterChartPanel, chooseQueenPanel, addQueenInfoPanel;
+	private static ChartPanel instance = null;
 	
 	/**
 	 * Create the panel.
 	 */
-	public ChartPanel() {
+	private ChartPanel() {
 		setLayout(null);
 		initTable();
 		initSeconPanel();
 		initButtons();
+	}
+	
+	public static ChartPanel getInstance() {
+		if(instance == null) {
+			instance = new ChartPanel();
+		}
+		return instance;
 	}
 	
 	/**
@@ -86,6 +94,20 @@ public class ChartPanel extends JPanel {
 	public void newSisterChart() throws SQLException {
 		newSisterChartPanel = new NewSisterChartPanel();
 		cardPanel.add(newSisterChartPanel);
+		CardLayout cl = (CardLayout)(cardPanel.getLayout());
+		cl.last(cardPanel);
+	}
+	
+	public void addQueenInfoPanel() throws SQLException {
+		addQueenInfoPanel = new AddQueenInfoPanel();
+		cardPanel.add(addQueenInfoPanel);
+		CardLayout cl = (CardLayout)(cardPanel.getLayout());
+		cl.last(cardPanel);
+	}
+	
+	public void chooseQueenPanel() throws SQLException {
+		chooseQueenPanel = new AddQueenInfoPanel();
+		cardPanel.add(chooseQueenPanel);
 		CardLayout cl = (CardLayout)(cardPanel.getLayout());
 		cl.last(cardPanel);
 	}

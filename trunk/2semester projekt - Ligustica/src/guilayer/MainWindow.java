@@ -145,7 +145,7 @@ public class MainWindow extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		JPanel chartPanel = new ChartPanel();
+		JPanel chartPanel = ChartPanel.getInstance();
 		tabbedPane.addTab("Indberetning af skema", null, chartPanel, null);
 
 		JPanel queenPanel = new QueenPanel();
