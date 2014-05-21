@@ -37,6 +37,7 @@ public class ChooseQueenInfoPanel extends JPanel {
 	private JTextField txtHoneyYield;
 	private JTextField txtNosema;
 	private JTextField txtCleansingAbility;
+	private JTextField textField;
 
 	/**
 	 * Create the panel.
@@ -66,7 +67,7 @@ public class ChooseQueenInfoPanel extends JPanel {
 		
 		
 		btnAddQueen = new JButton("Vælg dronning");
-		btnAddQueen.setBounds(184, 307, 165, 23);
+		btnAddQueen.setBounds(184, 300, 165, 23);
 		btnAddQueen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 try {
@@ -78,6 +79,19 @@ public class ChooseQueenInfoPanel extends JPanel {
             }
 		});
 		queenInfoPanel.add(btnAddQueen);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 31, 339, 230);
+		queenInfoPanel.add(scrollPane);
+		
+		textField = new JTextField();
+		textField.setBounds(47, 269, 302, 20);
+		queenInfoPanel.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSg = new JLabel("S\u00F8g:");
+		lblSg.setBounds(10, 272, 46, 14);
+		queenInfoPanel.add(lblSg);
 		
 	}
 	
