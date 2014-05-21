@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.border.TitledBorder;
 
@@ -13,12 +14,15 @@ import controllayer.ChartCtr;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
 import modellayer.Chart;
+import modellayer.PartChart;
 import modellayer.Settings;
+
 import javax.swing.JScrollPane;
 
 public class NewSisterChartPanel extends JPanel {
@@ -106,7 +110,10 @@ public class NewSisterChartPanel extends JPanel {
 	}
 
 	private void initTable() {
-		JScrollPane scrollPane = new JScrollPane();
+		ArrayList<PartChart> partCharts =  chart.getAllPartCharts();
+		PartChartTableModel model = new PartChartTableModel(partCharts);
+        JTable table = new JTable(model);
+		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 119, 334, 225);
 		newChartPanel.add(scrollPane);
 	}

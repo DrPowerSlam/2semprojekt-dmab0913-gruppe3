@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.border.TitledBorder;
 
@@ -13,12 +14,14 @@ import controllayer.ChartCtr;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 
 import modellayer.Chart;
+import modellayer.PartChart;
 
 public class ChooseQueenPanel extends JPanel {
 	private JPanel queenInfoPanel;
@@ -63,9 +66,7 @@ public class ChooseQueenPanel extends JPanel {
 		});
 		queenInfoPanel.add(btnAddQueen);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 31, 339, 230);
-		queenInfoPanel.add(scrollPane);
+		initTable();
 		
 		textField = new JTextField();
 		textField.setBounds(47, 269, 302, 20);
@@ -76,6 +77,15 @@ public class ChooseQueenPanel extends JPanel {
 		lblSg.setBounds(10, 272, 46, 14);
 		queenInfoPanel.add(lblSg);
 		
+	}
+
+	private void initTable() {
+		ArrayList<PartChart> partCharts =  chart.getAllPartCharts();
+		PartChartTableModel model = new PartChartTableModel(partCharts);
+        JTable table = new JTable(model);
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(10, 31, 339, 230);
+		queenInfoPanel.add(scrollPane);
 	}
 	
 	public void chooseQueen() {
