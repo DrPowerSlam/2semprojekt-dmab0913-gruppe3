@@ -15,36 +15,26 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 
-public class ChooseQueenInfoPanel extends JPanel {
+import modellayer.Chart;
+
+public class ChooseQueenPanel extends JPanel {
 	private JPanel queenInfoPanel;
 	
 	private ChartCtr cCtr;
-	private JTextField txtQueen;
 	private JButton btnAddQueen;
-	private JTextField txtYear;
-	private JTextField txtSwarmTendency;
-	private JTextField txtTemper;
-	private JLabel lblYear;
-	private JLabel lblSwarmTendency;
-	private JLabel lblTemper;
-	private JTextField txtHoneycombFirmness;
-	private JLabel lblHoneycombFirmness;
-	private JTextField txtYearHoneyYield;
-	private JTextField txtHoneyYield;
-	private JTextField txtNosema;
-	private JTextField txtCleansingAbility;
 	private JTextField textField;
-
+	
+	private Chart chart;
 	/**
 	 * Create the panel.
 	 * @throws SQLException 
 	 */
-	public ChooseQueenInfoPanel() throws SQLException {
+	public ChooseQueenPanel(Chart chart) throws SQLException {
 		cCtr = new ChartCtr();
+		this.chart = chart;
 		initPanel();
 		initComponents();
 		
@@ -63,19 +53,12 @@ public class ChooseQueenInfoPanel extends JPanel {
 	}
 
 	private void initComponents() throws SQLException {
-		
-		
-		
+	
 		btnAddQueen = new JButton("Vælg dronning");
 		btnAddQueen.setBounds(184, 300, 165, 23);
 		btnAddQueen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                try {
-					createChart();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				chooseQueen();
             }
 		});
 		queenInfoPanel.add(btnAddQueen);
@@ -95,19 +78,15 @@ public class ChooseQueenInfoPanel extends JPanel {
 		
 	}
 	
-	public void createChart() throws SQLException {
-		//ChartPanel chartPanel = ChartPanel.getInstance();
-		String name = txtQueen.getText();
-		String address = txtYear.getText();
-		String country = txtSwarmTendency.getText();
-		String phoneNo = txtTemper.getText();
-		String email = txtHoneycombFirmness.getText();
-		
-		if(!name.isEmpty() && !address.isEmpty() && !country.isEmpty() && !phoneNo.isEmpty() && !email.isEmpty()) {
-			//cCtr.createChart(name, address, country, phoneNo, email);
-			//chartPanel.updateTable();
-		}else {
-			JOptionPane.showMessageDialog(queenInfoPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
+	public void chooseQueen() {
+		ChartPanel chartPanel = ChartPanel.getInstance();
+		try {
+			//TODO: send chart og queen objektet til queenInfoPanel (check om queen er valgt først)
+			//TODO: under queenInfoPanel opret nyt CHartPart, sæt Queen til den og vis queens årskarakter hvis de er der
+			//TODO  Når info gemmes valideres det, hvis det går igennem gemmes chartpart objektet, tilføjes til chart og chart sendes med til newsistercharpanel
+			chartPanel.addQueenInfoPanel();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import modellayer.Chart;
+import modellayer.Settings;
 
 public class ChartPanel extends JPanel {
 
@@ -68,7 +69,9 @@ public class ChartPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					newSisterChart();
+					Settings settings = Settings.getInstance();
+					Chart chart = new Chart(settings.getBreeder(), true);
+					newSisterChart(chart);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -91,8 +94,8 @@ public class ChartPanel extends JPanel {
 	 * @param forestName
 	 * @throws SQLException 
 	 */
-	public void newSisterChart() throws SQLException {
-		newSisterChartPanel = new NewSisterChartPanel();
+	public void newSisterChart(Chart chart) throws SQLException {
+		newSisterChartPanel = new NewSisterChartPanel(chart);
 		cardPanel.add(newSisterChartPanel);
 		CardLayout cl = (CardLayout)(cardPanel.getLayout());
 		cl.last(cardPanel);
@@ -105,8 +108,8 @@ public class ChartPanel extends JPanel {
 		cl.last(cardPanel);
 	}
 	
-	public void chooseQueenPanel() throws SQLException {
-		chooseQueenPanel = new AddQueenInfoPanel();
+	public void chooseQueenPanel(Chart chart) throws SQLException {
+		chooseQueenPanel = new ChooseQueenPanel(chart);
 		cardPanel.add(chooseQueenPanel);
 		CardLayout cl = (CardLayout)(cardPanel.getLayout());
 		cl.last(cardPanel);
