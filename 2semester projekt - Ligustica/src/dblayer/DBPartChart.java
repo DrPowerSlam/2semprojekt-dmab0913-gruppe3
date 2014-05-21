@@ -7,50 +7,50 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modellayer.Chart;
+import modellayer.PartChart;
 import modellayer.Queen;
 
 /**
- * DBChart class
+ * DBPartChart class
  * @author Gruppe 3
  *
  */
-public class DBChart implements IFDBChart{
+public class DBPartChart implements IFDBPartChart {
 	
 	private Connection con;
 	
-	public DBChart() {
+	public DBPartPartChart() {
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
 	/**
-	 * An Arraylist with all charts
+	 * An Arraylist with all partPartCharts
 	 */
-	public ArrayList<Chart> getAllCharts(boolean retriveAssociation) {
+	public ArrayList<PartChart> getAllPartCharts(boolean retriveAssociation) {
 	 	return miscWhere("", retriveAssociation);
 	 }
 	
-	public Chart searchChartOnName(String name, boolean retriveAssociation) {
+	public PartChart searchPartChartOnName(String name, boolean retriveAssociation) {
 		String wClause = "name like % "+name+" %";
 		return singleWhere(wClause, retriveAssociation);
 	}
 	
 	/**
-     * Select a single Chart
+     * Select a single PartChart
      */
-    public Chart selectSingleChart(int chartID, boolean retriveAssociation) throws SQLException {
-   	 String wClause = "chartID = "+chartID;
+    public PartChart selectSinglePartChart(int partPartChartID, boolean retriveAssociation) throws SQLException {
+   	 String wClause = "partPartChartID = "+partPartChartID;
         return singleWhere(wClause, retriveAssociation);
     }
     
     /**
-     * Insert a Chart to the DB
+     * Insert a PartChart to the DB
      */
-    public int insertChart(Chart c) throws SQLException 
+    public int insertPartChart(PartChart c) throws SQLException 
     {
    	 PreparedStatement pstmt = null;
    	 int controlInt = -1;
-   	 String insert = "insert into Chart(breederID, year, pedigree, type, compendiumID)"
+   	 String insert = "insert into PartChart(breederID, year, pedigree, type, compendiumID)"
                       + "values (?, ?, ?, ?, ?)";
    	 //System.out.println(insert);
    	 try {
@@ -72,19 +72,19 @@ public class DBChart implements IFDBChart{
     }
     
     /**
-     * Updates the Chart db
+     * Updates the PartChart db
      */
-    public int updateChart(Chart c) throws SQLException {
+    public int updatePartChart(PartChart c) throws SQLException {
    	 
    	 int controlInt = -1;
 
-   	 String update = "UPDATE Chart SET "
+   	 String update = "UPDATE PartChart SET "
     	 	+ "breederID = ?, "
    	 		+ "year = ?, "
    	 		+ "pedigree = ?, "
    	 		+ "type = ?,"
    	 	    + "compendiumID = ? "
-   	 		+ "WHERE chartID = ?";
+   	 		+ "WHERE partPartChartID = ?";
 
    	 System.out.println(update);
    	 try {
@@ -95,7 +95,7 @@ public class DBChart implements IFDBChart{
   		 pstmt.setString(3, c.getPedigree());
   		 pstmt.setString(4, c.getType());
   		 pstmt.setInt(5, c.getCompendium().getCompendiumID());
-  		 pstmt.setInt(6, c.getChartID());
+  		 pstmt.setInt(6, c.getPartChartID());
    		 controlInt = pstmt.executeUpdate();
    	 } catch (SQLException sqlE) {
    		 System.out.println("SQL Error, Queen not updated");
@@ -108,18 +108,18 @@ public class DBChart implements IFDBChart{
     }
     
     /**
-     * Delete a Chart from the database
+     * Delete a PartChart from the database
      */
-    public int deleteChart(Chart c) throws SQLException 
+    public int deletePartChart(PartChart c) throws SQLException 
     {
    	 PreparedStatement pstmt = null;
    	 int controlInt = -1;
    	 
-   	 String delete = "DELETE FROM Chart WHERE chartID = ?";
+   	 String delete = "DELETE FROM PartChart WHERE partPartChartID = ?";
    	 //System.out.println(delete);
    	 try {
    		 pstmt = con.prepareStatement(delete);
-            pstmt.setInt(1, c.getChartID());
+            pstmt.setInt(1, c.getPartChartID());
             controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
             System.out.println("SQL Error, Queen not deleted");
@@ -132,15 +132,15 @@ public class DBChart implements IFDBChart{
     }
     
     /**
-	 * If more than one Chart is to be selected
+	 * If more than one PartChart is to be selected
 	 * @param wClause
-	 * @return ArrayList with Chart objects
+	 * @return ArrayList with PartChart objects
 	 */
     
-    private ArrayList<Chart> miscWhere(String wClause, boolean retrieveAssociation)
+    private ArrayList<PartChart> miscWhere(String wClause, boolean retrieveAssociation)
 	 {
    	     ResultSet results;
-	     ArrayList<Chart> list = new ArrayList<Chart>();	
+	     ArrayList<PartChart> list = new ArrayList<PartChart>();	
 		
 	     String query = buildQuery(wClause);
    
@@ -150,15 +150,15 @@ public class DBChart implements IFDBChart{
 		 	 results = stmt.executeQuery(query);
 		 	
 			 while( results.next() ){ 
-			     Chart cObj = new Chart();
-				 cObj = buildChart(results);	
+			     PartChart cObj = new PartChart();
+				 cObj = buildPartChart(results);	
 				 if(retrieveAssociation) {
 					 IFDBBreeder dbBreeder = new DBBreeder();
 					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
 					 
 					 IFDBCompendium dbComp = new DBCompendium();
 					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
-					  //TODO Loop igennem dbPartCharts, hvis de har chartId lig med denne, add til partCharts
+					  //TODO Loop igennem dbPartPartCharts, hvis de har partPartChartId lig med denne, add til partPartCharts
 				 }				 
 		         list.add(cObj);	
 			 }//end while
@@ -174,14 +174,14 @@ public class DBChart implements IFDBChart{
 	 }
     
     /**
-	 * If only one Chart is to be selected
+	 * If only one PartChart is to be selected
 	 * @param wClause
-	 * @return Chart object
+	 * @return PartChart object
 	 */
-	 private Chart singleWhere(String wClause, boolean retrieveAssociation)
+	 private PartChart singleWhere(String wClause, boolean retrieveAssociation)
 	 {
 	 	ResultSet results;
-	 	Chart cObj = new Chart();
+	 	PartChart cObj = new PartChart();
 		        
 	 	String query = buildQuery(wClause);
 		//System.out.println(query);
@@ -191,7 +191,7 @@ public class DBChart implements IFDBChart{
 			stmt.setQueryTimeout(5);
 			results = stmt.executeQuery(query);
 			if( results.next() ){
-				cObj = buildChart(results);
+				cObj = buildPartChart(results);
 				stmt.close();
 				if(retrieveAssociation) {
 					 IFDBBreeder dbBreeder = new DBBreeder();
@@ -202,7 +202,7 @@ public class DBChart implements IFDBChart{
 					 //igen er jeg ikke sikker på at jeg ved hvad der skal med
 				 }	
 				
-			}else{ //No chart found
+			}else{ //No partPartChart found
 				cObj = null;
 			}
 		}//end try	
@@ -220,7 +220,7 @@ public class DBChart implements IFDBChart{
 	 */
 	 private String buildQuery(String wClause)
 	 {
-	     String query="SELECT * FROM Chart";
+	     String query="SELECT * FROM PartChart";
 		
 	 	if (wClause.length()>0)
 	 		query=query+" WHERE "+ wClause;
@@ -229,22 +229,22 @@ public class DBChart implements IFDBChart{
 	 }
 	 
 	 	/**
-	     * Builds a Chart object from the data in the database
+	     * Builds a PartChart object from the data in the database
 	     * @param result
-	     * @return Chart object
+	     * @return PartChart object
 	     * @throws SQLException
 	     */
-	    private Chart buildChart(ResultSet result) throws SQLException {
-	   	 Chart cObj = new Chart();
+	    private PartChart buildPartChart(ResultSet result) throws SQLException {
+	   	 PartChart cObj = new PartChart();
 
 	   	 try {
-	   		 cObj.setChartID(result.getInt("chartID"));
+	   		 cObj.setPartChartID(result.getInt("partPartChartID"));
 	   		 cObj.setYear(result.getInt("year"));
 	   		 cObj.setPedigree(result.getString("pedigree"));
 	   		 cObj.setPedigree(result.getString("type"));  		 
 
 	   	 } catch (Exception e) {
-	   		 System.out.println("error building Chart object, " +e);
+	   		 System.out.println("error building PartChart object, " +e);
 	        }
 	        return cObj;
 	    }
