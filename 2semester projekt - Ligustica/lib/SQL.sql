@@ -271,4 +271,7 @@ INSERT INTO City VALUES(9990, 'Skagen');
 INSERT INTO Breeder VALUES('Karsten', 'IkkeAdmin', 'Sofiendalsvej 60', '2500', '12345678', 'ikke@admin.dk', 'test123', 'false');
 INSERT INTO Breeder VALUES('Jesper', 'ErAdmin', 'Sofiendalsvej 60', '2500', '12345678', 'er@admin.dk', 'test123', 'true');
 INSERT INTO Compendium VALUES('TEST', 'TEST');
-INSERT INTO Chart values(1, 1999, 'pedigree', 'true', 1);
+INSERT INTO Chart VALUES(1, 1999, 'pedigree', 'true', 1);
+INSERT INTO Queen VALUES(2012, 'KS023', 4, 4, 4, 5, 5, 3, 'true', NULL, NULL, 1);
+INSERT INTO Queen VALUES(2012, 'KS024', 4, 4, 4, 5, 5, 3, 'true', NULL, NULL, 1);
+INSERT INTO Queen VALUES(2012, 'KS025', 4, 4, 4, 5, 5, 3, 'true', NULL, NULL, 1);
