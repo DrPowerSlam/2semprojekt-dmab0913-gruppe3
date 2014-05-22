@@ -143,7 +143,7 @@ public class AddQueenInfoPanel extends JPanel {
 		txtHoneyYield.setBounds(184, 211, 165, 20);
 		queenInfoPanel.add(txtHoneyYield);
 		
-		txtNosema = new JTextField(queen.getNosema());
+		txtNosema = new JTextField(Integer.toString(queen.getNosema()));
 		txtNosema.setColumns(10);
 		txtNosema.setBounds(184, 245, 165, 20);
 		queenInfoPanel.add(txtNosema);
