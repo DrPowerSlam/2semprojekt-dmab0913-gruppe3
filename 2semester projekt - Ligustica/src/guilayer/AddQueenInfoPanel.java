@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.swing.border.TitledBorder;
 
 import controllayer.ChartCtr;
+import controllayer.ValidateCtr;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -170,19 +171,39 @@ public class AddQueenInfoPanel extends JPanel {
 		queenInfoPanel.add(lblCleansingAbility);
 	}
 	
-	public void createChart() throws SQLException {
+	private void createChart() throws SQLException {
 		//ChartPanel chartPanel = ChartPanel.getInstance();
-		String name = txtQueen.getText();
-		String address = txtYear.getText();
-		String country = txtSwarmTendency.getText();
-		String phoneNo = txtTemper.getText();
-		String email = txtHoneycombFirmness.getText();
-		
-		if(!name.isEmpty() && !address.isEmpty() && !country.isEmpty() && !phoneNo.isEmpty() && !email.isEmpty()) {
-			//Ctr.createPartChart(name, address, country, phoneNo, email, chart); //TODO: add partchart to chart arraylist
-			//chartPanel.updateTable();
-		}else {
-			JOptionPane.showMessageDialog(queenInfoPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
+		try {
+			String year = txtYear.getText();
+			String honeyYield = txtHoneyYield.getText();
+			int swarmTendency = Integer.parseInt(txtSwarmTendency.getText());
+			int temper = Integer.parseInt(txtTemper.getText());
+			int honeycombFirmness = Integer.parseInt(txtHoneycombFirmness .getText());
+			int honeyYieldYear = Integer.parseInt(txtYearHoneyYield.getText());
+			int nosema = Integer.parseInt(txtNosema.getText());
+			int cleansingAbility = Integer.parseInt(txtCleansingAbility.getText());
+	
+			//Check if the String are empty
+			if(!year.isEmpty() && !honeyYield.isEmpty()) {
+				//Check if year is 4 number long
+				if(cCtr.validateYear(year)) {
+					//Validate the grades
+					if(cCtr.validateGrade(swarmTendency) && cCtr.validateGrade(temper) && cCtr.validateGrade(honeycombFirmness) && cCtr.validateGrade(honeyYieldYear) 
+							&& cCtr.validateGrade(nosema) && cCtr.validateGrade(cleansingAbility)) {
+						//Ctr.createPartChart(name, address, country, phoneNo, email, chart); //TODO: add partchart to chart arraylist
+						//chartPanel.updateTable();
+					}else {
+						JOptionPane.showMessageDialog(queenInfoPanel, "Års karaktere, nosema og udrensningsevne skal være tal fra 0 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(queenInfoPanel, "Du skal angive et år på 4 cifre.", "Fejl", JOptionPane.ERROR_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(queenInfoPanel, "1 eller flere felter er ikke blevet udfyldt", "Fejl", JOptionPane.ERROR_MESSAGE);
+			}
+		}catch (NumberFormatException e1) {
+			JOptionPane.showMessageDialog(queenInfoPanel, "Års karaktere, nosema og udrensningsevne skal være tal fra 0 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
 		}
+		
 	}
 }
