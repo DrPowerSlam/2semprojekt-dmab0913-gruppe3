@@ -11,12 +11,16 @@ public class Queen {
 	private ArrayList<Queen> children;
 	private boolean isAlive;
 	
-	public Queen(int queenID, int year, int honeyYield, int swarmTendency,
+	
+	
+	public Queen(int queenID, int year, int honeyYieldYear, int swarmTendency,
 			int nosema, int temper, int honeycomFirmness, int clensingAbility,
-			String name, Queen mother, Queen fathersMother, Breeder breeder) {
+			String name, Queen mother, Queen fathersMother,
+			Breeder breeder, boolean isAlive) {
+		super();
 		this.queenID = queenID;
 		this.year = year;
-		this.honeyYield = honeyYield;
+		this.honeyYield = honeyYieldYear;
 		this.swarmTendency = swarmTendency;
 		this.nosema = nosema;
 		this.temper = temper;
@@ -26,9 +30,9 @@ public class Queen {
 		this.mother = mother;
 		this.fathersMother = fathersMother;
 		this.breeder = breeder;
-		this.children = new ArrayList<Queen>();
+		this.isAlive = isAlive;
 	}
-	
+
 	public Queen() {
 		new ArrayList<Queen>();
 	}
@@ -61,12 +65,6 @@ public class Queen {
 		return year;
 	}
 
-	/**
-	 * @return the honeyYield
-	 */
-	public int getHoneyYield() {
-		return honeyYield;
-	}
 
 	/**
 	 * @return the swarmTendency
@@ -153,13 +151,6 @@ public class Queen {
 	}
 
 	/**
-	 * @param honeyYield the honeyYield to set
-	 */
-	public void setHoneyYield(int honeyYield) {
-		this.honeyYield = honeyYield;
-	}
-
-	/**
 	 * @param swarmTendency the swarmTendency to set
 	 */
 	public void setSwarmTendency(int swarmTendency) {
@@ -229,6 +220,23 @@ public class Queen {
 		this.children = children;
 	}
 	
+	
+	
+	/**
+	 * @return the honeyYieldYear
+	 */
+	public int getHoneyYield() {
+		return honeyYield;
+	}
+
+	/**
+	 * @param honeyYieldYear the honeyYieldYear to set
+	 */
+	public void setHoneyYield(int honeyYield) {
+		this.honeyYield = honeyYield;
+	}
+
+
 	public boolean equals(Queen q)
 	{
 		boolean result = false;

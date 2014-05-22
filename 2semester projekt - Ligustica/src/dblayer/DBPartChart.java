@@ -56,7 +56,7 @@ public class DBPartChart implements IFDBPartChart {
    	 //System.out.println(insert);
    	 try {
    		 pstmt = con.prepareStatement(insert);
-   		 pstmt.setInt(1, c.getHoneyYield());
+   		 pstmt.setString(1, c.getHoneyYield());
    		 pstmt.setInt(2, c.getHoneyYieldYear());
    		 pstmt.setInt(3, c.getSwarmTendency());
    		 pstmt.setInt(4, c.getNosema());
@@ -97,7 +97,7 @@ public class DBPartChart implements IFDBPartChart {
    	 try {
    		 PreparedStatement pstmt = null;
    		 pstmt = con.prepareStatement(update);
-   		 pstmt.setInt(1, c.getHoneyYield());
+   		 pstmt.setString(1, c.getHoneyYield());
   		 pstmt.setInt(2, c.getHoneyYieldYear());
   		 pstmt.setInt(3, c.getSwarmTendency());
   		 pstmt.setInt(4, c.getNosema());
@@ -249,7 +249,7 @@ public class DBPartChart implements IFDBPartChart {
 
 	   	 try {
 	   		 cObj.setPartChartID(result.getInt("partPartChartID"));
-	   		 cObj.setHoneyYield(result.getInt("honeyYield"));
+	   		 cObj.setHoneyYield(result.getString("honeyYield"));
 	   		 cObj.setHoneyYieldYear(result.getInt("honeyYieldYear"));
 	   	   	 cObj.setSwarmTendency(result.getInt("swarmTendency"));	 
 	   	     cObj.setNosema(result.getInt("nosema"));	 
