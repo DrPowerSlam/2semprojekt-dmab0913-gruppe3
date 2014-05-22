@@ -99,7 +99,7 @@ public class DBChart implements IFDBChart{
     	 	+ "breederID = ?, "
    	 		+ "year = ?, "
    	 		+ "pedigree = ?, "
-   	 		+ "type = ?,"
+   	 		+ "type = ?, "
    	 	    + "compendiumID = ? "
    	 		+ "WHERE chartID = ?";
 

@@ -131,18 +131,21 @@ public class NewSisterChartPanel extends JPanel {
 	}
 	
 	public void createChart() throws SQLException {
-		//ChartPanel chartPanel = ChartPanel.getInstance();
-//		String name = txtQueen.getText();
-//		String address = txtYear.getText();
-//		String country = txtPedigree.getText();
-//		String phoneNo = txtTemper.getText();
-//		String email = txtHoneycombFirmness.getText();
-//		
-//		if(!name.isEmpty() && !address.isEmpty() && !country.isEmpty() && !phoneNo.isEmpty() && !email.isEmpty()) {
-//			//cCtr.createChart(name, address, country, phoneNo, email);
-//			//chartPanel.updateTable();
-//		}else {
-//			JOptionPane.showMessageDialog(newChartPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
-//		}
+		String years = txtYear.getText();
+		String pedigree = txtPedigree.getText();
+		
+		try {
+			//
+			if(cCtr.validateYear(years)) {
+				int year = Integer.parseInt(years);
+				cCtr.saveChart(chart, year, pedigree);
+				JOptionPane.showMessageDialog(newChartPanel, "Skemaet er blevet indberettet", "Succes", JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre", "Fejl", JOptionPane.ERROR_MESSAGE);
+			}
+		}catch (NumberFormatException e1) {
+			JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre", "Fejl", JOptionPane.ERROR_MESSAGE);
+		}
+		
 	}
 }
