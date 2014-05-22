@@ -61,12 +61,13 @@ public class BreederTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Breeder breeder = breeders.get(rowIndex);
         Object value = null;
+        String name = breeder.getFname()+ " " + breeder.getLname();
         switch (columnIndex) {
             case 0:
                 value = breeder.getBreederID();
                 break;
             case 1:
-                value = breeder.getFname();
+                value = name;
                 break;
             case 2:
             	value = breeder.getAddress();
