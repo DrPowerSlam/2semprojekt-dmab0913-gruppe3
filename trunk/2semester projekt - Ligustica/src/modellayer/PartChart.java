@@ -2,9 +2,10 @@ package modellayer;
 
 public class PartChart {
 
-	private int partChartID, year, honeyYield, honeyYieldYear, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
+	private int partChartID, year, honeyYieldYear, swarmTendency, nosema, temper, honeycomFirmness, clensingAbility;
 	private Chart chart;
 	private Queen queen;
+	private String honeyYield;
 	
 	public PartChart(Chart chart, Queen queen) {
 		this.chart = chart;
@@ -46,14 +47,14 @@ public class PartChart {
 	/**
 	 * @return the honeyYield
 	 */
-	public int getHoneyYield() {
+	public String getHoneyYield() {
 		return honeyYield;
 	}
 
 	/**
 	 * @param honeyYield the honeyYield to set
 	 */
-	public void setHoneyYield(int honeyYield) {
+	public void setHoneyYield(String honeyYield) {
 		this.honeyYield = honeyYield;
 	}
 

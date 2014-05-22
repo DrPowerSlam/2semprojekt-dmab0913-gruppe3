@@ -74,7 +74,7 @@ create table Chart (
 
 create table PartChart (
 	partChartID  int  IDENTITY(1,1) not null, 
-	honeyYield int not null,
+	honeyYield varchar(30) not null,
 	honeyYieldYear int not null,
 	swarmTendency int not null,
 	nosema int not null,
