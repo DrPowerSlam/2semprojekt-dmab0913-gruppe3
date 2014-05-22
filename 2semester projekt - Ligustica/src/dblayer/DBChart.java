@@ -43,6 +43,23 @@ public class DBChart implements IFDBChart{
         return singleWhere(wClause, retriveAssociation);
     }
     
+    public int getMaxID() {
+    	ResultSet results;
+    	int id = -1;
+    	try{ 
+    	   Statement stmt = con.createStatement();
+    	   String query = "Select max(chartID) from Chart";
+    	   results = stmt.executeQuery(query);
+    	   if( results.next() ){
+    		 id = results.getInt(1);
+    	    }
+    	}	
+    	catch(Exception e){
+    	    System.out.println("Query exception: Error in reading maxid" + e);
+    	}
+    	return id;
+    }
+    
     /**
      * Insert a Chart to the DB
      */
@@ -212,7 +229,8 @@ public class DBChart implements IFDBChart{
 		}
 		return cObj;
 	 }
-    
+
+	 
     /**
 	 * Method to build the query
 	 * @param wClause
@@ -248,5 +266,6 @@ public class DBChart implements IFDBChart{
 	        }
 	        return cObj;
 	    }
-
+	    
+	    
 }

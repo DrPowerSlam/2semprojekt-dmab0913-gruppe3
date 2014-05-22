@@ -51,8 +51,8 @@ public class DBPartChart implements IFDBPartChart {
    	 PreparedStatement pstmt = null;
    	 int controlInt = -1;
    	 String insert = "insert into PartChart(honeyYield, honeyYieldYear, swarmTendency, nosema, temper,"
-   	 				+ "honeycomfirmness, cleansingAbility)"
-                      + "values (?, ?, ?, ?, ?)";
+   	 				+ "honeycombfirmness, cleansingAbility, chartID, queenID)"
+                      + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
    	 //System.out.println(insert);
    	 try {
    		 pstmt = con.prepareStatement(insert);
@@ -63,6 +63,8 @@ public class DBPartChart implements IFDBPartChart {
    		 pstmt.setInt(5, c.getTemper());
    		 pstmt.setInt(6, c.getHoneycomFirmness());
    		 pstmt.setInt(7, c.getClensingAbility());
+   		 pstmt.setInt(8, c.getChart().getChartID());
+   		 pstmt.setInt(9, c.getQueen().getQueenID());
          controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
             System.out.println("SQL Error, PartChart not inserted");
