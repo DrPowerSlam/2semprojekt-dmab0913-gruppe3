@@ -174,7 +174,7 @@ public class AddQueenInfoPanel extends JPanel {
 	private void createChart() throws SQLException {
 		//ChartPanel chartPanel = ChartPanel.getInstance();
 		try {
-			String year = txtYear.getText();
+			String years = txtYear.getText();
 			String honeyYield = txtHoneyYield.getText();
 			int swarmTendency = Integer.parseInt(txtSwarmTendency.getText());
 			int temper = Integer.parseInt(txtTemper.getText());
@@ -184,16 +184,21 @@ public class AddQueenInfoPanel extends JPanel {
 			int cleansingAbility = Integer.parseInt(txtCleansingAbility.getText());
 	
 			//Check if the String are empty
-			if(!year.isEmpty() && !honeyYield.isEmpty()) {
+			if(!years.isEmpty() && !honeyYield.isEmpty()) {
 				//Check if year is 4 number long
-				if(cCtr.validateYear(year)) {
+				if(cCtr.validateYear(years)) {
 					//Validate the grades
+					int year = Integer.parseInt(years);
 					if(cCtr.validateGrade(swarmTendency) && cCtr.validateGrade(temper) && cCtr.validateGrade(honeycombFirmness) && cCtr.validateGrade(honeyYieldYear) 
 							&& cCtr.validateGrade(nosema) && cCtr.validateGrade(cleansingAbility)) {
-						//Ctr.createPartChart(name, address, country, phoneNo, email, chart); //TODO: add partchart to chart arraylist
-						//chartPanel.updateTable();
+						//Save the object
+						Chart theChart = cCtr.createPartChart(partChart, year, honeyYield, swarmTendency, temper, honeycombFirmness, honeyYieldYear, nosema, cleansingAbility);
+						//Go back to the Chart
+						ChartPanel chartPanel = ChartPanel.getInstance();
+						chartPanel.newSisterChart(theChart);
+						
 					}else {
-						JOptionPane.showMessageDialog(queenInfoPanel, "Års karaktere, nosema og udrensningsevne skal være tal fra 0 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(queenInfoPanel, "Årskaraktere, nosema og udrensningsevne skal være tal fra 1 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
 					JOptionPane.showMessageDialog(queenInfoPanel, "Du skal angive et år på 4 cifre.", "Fejl", JOptionPane.ERROR_MESSAGE);
