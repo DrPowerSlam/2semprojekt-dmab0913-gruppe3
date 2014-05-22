@@ -202,7 +202,7 @@ public class AddQueenInfoPanel extends JPanel {
 				JOptionPane.showMessageDialog(queenInfoPanel, "1 eller flere felter er ikke blevet udfyldt", "Fejl", JOptionPane.ERROR_MESSAGE);
 			}
 		}catch (NumberFormatException e1) {
-			JOptionPane.showMessageDialog(queenInfoPanel, "Års karaktere, nosema og udrensningsevne skal være tal fra 0 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(queenInfoPanel, "Årskaraktere, nosema og udrensningsevne skal være tal fra 1 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

@@ -20,7 +20,7 @@ public class ChartCtr {
 	}
 	
 	public boolean validateGrade(int grade) {
-		return vCtr.validateInt(grade, 0, 5);
+		return vCtr.validateInt(grade, 1, 5);
 	}
 
 }
