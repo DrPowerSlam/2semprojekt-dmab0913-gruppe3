@@ -84,7 +84,6 @@ public class AddQueenInfoPanel extends JPanel {
 		queenInfoPanel.add(txtQueen);
 		
 		txtYear = new JTextField(Integer.toString(queen.getYear()));
-		txtYear.setEditable(false);
 		txtYear.setColumns(10);
 		txtYear.setBounds(184, 54, 165, 20);
 		queenInfoPanel.add(txtYear);
@@ -125,7 +124,7 @@ public class AddQueenInfoPanel extends JPanel {
 		});
 		queenInfoPanel.add(btnAddQueen);
 		
-		txtHoneycombFirmness = new JTextField(queen.getHoneycomFirmness());
+		txtHoneycombFirmness = new JTextField(Integer.toString(queen.getHoneycomFirmness()));
 		txtHoneycombFirmness.setColumns(10);
 		txtHoneycombFirmness.setBounds(184, 147, 165, 20);
 		queenInfoPanel.add(txtHoneycombFirmness);
@@ -134,12 +133,12 @@ public class AddQueenInfoPanel extends JPanel {
 		lblHoneycombFirmness.setBounds(10, 150, 159, 14);
 		queenInfoPanel.add(lblHoneycombFirmness);
 		
-		txtYearHoneyYield = new JTextField(queen.getHoneyYield());
+		txtYearHoneyYield = new JTextField(Integer.toString(queen.getHoneyYield()));
 		txtYearHoneyYield.setColumns(10);
 		txtYearHoneyYield.setBounds(184, 178, 165, 20);
 		queenInfoPanel.add(txtYearHoneyYield);
 		
-		txtHoneyYield = new JTextField(queen.getHoneyYield());
+		txtHoneyYield = new JTextField(Integer.toString(queen.getHoneyYield()));
 		txtHoneyYield.setColumns(10);
 		txtHoneyYield.setBounds(184, 211, 165, 20);
 		queenInfoPanel.add(txtHoneyYield);
@@ -149,7 +148,7 @@ public class AddQueenInfoPanel extends JPanel {
 		txtNosema.setBounds(184, 245, 165, 20);
 		queenInfoPanel.add(txtNosema);
 		
-		txtCleansingAbility = new JTextField(queen.getClensingAbility());
+		txtCleansingAbility = new JTextField(Integer.toString(queen.getClensingAbility()));
 		txtCleansingAbility.setColumns(10);
 		txtCleansingAbility.setBounds(184, 276, 165, 20);
 		queenInfoPanel.add(txtCleansingAbility);
