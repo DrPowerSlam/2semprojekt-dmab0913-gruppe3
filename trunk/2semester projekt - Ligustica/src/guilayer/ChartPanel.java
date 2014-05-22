@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import controllayer.ChartCtr;
 import modellayer.Chart;
 import modellayer.Queen;
 import modellayer.Settings;
@@ -70,8 +71,8 @@ public class ChartPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Settings settings = Settings.getInstance();
-					Chart chart = new Chart(settings.getBreeder(), true);
+					ChartCtr chartCtr = new ChartCtr();
+					Chart chart = chartCtr.startChart();
 					newSisterChart(chart);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

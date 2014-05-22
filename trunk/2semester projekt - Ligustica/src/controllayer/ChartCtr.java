@@ -24,6 +24,19 @@ public class ChartCtr {
 		vCtr = new ValidateCtr();
 	}
 	
+	public Chart startChart() {
+		Chart chart = new Chart(settings.getBreeder(), true);
+		Chart c = null;
+		try {
+			dbC.insertChart(chart);
+			c = dbC.selectSingleChart(dbC.getMaxID(), false);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return c;
+	}
+	
 	public Chart createPartChart(PartChart partChart, int year, String honeyYield, int swarmTendency, int temper, int honeycombFirmness, 
 			int honeyYieldYear, int nosema, int cleansingAbility) {
 		PartChart pC = partChart;
