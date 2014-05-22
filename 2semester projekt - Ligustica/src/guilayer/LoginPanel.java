@@ -25,7 +25,7 @@ public class LoginPanel extends JPanel {
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(LoginPanel.class.getResource("/resources/logo.png")));
-		lblLogo.setBounds(229, 25, 406, 340);
+		lblLogo.setBounds(288, -20, 406, 413);
 		add(lblLogo);
 		
 		initLoginPane();
