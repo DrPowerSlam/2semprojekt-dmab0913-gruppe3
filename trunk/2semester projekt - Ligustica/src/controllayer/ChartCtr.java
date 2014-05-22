@@ -37,6 +37,16 @@ public class ChartCtr {
 		return c;
 	}
 	
+	public void saveChart(Chart chart, int year, String pedigree) {
+		chart.setYear(year);
+		chart.setPedigree(pedigree);
+		try {
+			dbC.updateChart(chart);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Chart createPartChart(PartChart partChart, int year, String honeyYield, int swarmTendency, int temper, int honeycombFirmness, 
 			int honeyYieldYear, int nosema, int cleansingAbility) {
 		PartChart pC = partChart;
