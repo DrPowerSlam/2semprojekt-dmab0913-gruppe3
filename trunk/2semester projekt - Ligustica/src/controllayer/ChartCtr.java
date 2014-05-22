@@ -1,9 +1,16 @@
 package controllayer;
 
+import dblayer.DBChart;
+import dblayer.IFDBChart;
+import modellayer.Settings;
+
 public class ChartCtr {
+	private IFDBChart dbC;
+	private Settings settings;
 
 	public ChartCtr() {
-		// TODO Auto-generated constructor stub
+		dbC = new DBChart();
+		settings = Settings.getInstance();
 	}
 
 }

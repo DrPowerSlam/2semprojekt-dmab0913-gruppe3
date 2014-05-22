@@ -25,7 +25,7 @@ public class LoginPanel extends JPanel {
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(LoginPanel.class.getResource("/resources/logo.png")));
-		lblLogo.setBounds(359, 111, 87, 87);
+		lblLogo.setBounds(229, 25, 406, 340);
 		add(lblLogo);
 		
 		initLoginPane();
@@ -35,7 +35,7 @@ public class LoginPanel extends JPanel {
 	private void initLoginPane() {
 		final JPanel pane = new JPanel();
 		pane.setBorder(new TitledBorder(null, "Login", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pane.setBounds(242, 276, 374, 119);
+		pane.setBounds(247, 366, 374, 119);
 		add(pane);
 		pane.setLayout(null);
 		
@@ -71,18 +71,6 @@ public class LoginPanel extends JPanel {
 			
 		});
 		pane.add(btnLogin);
-		
-		JLabel lblTestdata = new JLabel("Testdata:");
-		lblTestdata.setBounds(242, 406, 81, 14);
-		add(lblTestdata);
-		
-		JLabel lblIkkeadmindkTest = new JLabel("ikke@admin.dk       test123");
-		lblIkkeadmindkTest.setBounds(242, 428, 144, 14);
-		add(lblIkkeadmindkTest);
-		
-		JLabel label = new JLabel("er@admin.dk          test123");
-		label.setBounds(242, 455, 144, 14);
-		add(label);
 		
 	}
 
