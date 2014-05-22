@@ -34,9 +34,14 @@ class Surface extends JPanel {
     	g2d.setPaint(Color.black);
         g2d.setBackground(Color.white);
         g2d.drawRect(rectX, rectY, 200, 50);
+        g2d.drawRect(100, 350, 200, 50);
+        g2d.drawRect(350, 350, 200, 50);
         g2d.drawString("Navn: " + q.getName(), rectX + 5, rectY + 12);
         g2d.drawString("ID: " +Integer.toString(q.getQueenID()), rectX + 5, rectY + 24);
         g2d.drawString("Avler: " + q.getBreeder().getFname() + " " + q.getBreeder().getLname(), rectX + 5, rectY + 36);
+        
+        g2d.drawRect(175, 350, 200, 50);
+        g2d.drawRect(325, 350, 200, 50);
         
         g2d.drawLine(175, 350, 100, 300);
         
