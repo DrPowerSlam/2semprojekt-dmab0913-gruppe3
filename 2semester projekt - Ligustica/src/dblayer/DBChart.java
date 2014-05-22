@@ -259,7 +259,7 @@ public class DBChart implements IFDBChart{
 	   		 cObj.setChartID(result.getInt("chartID"));
 	   		 cObj.setYear(result.getInt("year"));
 	   		 cObj.setPedigree(result.getString("pedigree"));
-	   		 cObj.setPedigree(result.getString("type"));  		 
+	   		 cObj.setType(result.getString("type"));  		 
 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building Chart object, " +e);
