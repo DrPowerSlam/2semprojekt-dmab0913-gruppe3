@@ -251,8 +251,8 @@ public class Queen {
 		}
 		 result = this.queenID == q.queenID && this.year == q.year && this.honeyYield == q.honeyYield && this.swarmTendency == q.swarmTendency
 				 && this.nosema == q.nosema && this.temper == q.temper && this.honeycomFirmness == q.honeycomFirmness && this.clensingAbility == q.clensingAbility
-				 && this.name.equals(q.name)&& this.mother.equals(q.mother)&& this.fathersMother.equals(q.fathersMother)&& this.breeder.equals(q.breeder)
-				 && this.children.equals(q.children);
+				 && this.name.equals(q.name)&& this.mother.getQueenID() == q.mother.getQueenID() && this.fathersMother.getQueenID() == q.fathersMother.getQueenID() && this.breeder.getBreederID() == q.breeder.getBreederID();
+				 //&& this.children.equals(q.children);
 		
 		return result;
 	}

@@ -214,7 +214,7 @@ public class DBQueen implements IFDBQueen {
 						 qObj.setMother(motherObj);
 						 
 						 Queen fathersMotherObj = selectSingleQueen(results.getInt("fathersMother"), false);
-						 qObj.setMother(fathersMotherObj);
+						 qObj.setFathersMother(fathersMotherObj);
 						 
 						 IFDBBreeder dbBreeder = new DBBreeder();
 						 qObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
@@ -266,9 +266,7 @@ public class DBQueen implements IFDBQueen {
 	   		 qObj.setHoneycomFirmness(result.getInt("honeycombfirmness"));
 	   		 qObj.setClensingAbility(result.getInt("cleansingAbility"));
 	   		 qObj.setAlive(result.getBoolean("isAlive")); 
-	   		 qObj.setMother(selectSingleQueen(result.getInt("mother"), false));
-	   		 qObj.setFathersMother(selectSingleQueen(result.getInt("fathersMother"), false));
-
+	   		 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building Queen object, " +e);
 	        }
