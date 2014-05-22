@@ -9,7 +9,7 @@ public class ValidateCtr {
 	public boolean validateInt(int intToBeValidated, int from, int too) {
 		boolean result = false;
 		
-		if(intToBeValidated > from && intToBeValidated < too) {
+		if(intToBeValidated >= from && intToBeValidated <= too) {
 			result = true;
 		}
 		
