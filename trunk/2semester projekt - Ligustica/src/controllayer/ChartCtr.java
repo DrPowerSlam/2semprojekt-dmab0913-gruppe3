@@ -31,7 +31,6 @@ public class ChartCtr {
 		try {
 			dbC.insertChart(chart);
 			c = dbC.selectSingleChart(dbC.getMaxID(), true);
-			//c.setBreeder(settings.getBreeder());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -42,10 +41,6 @@ public class ChartCtr {
 	public void saveChart(Chart chart, int year, String pedigree) {
 		chart.setYear(year);
 		chart.setPedigree(pedigree);
-		System.out.println("ID: " + chart.getChartID());
-		System.out.println("Year: " + chart.getYear());
-		System.out.println("Pedigree: " + chart.getPedigree());
-		System.out.println("Type: " + chart.getType());
 		try {
 			dbC.updateChart(chart);
 		} catch (SQLException e) {
