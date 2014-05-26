@@ -137,11 +137,8 @@ public class ChooseQueenPanel extends JPanel {
 		try {
 			Queen queen = qCtr.getQueenByID(Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString()));
 			if(queen == null) {
-				//TODO: Fejl - "vælg en dronning"
+				JOptionPane.showMessageDialog(queenInfoPanel, "En dronning skal markeres", "Fejl", JOptionPane.ERROR_MESSAGE);
 			} else {
-				//TODO: send chart og queen objektet til queenInfoPanel (check om queen er valgt først)
-				//TODO: under queenInfoPanel opret nyt CHartPart, sæt Queen til den og vis queens årskarakter hvis de er der
-				//TODO  Når info gemmes valideres det, hvis det går igennem gemmes chartpart objektet, tilføjes til chart og chart sendes med til newsistercharpanel
 				chartPanel.addQueenInfoPanel(chart, queen);
 			}
 		//} catch (SQLException e) {
