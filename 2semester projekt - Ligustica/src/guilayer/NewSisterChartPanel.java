@@ -121,8 +121,7 @@ public class NewSisterChartPanel extends JPanel {
 	public void chooseQueen(Chart chart) {
 		ChartPanel chartPanel = ChartPanel.getInstance();
 		try {
-			//TODO gem year og pedigree i chart objektet
-			//TODO valider først den data. evt. lav validering i ctr
+
 			chartPanel.chooseQueenPanel(chart);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
