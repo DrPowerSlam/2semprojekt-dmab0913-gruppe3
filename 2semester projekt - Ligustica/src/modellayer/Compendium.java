@@ -1,3 +1,9 @@
+/**
+ * Handles the class Compendium
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package modellayer;
 import java.util.ArrayList;
 
@@ -6,6 +12,12 @@ public class Compendium {
 	private String name, date;
 	private ArrayList<Chart> charts;
 	
+	/**
+	 * Constructor for the class Compendium
+	 * @param compendiumID
+	 * @param name
+	 * @param date
+	 */
 	public Compendium(int compendiumID, String name, String date) {
 		super();
 		this.compendiumID = compendiumID;
@@ -14,6 +26,9 @@ public class Compendium {
 		this.charts = new ArrayList<Chart>();
 	}
 	
+	/**
+	 * Empty constructor
+	 */
 	public Compendium() {
 		this.charts = new ArrayList<Chart>();
 	}

@@ -1,3 +1,9 @@
+/**
+ * Handles the class Settings
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package modellayer;
 
 public class Settings {
@@ -14,6 +20,10 @@ public class Settings {
 		height = 545;
 	}
 	
+	/**
+	 * 
+	 * @return instance
+	 */
 	public static Settings getInstance() {
 		if(instance == null) {
 	         instance = new Settings();

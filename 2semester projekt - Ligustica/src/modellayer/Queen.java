@@ -1,3 +1,9 @@
+/**
+ * Handles the class Queen
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package modellayer;
 import java.util.ArrayList;
 
@@ -12,7 +18,22 @@ public class Queen {
 	private boolean isAlive;
 	
 	
-	
+	/**
+	 * Constructor for the class Queen
+	 * @param queenID
+	 * @param year
+	 * @param honeyYieldYear
+	 * @param swarmTendency
+	 * @param nosema
+	 * @param temper
+	 * @param honeycomFirmness
+	 * @param clensingAbility
+	 * @param name
+	 * @param mother
+	 * @param fathersMother
+	 * @param breeder
+	 * @param isAlive
+	 */
 	public Queen(int queenID, int year, int honeyYieldYear, int swarmTendency,
 			int nosema, int temper, int honeycomFirmness, int clensingAbility,
 			String name, Queen mother, Queen fathersMother,
@@ -33,6 +54,9 @@ public class Queen {
 		this.isAlive = isAlive;
 	}
 
+	/**
+	 * Empty constructor for the class Queen
+	 */
 	public Queen() {
 		new ArrayList<Queen>();
 	}
@@ -237,6 +261,12 @@ public class Queen {
 	}
 
 
+	/**
+	 * Compares two objects of Queen
+	 * @param q
+	 * @return true //if the objects are equal
+	 * @return false //if the objects are not equal
+	 */
 	public boolean equals(Queen q)
 	{
 		boolean result = false;
