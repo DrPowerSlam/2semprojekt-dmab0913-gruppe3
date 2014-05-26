@@ -96,7 +96,12 @@ public class ChartCtr {
 	}
 	
 	public boolean validateYear(String year) {
-		return vCtr.stringExactLength(year, 4);
+		boolean returnValue = false;
+		if(year != null) {
+		returnValue = vCtr.stringExactLength(year, 4);
+		}
+		
+		return returnValue;
 	}
 	
 	public boolean validateGrade(int grade) {
