@@ -63,9 +63,9 @@ create table Compendium (
 create table Chart (
 	chartID  int  IDENTITY(1,1) not null, 
 	breederID int not null,
-	year int not null,
+	year int,
 	pedigree varchar(255),
-	type varchar(50) not null,
+	type varchar(50),
 	compendiumID int not null,
     	primary key (chartID),
 	foreign key(breederID) references Breeder(breederID),
