@@ -28,7 +28,6 @@ public class ChartCtr {
 	
 	public Chart startChart() {
 		Chart chart = new Chart(settings.getBreeder(), true);
-		chart.setType("true");
 		Chart c = null;
 		try {
 			dbC.insertChart(chart);
@@ -39,6 +38,8 @@ public class ChartCtr {
 		
 		return c;
 	}
+	
+	
 	
 	public void saveChart(Chart chart, int year, String pedigree) {
 		chart.setYear(year);
