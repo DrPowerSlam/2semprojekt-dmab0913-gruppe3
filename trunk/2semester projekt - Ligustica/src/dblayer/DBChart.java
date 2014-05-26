@@ -69,7 +69,6 @@ public class DBChart implements IFDBChart{
    	 int controlInt = -1;
    	 String insert = "insert into Chart(breederID, year, pedigree, type, compendiumID)"
                       + "values (?, ?, ?, ?, ?)";
-   	 //System.out.println(insert);
    	 try {
    		 pstmt = con.prepareStatement(insert);
    		 pstmt.setInt(1, c.getBreeder().getBreederID());
