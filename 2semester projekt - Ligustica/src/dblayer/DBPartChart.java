@@ -205,7 +205,7 @@ public class DBPartChart implements IFDBPartChart {
 			results = stmt.executeQuery(query);
 			if( results.next() ){
 				cObj = buildPartChart(results);
-				stmt.close();
+				
 				if(retrieveAssociation) {
 					IFDBChart dbChart = new DBChart();
 					 cObj.setChart(dbChart.selectSingleChart(results.getInt("chartID"), false));
@@ -213,7 +213,7 @@ public class DBPartChart implements IFDBPartChart {
 					 IFDBQueen dbQueen = new DBQueen();
 					 cObj.setQueen(dbQueen.selectSingleQueen(results.getInt("queenID"), false));
 				 }	
-				
+				stmt.close();
 			}else{ //No partPartChart found
 				cObj = null;
 			}

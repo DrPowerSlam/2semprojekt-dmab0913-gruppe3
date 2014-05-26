@@ -38,7 +38,7 @@ public class DBCompendiumTest {
 	 */
 	public static void testSetup() throws SQLException, FileNotFoundException{
 		
-		//testConnection.insertDatabaseData();
+		testConnection.insertDatabaseData();
 		
 		testCompendiumInsert.setCompendiumID(1);
 		testCompendiumInsert.setName("Compendie 2013");
