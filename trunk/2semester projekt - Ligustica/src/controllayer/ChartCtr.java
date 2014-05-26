@@ -30,8 +30,8 @@ public class ChartCtr {
 		Chart c = null;
 		try {
 			dbC.insertChart(chart);
-			c = dbC.selectSingleChart(dbC.getMaxID(), false);
-			c.setBreeder(settings.getBreeder());
+			c = dbC.selectSingleChart(dbC.getMaxID(), true);
+			//c.setBreeder(settings.getBreeder());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
