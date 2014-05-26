@@ -1,11 +1,13 @@
 package controllayer;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dblayer.DBChart;
 import dblayer.DBPartChart;
 import dblayer.IFDBChart;
 import dblayer.IFDBPartChart;
+import modellayer.Breeder;
 import modellayer.Chart;
 import modellayer.PartChart;
 import modellayer.Queen;
@@ -76,6 +78,24 @@ public class ChartCtr {
 		return chart;
 	}
 	
+	public ArrayList<Chart> getAllCharts() {
+		return dbC.getAllCharts(true);
+	}
+	
+	public ArrayList<Chart> getAllBreederCharts(Breeder breeder) {
+		ArrayList<Chart> theListToReturn;
+		theListToReturn = new ArrayList<Chart>();
+		
+		ArrayList<Chart> allCharts = getAllCharts();
+		
+		for(Chart c : allCharts) {
+			if(c.getBreeder().getBreederID() == breeder.getBreederID()) {
+				theListToReturn.add(c);
+			}
+		}
+		
+		return theListToReturn;
+	}
 	
 	public boolean validateYear(String year) {
 		return vCtr.stringExactLength(year, 4);
