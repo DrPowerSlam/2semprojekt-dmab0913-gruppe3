@@ -158,7 +158,7 @@ public class DBQueen implements IFDBQueen {
 			
 		     String query = buildQuery(wClause);
 	   
-		     try{ // read the cities from the database
+		     try{ // read the queens from the database
 				 Statement stmt = con.createStatement();
 			 	 stmt.setQueryTimeout(5);
 			 	 results = stmt.executeQuery(query);
@@ -170,11 +170,13 @@ public class DBQueen implements IFDBQueen {
 						 Queen motherObj = selectSingleQueen(results.getInt("mother"), false);
 						 qObj.setMother(motherObj);
 						 
-						 Queen fathersMotherObj = selectSingleQueen(results.getInt("fathersMother"), false);
+						 Queen fathersMotherObj = selectSingleQueen(
+								 results.getInt("fathersMother"), false);
 						 qObj.setMother(fathersMotherObj);
 						 
 						 IFDBBreeder dbBreeder = new DBBreeder();
-						 qObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
+						 qObj.setBreeder(dbBreeder.selectSingleBreeder(
+								 results.getInt("breederID"), false));
 					 }				 
 			         list.add(qObj);	
 				 }//end while

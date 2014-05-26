@@ -24,9 +24,8 @@ public class QueenCtr {
 		return dbQ.getAllQueens(true);
 	}
 	
-	public ArrayList<Queen> getAllBreederQueens(Breeder breeder) {
-		ArrayList<Queen> theListToReturn;
-		theListToReturn = new ArrayList<Queen>();
+	public ArrayList<Queen> findQueensByBreeder(Breeder breeder) {
+		ArrayList<Queen> theListToReturn = new ArrayList<Queen>();
 		
 		ArrayList<Queen> allQueens = getAllQueens();
 		

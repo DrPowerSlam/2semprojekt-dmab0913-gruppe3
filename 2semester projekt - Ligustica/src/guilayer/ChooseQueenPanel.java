@@ -103,10 +103,10 @@ public class ChooseQueenPanel extends JPanel {
 		
 	}
 
+	
 	private void initTable() {
-		//TODO: Gør så man kun kan se avlerens (settings.getBreeder()) dronninger
 		try {
-			ArrayList<Queen> queens =  qCtr.getAllBreederQueens(chart.getBreeder());
+			ArrayList<Queen> queens =  qCtr.findQueensByBreeder(chart.getBreeder());
 			ChooseQueenTableModel model = new ChooseQueenTableModel(queens);
 			sorter = new TableRowSorter<ChooseQueenTableModel>(model);
 	        table = new JTable(model);
@@ -123,7 +123,6 @@ public class ChooseQueenPanel extends JPanel {
 	
 	private void newFilter() {
 	    RowFilter<ChooseQueenTableModel, Object> rf = null;
-	    //If current expression doesn't parse, don't update.
 	    try {
 	        rf = RowFilter.regexFilter(filterText.getText(), 1);
 	    } catch (java.util.regex.PatternSyntaxException e) {
@@ -142,7 +141,7 @@ public class ChooseQueenPanel extends JPanel {
 				chartPanel.addQueenInfoPanel(chart, queen);
 			}
 		} catch(IndexOutOfBoundsException e){
-            
+			JOptionPane.showMessageDialog(queenInfoPanel, "En dronning skal markeres", "Fejl", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
