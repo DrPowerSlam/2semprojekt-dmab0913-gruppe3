@@ -38,6 +38,10 @@ public class ChartCtr {
 		return chart;
 	}
 	
+	public PartChart startPartChar(Chart chart, Queen queen) {
+		return new PartChart(chart, queen);
+	}
+	
 	public void saveChart(Chart chart, int year, String pedigree) {
 		chart.setYear(year);
 		chart.setPedigree(pedigree);
@@ -48,7 +52,7 @@ public class ChartCtr {
 		}
 	}
 	
-	public Chart createPartChart(PartChart partChart, int year, String honeyYield, int swarmTendency, int temper, int honeycombFirmness, 
+	public Chart addInfo(PartChart partChart, int year, String honeyYield, int swarmTendency, int temper, int honeycombFirmness, 
 			int honeyYieldYear, int nosema, int cleansingAbility) {
 		PartChart pC = partChart;
 		Chart chart = pC.getChart();

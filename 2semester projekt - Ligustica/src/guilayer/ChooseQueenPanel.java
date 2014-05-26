@@ -134,14 +134,17 @@ public class ChooseQueenPanel extends JPanel {
 	public void chooseQueen() throws SQLException {
 		ChartPanel chartPanel = ChartPanel.getInstance();
 		try {
-			Queen queen = qCtr.getQueenByID(Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString()));
+			Queen queen = qCtr.getQueenByID(Integer.parseInt(table.getValueAt(
+					table.getSelectedRow(), 0).toString()));
 			if(queen == null) {
-				JOptionPane.showMessageDialog(queenInfoPanel, "En dronning skal markeres", "Fejl", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(queenInfoPanel, "En dronning skal markeres", 
+						"Fejl", JOptionPane.ERROR_MESSAGE);
 			} else {
 				chartPanel.addQueenInfoPanel(chart, queen);
 			}
 		} catch(IndexOutOfBoundsException e){
-			JOptionPane.showMessageDialog(queenInfoPanel, "En dronning skal markeres", "Fejl", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(queenInfoPanel, "En dronning skal markeres", 
+					"Fejl", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

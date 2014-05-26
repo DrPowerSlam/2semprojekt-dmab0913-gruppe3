@@ -54,7 +54,7 @@ public class AddQueenInfoPanel extends JPanel {
 		cCtr = new ChartCtr();
 		this.chart = chart;
 		this.queen = queen;
-		partChart = new PartChart(chart, queen);
+		partChart = cCtr.startPartChar(chart, queen);
 		initPanel();
 		initComponents();
 		
@@ -116,7 +116,7 @@ public class AddQueenInfoPanel extends JPanel {
 		btnAddQueen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 try {
-					createChart();
+					addInfo();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -171,8 +171,7 @@ public class AddQueenInfoPanel extends JPanel {
 		queenInfoPanel.add(lblCleansingAbility);
 	}
 	
-	private void createChart() throws SQLException {
-		//ChartPanel chartPanel = ChartPanel.getInstance();
+	private void addInfo() throws SQLException {
 		try {
 			String years = txtYear.getText();
 			String honeyYield = txtHoneyYield.getText();
@@ -189,25 +188,34 @@ public class AddQueenInfoPanel extends JPanel {
 				if(cCtr.validateYear(years)) {
 					//Validate the grades
 					int year = Integer.parseInt(years);
-					if(cCtr.validateGrade(swarmTendency) && cCtr.validateGrade(temper) && cCtr.validateGrade(honeycombFirmness) && cCtr.validateGrade(honeyYieldYear) 
+					if(cCtr.validateGrade(swarmTendency) && cCtr.validateGrade(temper) && 
+							cCtr.validateGrade(honeycombFirmness) && 
+							cCtr.validateGrade(honeyYieldYear) 
 							&& cCtr.validateGrade(nosema) && cCtr.validateGrade(cleansingAbility)) {
 						//Save the object
-						Chart theChart = cCtr.createPartChart(partChart, year, honeyYield, swarmTendency, temper, honeycombFirmness, honeyYieldYear, nosema, cleansingAbility);
+						Chart theChart = cCtr.addInfo(partChart, year, honeyYield, 
+								swarmTendency, temper, honeycombFirmness, honeyYieldYear, 
+								nosema, cleansingAbility);
 						//Go back to the Chart
 						ChartPanel chartPanel = ChartPanel.getInstance();
 						chartPanel.newSisterChart(theChart);
 						
 					}else {
-						JOptionPane.showMessageDialog(queenInfoPanel, "Årskaraktere, nosema og udrensningsevne skal være tal fra 1 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(queenInfoPanel, "Årskaraktere, nosema og "
+								+ "udrensningsevne skal være tal fra 1 til og med 5.", "Fejl",
+								JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
-					JOptionPane.showMessageDialog(queenInfoPanel, "Du skal angive et år på 4 cifre.", "Fejl", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(queenInfoPanel, "Du skal angive et år på 4"
+							+ " cifre.", "Fejl", JOptionPane.ERROR_MESSAGE);
 				}
 			}else {
-				JOptionPane.showMessageDialog(queenInfoPanel, "1 eller flere felter er ikke blevet udfyldt", "Fejl", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(queenInfoPanel, "1 eller flere felter er ikke"
+						+ " blevet udfyldt", "Fejl", JOptionPane.ERROR_MESSAGE);
 			}
 		}catch (NumberFormatException e1) {
-			JOptionPane.showMessageDialog(queenInfoPanel, "Årskaraktere, nosema og udrensningsevne skal være tal fra 1 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(queenInfoPanel, "Årskaraktere, nosema og udrensningsevne"
+					+ " skal være tal fra 1 til og med 5.", "Fejl", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}
