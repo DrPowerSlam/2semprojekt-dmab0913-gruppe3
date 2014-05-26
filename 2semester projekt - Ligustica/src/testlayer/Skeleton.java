@@ -3,6 +3,10 @@ package testlayer;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+/**
+ * A simple skeleton to show the picture, might get deleted in the final version of the program
+ * @author Gruppe 3
+ */
 public class Skeleton extends JFrame {
 
     public Skeleton() {
