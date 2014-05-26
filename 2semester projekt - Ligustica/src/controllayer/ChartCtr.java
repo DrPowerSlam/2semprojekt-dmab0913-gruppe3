@@ -28,18 +28,15 @@ public class ChartCtr {
 	
 	public Chart startChart() {
 		Chart chart = new Chart(settings.getBreeder(), true);
-		Chart c = null;
 		try {
 			dbC.insertChart(chart);
-			c = dbC.selectSingleChart(dbC.getMaxID(), true);
+			chart.setChartID(dbC.getMaxID());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return c;
+		return chart;
 	}
-	
-	
 	
 	public void saveChart(Chart chart, int year, String pedigree) {
 		chart.setYear(year);
