@@ -141,8 +141,6 @@ public class ChooseQueenPanel extends JPanel {
 			} else {
 				chartPanel.addQueenInfoPanel(chart, queen);
 			}
-		//} catch (SQLException e) {
-		//	e.printStackTrace();
 		} catch(IndexOutOfBoundsException e){
             
 		}
