@@ -26,6 +26,7 @@ public class ChartCtr {
 	
 	public Chart startChart() {
 		Chart chart = new Chart(settings.getBreeder(), true);
+		chart.setType("true");
 		Chart c = null;
 		try {
 			dbC.insertChart(chart);
@@ -40,6 +41,10 @@ public class ChartCtr {
 	public void saveChart(Chart chart, int year, String pedigree) {
 		chart.setYear(year);
 		chart.setPedigree(pedigree);
+		System.out.println("ID: " + chart.getChartID());
+		System.out.println("Year: " + chart.getYear());
+		System.out.println("Pedigree: " + chart.getPedigree());
+		System.out.println("Type: " + chart.getType());
 		try {
 			dbC.updateChart(chart);
 		} catch (SQLException e) {

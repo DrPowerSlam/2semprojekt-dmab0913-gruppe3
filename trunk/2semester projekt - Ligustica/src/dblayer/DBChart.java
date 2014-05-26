@@ -76,7 +76,8 @@ public class DBChart implements IFDBChart{
    		 pstmt.setInt(2, c.getYear());
    		 pstmt.setString(3, c.getPedigree());
    		 pstmt.setString(4, c.getType());
-   		 pstmt.setInt(5, c.getCompendium().getCompendiumID());
+   		 //pstmt.setInt(5, c.getCompendium().getCompendiumID());
+   		 pstmt.setInt(5, 1);
          controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
             System.out.println("SQL Error, Queen not inserted");
@@ -111,11 +112,12 @@ public class DBChart implements IFDBChart{
   		 pstmt.setInt(2, c.getYear());
   		 pstmt.setString(3, c.getPedigree());
   		 pstmt.setString(4, c.getType());
-  		 pstmt.setInt(5, c.getCompendium().getCompendiumID());
+  		 //pstmt.setInt(5, c.getCompendium().getCompendiumID());
+  		 pstmt.setInt(5, 1);
   		 pstmt.setInt(6, c.getChartID());
    		 controlInt = pstmt.executeUpdate();
    	 } catch (SQLException sqlE) {
-   		 System.out.println("SQL Error, Queen not updated");
+   		 System.out.println("SQL Error, Chart not updated");
    		 System.out.println(sqlE.getMessage());
    	 } catch (Exception e) {
    		 e.getMessage();
