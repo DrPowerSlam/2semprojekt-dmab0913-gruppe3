@@ -43,15 +43,13 @@ public class ChartPanel extends JPanel {
 	 * Initialize Table
 	 */
 	private void initTable() {
-		
-		ArrayList<Chart> charts =  new ArrayList<Chart>();	
+		ChartCtr cCtr = new ChartCtr();
+		ArrayList<Chart> charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());	
 		ChartTableModel model = new ChartTableModel(charts);
         JTable table = new JTable(model);
 		scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 11, 445, 400);
         add(scrollPane);
-        
-
 	}
 	
 	/**

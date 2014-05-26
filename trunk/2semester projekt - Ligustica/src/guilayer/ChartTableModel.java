@@ -22,7 +22,7 @@ public class ChartTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 3;
     }
 
     @Override
@@ -33,13 +33,10 @@ public class ChartTableModel extends AbstractTableModel {
                 name = "ID";
                 break;
             case 1:
-                name = "Dronning";
-                break;
-            case 2:
             	name = "År";
             	break;
-            case 3:
-            	name = "Indberettet";
+            case 2:
+            	name = "Stamtavle";
             	break;
         }
         return name;
@@ -66,13 +63,10 @@ public class ChartTableModel extends AbstractTableModel {
                 value = chart.getChartID();
                 break;
             case 1:
-                //value = chart.getPartChart().getQueen().getName();
-                break;
-            case 2:
             	value = chart.getYear();
             	break;
-            case 3:
-            	//value = chart.getTemper(); //TODO: Lav om så man kan se om den er indberettet
+            case 2:
+            	value = chart.getPedigree();
             	break;
         }
         return value;
