@@ -210,7 +210,6 @@ public class DBChart implements IFDBChart{
 			results = stmt.executeQuery(query);
 			if( results.next() ){
 				cObj = buildChart(results);
-				stmt.close();
 				if(retrieveAssociation) {
 					 IFDBBreeder dbBreeder = new DBBreeder();
 					 cObj.setBreeder(dbBreeder.selectSingleBreeder(results.getInt("breederID"), false));
