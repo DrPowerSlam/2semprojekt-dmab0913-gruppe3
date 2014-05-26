@@ -68,7 +68,7 @@ public class ChartCtrTest {
 	@Test
 	public void testCreatePartChart() {
 		int size = testChart.getAllPartCharts().size();
-		testChart = ctr.createPartChart(testPartChart, 9999, "1", 1, 1, 1, 1, 1, 1);
+		testChart = ctr.addInfo(testPartChart, 9999, "1", 1, 1, 1, 1, 1, 1);
 		assertTrue("PartChart not added to testChart arraylist", size < testChart.getAllPartCharts().size());
 	}
 }
