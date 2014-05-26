@@ -53,7 +53,6 @@ public class ChooseQueenTableModel extends AbstractTableModel {
         Class type = String.class;
         switch (columnIndex) {
             case 0:
-            case 1:
                 type = Integer.class;
                 break;
         }

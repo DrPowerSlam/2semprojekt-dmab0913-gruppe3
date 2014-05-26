@@ -22,7 +22,7 @@ public class PartChartTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 7;
     }
 
     @Override
@@ -30,19 +30,25 @@ public class PartChartTableModel extends AbstractTableModel {
         String name = "";
         switch (column) {
             case 0:
-                name = "ID";
-                break;
-            case 1:
                 name = "Dronning";
                 break;
-            case 2:
-            	name = "Honningudbytte";
-            	break;
-            case 3:
+            case 1:
             	name = "Sværmetendens";
             	break;
-            case 4:
+            case 2:
             	name = "Temperament";
+            	break;
+            case 3:
+            	name = "Tavlefasthed";
+            	break;
+            case 4:
+            	name = "Honningudbytte";
+            	break;
+            case 5:
+            	name = "Nosema";
+            	break;
+            case 6:
+            	name = "Udrensningsevne";
             	break;
         }
         return name;
@@ -66,19 +72,25 @@ public class PartChartTableModel extends AbstractTableModel {
         Object value = null;
         switch (columnIndex) {
             case 0:
-                value = partChart.getPartChartID();
-                break;
-            case 1:
                 value = partChart.getQueen().getName();
                 break;
+            case 1:
+                value = partChart.getSwarmTendency();
+                break;
             case 2:
-            	value = partChart.getHoneyYield();
+            	value = partChart.getTemper();
             	break;
             case 3:
-            	value = partChart.getSwarmTendency();
+            	value = partChart.getHoneycomFirmness();
             	break;
             case 4:
-            	value = partChart.getTemper();
+            	value = partChart.getHoneyYield();
+            	break;
+            case 5:
+            	value = partChart.getNosema();
+            	break;
+            case 6:
+            	value = partChart.getClensingAbility();
             	break;
         }
         return value;

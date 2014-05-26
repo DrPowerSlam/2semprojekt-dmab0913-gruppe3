@@ -273,6 +273,8 @@ INSERT INTO Breeder VALUES('Jesper', 'ErAdmin', 'Sofiendalsvej 60', '2500', '123
 INSERT INTO Breeder VALUES('Test', 'IkkeAdmin', 'Sofiendalsvej 60', '2500', '12345678', 'a', 'a', 'false');
 INSERT INTO Compendium VALUES('TEST', 'TEST');
 INSERT INTO Chart VALUES(1, 1999, 'pedigree', 'true', 1);
-INSERT INTO Queen VALUES(2012, 'KS023', 4, 4, 4, 5, 5, 3, 'true', NULL, NULL, 3);
-INSERT INTO Queen VALUES(2012, 'KS024', 4, 4, 4, 5, 5, 3, 'true', NULL, NULL, 3);
-INSERT INTO Queen VALUES(2012, 'KS025', 4, 4, 4, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'KS023', 3, 4, 4, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'KS024', 4, 4, 1, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'KS025', 4, 5, 4, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'AS025', 3, 4, 4, 5, 5, 3, 'true', NULL, NULL, 2);
+INSERT INTO Queen VALUES(2012, 'DA025', 4, 4, 4, 2, 1, 3, 'true', NULL, NULL, 1);

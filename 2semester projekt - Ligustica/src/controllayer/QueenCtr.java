@@ -24,6 +24,21 @@ public class QueenCtr {
 		return dbQ.getAllQueens(true);
 	}
 	
+	public ArrayList<Queen> getAllBreederQueens(Breeder breeder) {
+		ArrayList<Queen> theListToReturn;
+		theListToReturn = new ArrayList<Queen>();
+		
+		ArrayList<Queen> allQueens = getAllQueens();
+		
+		for(Queen q : allQueens) {
+			if(q.getBreeder().getBreederID() == breeder.getBreederID()) {
+				theListToReturn.add(q);
+			}
+		}
+		
+		return theListToReturn;
+	}
+	
 	public Queen getQueenByID(int queenID) {
 		Queen queen = null;
 		try {

@@ -45,6 +45,12 @@ public class ChooseQueenPanel extends JPanel {
 		initPanel();
 		initComponents();
 		
+		try {
+		initTable();
+		}catch (ClassCastException e) {
+			//
+		}
+		
 	}
 
 	private void initPanel() {
@@ -74,8 +80,6 @@ public class ChooseQueenPanel extends JPanel {
 		});
 		queenInfoPanel.add(btnAddQueen);
 		
-		initTable();
-		
 		filterText = new JTextField();
 		filterText.setBounds(47, 269, 302, 20);
 		filterText.getDocument().addDocumentListener(
@@ -101,15 +105,19 @@ public class ChooseQueenPanel extends JPanel {
 
 	private void initTable() {
 		//TODO: Gør så man kun kan se avlerens (settings.getBreeder()) dronninger
-		ArrayList<Queen> queens =  qCtr.getAllQueens();
-		ChooseQueenTableModel model = new ChooseQueenTableModel(queens);
-		sorter = new TableRowSorter<ChooseQueenTableModel>(model);
-        table = new JTable(model);
-        table.setRowSorter(sorter);
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 31, 339, 230);
-		queenInfoPanel.add(scrollPane);
+		try {
+			ArrayList<Queen> queens =  qCtr.getAllBreederQueens(chart.getBreeder());
+			ChooseQueenTableModel model = new ChooseQueenTableModel(queens);
+			sorter = new TableRowSorter<ChooseQueenTableModel>(model);
+	        table = new JTable(model);
+	        table.setRowSorter(sorter);
+	        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			JScrollPane scrollPane = new JScrollPane(table);
+			scrollPane.setBounds(10, 31, 339, 230);
+			queenInfoPanel.add(scrollPane);
+		}catch (ClassCastException e) {
+			
+		}
 		
 	}
 	
