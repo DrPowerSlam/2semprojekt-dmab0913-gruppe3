@@ -1,3 +1,9 @@
+/**
+ * Handles the class Chart
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package modellayer;
 
 import java.util.ArrayList;
@@ -12,6 +18,15 @@ public class Chart {
 	private String pedigree, type;
 	private ArrayList<PartChart> partCharts;
 	
+	/**
+	 * Constructor for the class Chart
+	 * @param chartID
+	 * @param pedigree
+	 * @param isSisterChart
+	 * @param year
+	 * @param breeder
+	 * @param compendium
+	 */
 	public Chart(int chartID, String pedigree, boolean isSisterChart, int year, Breeder breeder, Compendium compendium) {
 		this.chartID = chartID;
 		this.year = year;
@@ -22,6 +37,9 @@ public class Chart {
 		this.partCharts = new ArrayList<PartChart>();
 	}
 	
+	/**
+	 * Empty constructor
+	 */
 	public Chart() {
 		this.partCharts = new ArrayList<PartChart>();
 	}
@@ -138,6 +156,13 @@ public class Chart {
 		this.type = type;
 	}
 	
+	
+	/**
+	 * Compares two objects of Chart
+	 * @param c Chart
+	 * @return true //if the objects are equal
+	 * @return false //if the objects are not equal
+	 */
 	public boolean equals(Chart c)
 	{
 		boolean result = false;

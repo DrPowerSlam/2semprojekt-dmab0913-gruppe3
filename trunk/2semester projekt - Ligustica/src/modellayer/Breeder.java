@@ -1,3 +1,9 @@
+/**
+ * Handles the class Breeder
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package modellayer;
 
 import dblayer.IFDBBreeder;
@@ -11,6 +17,17 @@ public class Breeder {
 	private boolean isAdmin;
 	private City city;
 	
+	/**
+	 * Constructor for the class Breeder
+	 * @param fname
+	 * @param lname
+	 * @param address
+	 * @param phone
+	 * @param email
+	 * @param password
+	 * @param isAdmin
+	 * @param breederID
+	 */
 	public Breeder(String fname, String lname, String address, String phone, String email, 
 			String password, boolean isAdmin, int breederID) 
 	{
@@ -25,6 +42,9 @@ public class Breeder {
 		
 	}
 	
+	/**
+	 * Empty constructor
+	 */
 	public Breeder() {
 		
 	}
@@ -155,6 +175,12 @@ public class Breeder {
 		this.city = city;
 	}
 	
+	/**
+	 * Compares two objects of Breeder
+	 * @param b Breeder
+	 * @return true //if the objects are equal
+	 * @return false //if the objects are not equal
+	 */
 	public boolean equals(Breeder b)
 	{
 		boolean result = false;

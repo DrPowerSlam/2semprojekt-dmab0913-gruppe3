@@ -1,3 +1,9 @@
+/**
+ * Handles the class PartChart
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package modellayer;
 
 public class PartChart {
@@ -7,11 +13,18 @@ public class PartChart {
 	private Queen queen;
 	private String honeyYield;
 	
+	/**
+	 * Constructor of the class PartChart
+	 * @param chart
+	 * @param queen
+	 */
 	public PartChart(Chart chart, Queen queen) {
 		this.chart = chart;
 		this.queen = queen;
 	}
-	
+	/**
+	 * Empty constructor
+	 */
 	public PartChart() {
 		
 	}
