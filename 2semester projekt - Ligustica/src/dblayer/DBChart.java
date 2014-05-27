@@ -140,7 +140,7 @@ public class DBChart implements IFDBChart{
             pstmt.setInt(1, c.getChartID());
             controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
-            System.out.println("SQL Error, Queen not deleted");
+            System.out.println("SQL Error, Chart not deleted");
             System.out.println(sqlE.getMessage());
         } catch (Exception e) {
             e.getMessage();

@@ -107,10 +107,9 @@ public class DBChartTest {
 	 */
 	@Test
 	public void testDeleteChart() throws SQLException {
-		
-		assertEquals("Delete failed", 1, testChartDB.deleteChart(testChartDelete));
-		//assertNull(testChartDB.deleteChart(testChartDB.selectSingleChart(3,true)));
-		
+		int id = testChartDB.getMaxID();
+		testChartDelete.setChartID(id);
+		assertEquals("Delete failed", 1, testChartDB.deleteChart(testChartDelete));		
 	}
 	
 	/**
@@ -119,7 +118,10 @@ public class DBChartTest {
 	 */
 	@Test
 	public void testSelectSingleChart() throws SQLException {
-		//assertEquals(testChartInsert.equals(testChartDB.selectSingleChart(1, false)), true);
+		testChartDB.insertChart(testChartInsert);
+		int id = testChartDB.getMaxID();
+		testChartInsert.setChartID(id);
+		assertTrue("false", testChartInsert.equals(testChartDB.selectSingleChart(id, true)));
 	}
 	
 	/**

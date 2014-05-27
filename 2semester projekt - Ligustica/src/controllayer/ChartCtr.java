@@ -53,7 +53,7 @@ public class ChartCtr {
 	}
 	
 	public Chart addInfo(PartChart partChart, int year, String honeyYield, int swarmTendency, int temper, int honeycombFirmness, 
-			int honeyYieldYear, int nosema, int cleansingAbility) {
+			int honeyYieldYear, int nosema, int cleansingAbility) throws SQLException {
 		PartChart pC = partChart;
 		Chart chart = pC.getChart();
 		
@@ -73,6 +73,9 @@ public class ChartCtr {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		//set id
+		pC.setPartChartID(dbPC.selectSinglePartChart(dbPC.getMaxID(), false).getPartChartID());
 		
 		//Add the saved partChart to the chart objects arrayList
 		chart.addPartChart(pC);

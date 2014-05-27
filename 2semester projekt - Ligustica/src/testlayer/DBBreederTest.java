@@ -20,7 +20,7 @@ public class DBBreederTest {
 	private static dblayer.DBBreeder testBreederDB = new DBBreeder();
 	private static Breeder testBreederUpdate;
 	private static Breeder testBreederInsert = new Breeder();
-	private static Breeder testBreederDelete;
+	private static Breeder testBreederDelete = new Breeder();
 	private static City testCity = new City(2500, "Valby");
 
 	
@@ -54,7 +54,8 @@ public class DBBreederTest {
 		testBreederUpdate.setAdmin(false);
 		testBreederUpdate.setCity(testCity);
 		
-		testBreederDelete = testBreederDB.selectSingleBreeder(2, true);
+		//testBreederDelete = testBreederDB.selectSingleBreeder(2, true);
+		testBreederDelete.setBreederID(4);
 				
 		testBreederDB.insertBreeder(testBreederDelete);	
 	}
@@ -95,7 +96,7 @@ public class DBBreederTest {
 	
 	
 	/**
-	 * Tests if you can select all cities in the database
+	 * Tests if you can select all breeders in the database
 	 * @throws SQLException
 	 */
 	@Test

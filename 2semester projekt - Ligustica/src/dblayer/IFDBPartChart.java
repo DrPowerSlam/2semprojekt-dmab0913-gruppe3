@@ -22,5 +22,7 @@ public interface IFDBPartChart {
 	public int updatePartChart(PartChart c) throws SQLException; 
 	
 	public int deletePartChart(PartChart c) throws SQLException;
+	
+	public int getMaxID();
   
 }
