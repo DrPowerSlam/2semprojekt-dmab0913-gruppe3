@@ -1,3 +1,9 @@
+/**
+ * Handles the class breeder controller
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package controllayer;
 
 import java.util.ArrayList;
@@ -10,16 +16,19 @@ public class BreederCtr {
 	private IFDBBreeder dbB;
 	private Settings settings;
 	
+	/**
+	 * The constructor for the breeder controller. Gets the instance of the settings class
+	 */
 	public BreederCtr() {
 		dbB = new DBBreeder();
 		settings = Settings.getInstance();
 	}
 	
 	/**
-	 * 
-	 * @param email
-	 * @param password
-	 * @return
+	 *  Validates the login.
+	 * @param email The login name
+	 * @param password The password
+	 * @return True if the login is valid, false if it's invalid
 	 */
 	public boolean validateLogin(String email, String password) {
 		boolean result = false;
@@ -42,7 +51,7 @@ public class BreederCtr {
 	}
 	
 	/**
-	 * 
+	 * Logs the breeder out by setting the breeder in the settings class to null.
 	 */
 	public void logOut() {
 		settings.setBreeder(null);
