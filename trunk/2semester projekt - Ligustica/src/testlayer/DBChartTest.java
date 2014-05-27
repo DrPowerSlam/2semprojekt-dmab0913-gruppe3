@@ -87,7 +87,7 @@ public class DBChartTest {
 	@AfterClass
 	public static void testCleanup() throws SQLException, FileNotFoundException {
 		
-		dblayer.DBConnection.getInstance().insertDatabaseData();
+		testConnection.insertDatabaseData();
 		
 	}
 	

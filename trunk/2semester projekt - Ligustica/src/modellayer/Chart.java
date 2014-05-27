@@ -177,7 +177,7 @@ public class Chart {
 		}
 		
 		result = this.chartID == c.getChartID() && this.year == c.getYear() && this.isSisterChart == c.isSisterChart
-				&& this.breeder.getBreederID() == c.breeder.getBreederID() && this.compendium.getCompendiumID() == c.getCompendium().getCompendiumID() && this.pedigree == c.getPedigree();
+				&& this.breeder.getBreederID() == c.breeder.getBreederID() && this.compendium.getCompendiumID() == c.getCompendium().getCompendiumID() && this.pedigree.equals(c.getPedigree());
 				//&& this.partCharts.equals(c.getAllPartCharts());
 		
 		return result;

@@ -82,6 +82,7 @@ public class ChartCtrTest {
 	public void testCreatePartChart() throws SQLException {
 		int size = testChart.getAllPartCharts().size();
 		testChart = ctr.addInfo(testPartChart, 9999, "1", 1, 1, 1, 1, 1, 1);
-		assertTrue("PartChart not added to testChart arraylist", size < testChart.getAllPartCharts().size());
+		assertTrue("PartChart not added to testChart arraylist", 
+				size < testChart.getAllPartCharts().size());
 	}
 }
