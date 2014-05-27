@@ -1,3 +1,9 @@
+/**
+ * Handles the class Chart controller
+ * 
+ * Authors: Jimmy Møller, Mikkel Petersen, Tue Brodersen, Thomas Bonderup and Christian Schmidt 
+ * Date: 26.May 2014.
+ */
 package controllayer;
 
 import java.sql.SQLException;
@@ -19,6 +25,9 @@ public class ChartCtr {
 	private Settings settings;
 	private ValidateCtr vCtr;
 
+	/**
+	 * Constructor for the chart controller. Gets the instance of the settings class.
+	 */
 	public ChartCtr() {
 		dbC = new DBChart();
 		dbPC = new DBPartChart();
@@ -26,6 +35,10 @@ public class ChartCtr {
 		vCtr = new ValidateCtr();
 	}
 	
+	/**
+	 * Creates a chart with the breeder that's logged in and inserts it to the database.
+	 * @return Returns the chart object
+	 */
 	public Chart startChart() {
 		Chart chart = new Chart(settings.getBreeder(), true);
 		try {
@@ -38,10 +51,22 @@ public class ChartCtr {
 		return chart;
 	}
 	
+	/**
+	 * Creates a new part chart and returns it.
+	 * @param chart The chart which the partchart is inserted into.
+	 * @param queen The queen that is a part of the partchart.
+	 * @return Returns the created partchart.
+	 */
 	public PartChart startPartChar(Chart chart, Queen queen) {
 		return new PartChart(chart, queen);
 	}
 	
+	/**
+	 * Save a chart with a year and pedigree
+	 * @param chart The chart to save
+	 * @param year The year/season the chart is meant for
+	 * @param pedigree The pedigree that's in focus
+	 */
 	public void saveChart(Chart chart, int year, String pedigree) {
 		chart.setYear(year);
 		chart.setPedigree(pedigree);
@@ -52,6 +77,20 @@ public class ChartCtr {
 		}
 	}
 	
+	/**
+	 * Adds information to the chart object and returns it. Saves the partchart in the database.
+	 * @param partChart The partchart in focus
+	 * @param year Year of the chart
+	 * @param honeyYield The honeyyield of the queen.
+	 * @param swarmTendency The swarm tendency of the queen
+	 * @param temper The temper of the queen
+	 * @param honeycombFirmness The honeycomb firmness of the honeycombs made by the queen
+	 * @param honeyYieldYear The honeyyield per year
+	 * @param nosema The nosema for the queen
+	 * @param cleansingAbility The cleansingability of the queen
+	 * @return Returns the chart object with the newly added info
+	 * @throws SQLException
+	 */
 	public Chart addInfo(PartChart partChart, int year, String honeyYield, int swarmTendency, 
 			int temper, int honeycombFirmness, 
 			int honeyYieldYear, int nosema, int cleansingAbility) throws SQLException {
@@ -84,10 +123,19 @@ public class ChartCtr {
 		return chart;
 	}
 	
+	/**
+	 * Get's all the charts in the database.
+	 * @return
+	 */
 	public ArrayList<Chart> getAllCharts() {
 		return dbC.getAllCharts(true);
 	}
 	
+	/**
+	 * Get all the charts a given breeder has made
+	 * @param breeder The breeder to search for
+	 * @return Returns an arraylist of the charts the breeder has made.
+	 */
 	public ArrayList<Chart> getAllBreederCharts(Breeder breeder) {
 		ArrayList<Chart> theListToReturn;
 		theListToReturn = new ArrayList<Chart>();
@@ -103,6 +151,11 @@ public class ChartCtr {
 		return theListToReturn;
 	}
 	
+	/**
+	 * Validates the year. It must be 4 in length (i.e. 0001 or 2014)
+	 * @param year The year to validate
+	 * @return Returns true if the year is valid, false if it's invalid
+	 */
 	public boolean validateYear(String year) {
 		boolean returnValue = false;
 		if(year != null) {
@@ -112,6 +165,11 @@ public class ChartCtr {
 		return returnValue;
 	}
 	
+	/**
+	 * Validates a grade. It can only be 1, 2, 3, 4 or 5.
+	 * @param grade The grade to validate
+	 * @return Returns true if the integer is valid, false if it's invalid
+	 */
 	public boolean validateGrade(int grade) {
 		return vCtr.validateInt(grade, 1, 5);
 	}
