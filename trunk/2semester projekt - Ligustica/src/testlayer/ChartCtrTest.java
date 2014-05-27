@@ -4,7 +4,12 @@
 package testlayer;
 
 import static org.junit.Assert.*;
+
+import java.sql.SQLException;
+
+import modellayer.Breeder;
 import modellayer.Chart;
+import modellayer.Compendium;
 import modellayer.PartChart;
 import modellayer.Queen;
 
@@ -14,6 +19,7 @@ import org.junit.Test;
 
 import controllayer.ChartCtr;
 import dblayer.DBChart;
+import dblayer.DBPartChart;
 
 /**
  * @author 
@@ -22,18 +28,24 @@ import dblayer.DBChart;
 public class ChartCtrTest {
 	
 	private static ChartCtr ctr = new ChartCtr();
-	private static Chart testChart;
+	private static Chart testChart = new Chart();
 	private static Queen testQueen = new Queen();
 	private static PartChart testPartChart;
 	private static DBChart testDBChart = new DBChart();
-
+	private static DBPartChart testDBPartChart = new DBPartChart();
+	private static Breeder testBreeder = new Breeder(null, null, null, null, null, null, false, 4);
+	private static Compendium testCompendium = new Compendium(1, null, null);
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		testQueen.setQueenID(1); //nødvendig for at indsætte i db
-		testChart = ctr.startChart();
+		//testChart = ctr.startChart(); //virker ikke med junit test da den kræver at man er logget ind
+		testChart.setChartID(1);
+		testChart.setBreeder(testBreeder);
+		testChart.setCompendium(testCompendium);
 		testPartChart = new PartChart(testChart, testQueen);
 	}
 
@@ -42,7 +54,8 @@ public class ChartCtrTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		testDBChart.deleteChart(testChart);
+		testDBPartChart.deletePartChart(testPartChart);
+		//testDBChart.deleteChart(testChart); //ingen chart sat ind pga login
 	}
 
 	@Test
@@ -66,7 +79,7 @@ public class ChartCtrTest {
 	}
 	
 	@Test
-	public void testCreatePartChart() {
+	public void testCreatePartChart() throws SQLException {
 		int size = testChart.getAllPartCharts().size();
 		testChart = ctr.addInfo(testPartChart, 9999, "1", 1, 1, 1, 1, 1, 1);
 		assertTrue("PartChart not added to testChart arraylist", size < testChart.getAllPartCharts().size());

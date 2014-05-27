@@ -40,7 +40,7 @@ public class DBCompendiumTest {
 		
 		testConnection.insertDatabaseData();
 		
-		testCompendiumInsert.setCompendiumID(1);
+		testCompendiumInsert.setCompendiumID(2);
 		testCompendiumInsert.setName("Compendie 2013");
 		testCompendiumInsert.setDate("30.feb. 2013");
 		
@@ -85,7 +85,7 @@ public class DBCompendiumTest {
 		testCompendiumUpdate.setName("TEST");
 		testCompendiumUpdate.setDate("TEST");
 		assertEquals("Update failed", 1, testCompendiumDB.updateCompendium(testCompendiumUpdate));
-		assertTrue("Updated object are not equal to object before update", testCompendiumUpdate.equals(testCompendiumDB.selectSingleCompendium(testCompendiumUpdate.getCompendiumID(), true)));
+		assertEquals("Updated object id not equal to object id before update", testCompendiumUpdate.getCompendiumID(), testCompendiumDB.selectSingleCompendium(testCompendiumUpdate.getCompendiumID(), false).getCompendiumID());
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class DBCompendiumTest {
 	 */
 	@Test
 	public void testSearchCompendiumOnName() throws SQLException {	
-		assertTrue("Objects are not equal", testCompendiumInsert.equals(testCompendiumDB.searchCompendiumOnName("Compendie 2013", true)));
+		assertEquals("Objects are not equal", testCompendiumInsert.getCompendiumID(), testCompendiumDB.searchCompendiumOnName("Compendie 2013", false).getCompendiumID());
 	}
 	
 	/**

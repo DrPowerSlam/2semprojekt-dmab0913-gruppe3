@@ -22,7 +22,7 @@ public class DBCompendium implements IFDBCompendium {
 		 }
 		 
 		public Compendium searchCompendiumOnName(String name, boolean retriveAssociation) {
-			String wClause = "name like % "+name+" %";
+			String wClause = "name like '%"+name+"%'";
 			return singleWhere(wClause, retriveAssociation);
 			 
 		}
@@ -71,7 +71,7 @@ public class DBCompendium implements IFDBCompendium {
 
 	   	 String update = "UPDATE Compendium SET "
 	   	 		+ "name = ?, "
-	   			+ "date = ?"
+	   			+ "date = ? "
 	   	 		+ "WHERE compendiumID = ?";
 
 	   	 System.out.println(update);
@@ -81,6 +81,7 @@ public class DBCompendium implements IFDBCompendium {
 	   		 
 	   		 pstmt.setString(1, c.getName());
 	   		 pstmt.setString(2, c.getDate());
+	   		 pstmt.setInt(3, c.getCompendiumID());
 	   	   		 
 	   		 controlInt = pstmt.executeUpdate();
 	   	 } catch (SQLException sqlE) {

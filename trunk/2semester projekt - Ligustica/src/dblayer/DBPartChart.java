@@ -38,8 +38,8 @@ public class DBPartChart implements IFDBPartChart {
 	/**
      * Select a single PartChart
      */
-    public PartChart selectSinglePartChart(int partPartChartID, boolean retriveAssociation) throws SQLException {
-   	 String wClause = "partPartChartID = "+partPartChartID;
+    public PartChart selectSinglePartChart(int partChartID, boolean retriveAssociation) throws SQLException {
+   	 String wClause = "partChartID = "+partChartID;
         return singleWhere(wClause, retriveAssociation);
     }
     
@@ -93,7 +93,7 @@ public class DBPartChart implements IFDBPartChart {
    	 	    + "cleansingAbility = ?,"
    	 	    + "chartID = ?,"
    	 	    + "queenID = ? "
-   	 		+ "WHERE partPartChartID = ?";
+   	 		+ "WHERE partChartID = ?";
 
    	 System.out.println(update);
    	 try {
@@ -128,14 +128,14 @@ public class DBPartChart implements IFDBPartChart {
    	 PreparedStatement pstmt = null;
    	 int controlInt = -1;
    	 
-   	 String delete = "DELETE FROM PartChart WHERE partPartChartID = ?";
+   	 String delete = "DELETE FROM PartChart WHERE partChartID = ?";
    	 //System.out.println(delete);
    	 try {
    		 pstmt = con.prepareStatement(delete);
             pstmt.setInt(1, c.getPartChartID());
             controlInt = pstmt.executeUpdate();
         } catch (SQLException sqlE) {
-            System.out.println("SQL Error, Queen not deleted");
+            System.out.println("SQL Error, partChart not deleted");
             System.out.println(sqlE.getMessage());
         } catch (Exception e) {
             e.getMessage();
@@ -250,7 +250,7 @@ public class DBPartChart implements IFDBPartChart {
 	   	 PartChart cObj = new PartChart();
 
 	   	 try {
-	   		 cObj.setPartChartID(result.getInt("partPartChartID"));
+	   		 cObj.setPartChartID(result.getInt("partChartID"));
 	   		 cObj.setHoneyYield(result.getString("honeyYield"));
 	   		 cObj.setHoneyYieldYear(result.getInt("honeyYieldYear"));
 	   	   	 cObj.setSwarmTendency(result.getInt("swarmTendency"));	 
@@ -263,6 +263,23 @@ public class DBPartChart implements IFDBPartChart {
 	   		 System.out.println("error building PartChart object, " +e);
 	        }
 	        return cObj;
+	    }
+	    
+	    public int getMaxID() {
+	    	ResultSet results;
+	    	int id = -1;
+	    	try{ 
+	    	   Statement stmt = con.createStatement();
+	    	   String query = "Select max(partChartID) from PartChart";
+	    	   results = stmt.executeQuery(query);
+	    	   if( results.next() ){
+	    		 id = results.getInt(1);
+	    	    }
+	    	}	
+	    	catch(Exception e){
+	    	    System.out.println("Query exception: Error in reading maxid" + e);
+	    	}
+	    	return id;
 	    }
 
 }
