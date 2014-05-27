@@ -56,9 +56,9 @@ public class DBChartTest {
 		testChartInsert.setChartID(1);
 		testChartInsert.setBreeder(testBreeder);
 		testChartInsert.setYear(2012);
-		testChartInsert.setSisterChart(true);
+		testChartInsert.setSisterChart(false);
 		testChartInsert.setCompendium(testCompendium);
-		testChartInsert.setPedigree("blah");
+		testChartInsert.setPedigree("insert");
 	
 		
 		testChartUpdate.setChartID(1);
@@ -73,7 +73,7 @@ public class DBChartTest {
 		testChartDelete.setYear(2012);
 		testChartDelete.setSisterChart(true);
 		testChartDelete.setCompendium(testCompendium);
-		testChartDelete.setPedigree("blah");
+		testChartDelete.setPedigree("del");
 		
 		
 		
@@ -121,7 +121,7 @@ public class DBChartTest {
 		testChartDB.insertChart(testChartInsert);
 		int id = testChartDB.getMaxID();
 		testChartInsert.setChartID(id);
-		assertTrue("false", testChartInsert.equals(testChartDB.selectSingleChart(id, true)));
+		assertTrue("Inserted object are not equal to object from db", testChartInsert.equals(testChartDB.selectSingleChart(id, true)));
 	}
 	
 	/**
