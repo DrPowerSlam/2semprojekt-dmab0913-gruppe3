@@ -85,7 +85,7 @@ public class NewSisterChartPanel extends JPanel {
 		btnCreateChart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 try {
-					createChart();
+					saveChart();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -129,21 +129,22 @@ public class NewSisterChartPanel extends JPanel {
 		}
 	}
 	
-	public void createChart() throws SQLException {
+	public void saveChart() throws SQLException {
 		String years = txtYear.getText();
-		String pedigree = txtPedigree.getText();
-		
+		String pedigree = txtPedigree.getText();	
 		try {
-			//
 			if(cCtr.validateYear(years)) {
 				int year = Integer.parseInt(years);
 				cCtr.saveChart(chart, year, pedigree);
-				JOptionPane.showMessageDialog(newChartPanel, "Skemaet er blevet indberettet", "Succes", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(newChartPanel, "Skemaet er blevet indberettet", 
+						"Succes", JOptionPane.INFORMATION_MESSAGE);
 			} else {
-				JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre", "Fejl", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre",
+						"Fejl", JOptionPane.ERROR_MESSAGE);
 			}
 		}catch (NumberFormatException e1) {
-			JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre", "Fejl", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre",
+					"Fejl", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}
