@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+<class-diagram version="1.1.6" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="dblayer.DBChart" project="2semester projekt - Ligustica" 
     file="/2semester projekt - Ligustica/src/dblayer/DBChart.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="297" width="243" x="74" y="-12"/>    
