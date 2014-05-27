@@ -52,7 +52,8 @@ public class ChartCtr {
 		}
 	}
 	
-	public Chart addInfo(PartChart partChart, int year, String honeyYield, int swarmTendency, int temper, int honeycombFirmness, 
+	public Chart addInfo(PartChart partChart, int year, String honeyYield, int swarmTendency, 
+			int temper, int honeycombFirmness, 
 			int honeyYieldYear, int nosema, int cleansingAbility) throws SQLException {
 		PartChart pC = partChart;
 		Chart chart = pC.getChart();
