@@ -87,7 +87,7 @@ public class DBQueenTest {
 
 	@AfterClass
 	public static void testCleanup() throws SQLException, FileNotFoundException {		
-		//testConnection.insertDatabaseData();		
+		testConnection.insertDatabaseData();		
 	}
 	
 	/**
