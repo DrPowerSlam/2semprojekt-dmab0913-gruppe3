@@ -1,41 +1,29 @@
 package guilayer;
 
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import controllayer.BreederCtr;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-
-import javax.swing.UIManager;
 
 public class NewBreederPanel extends JPanel {
 	private JPanel newBreederPanel;
 	
 	private BreederCtr cCtr;
-	private JTextField txtQueen;
+	private JTextField txtFirstName, txtLastName, txtAddress, txtTelephone, txtEmail, txtPassword;
 	private JButton btnCreateBreeder;
-	private JTextField txtYear;
-	private JTextField txtSwarmTendency;
-	private JTextField txtTemper;
-	private JLabel lblYear;
-	private JLabel lblSwarmTendency;
-	private JLabel lblTemper;
-	private JTextField txtHoneycombFirmness;
-	private JLabel lblHoneycombFirmness;
-	private JTextField txtYearHoneyYield;
-	private JTextField txtHoneyYield;
-	private JTextField txtNosema;
-	private JTextField txtCleansingAbility;
+	private JLabel lblFirstName, lblLastName, lblAddress, lblTelephone, lblEmail, lblPassword, lblIsAdmin;
+	private JComboBox comboBoxType;
 
 	/**
 	 * Create the panel.
@@ -61,43 +49,70 @@ public class NewBreederPanel extends JPanel {
 
 	private void initComponents() throws SQLException {
 		
-		JLabel lblQueen = new JLabel("Dronning:");
-		lblQueen.setBounds(10, 27, 110, 14);
-		newBreederPanel.add(lblQueen);
+		txtFirstName = new JTextField();
+		txtFirstName.setColumns(10);
+		txtFirstName.setBounds(179, 24, 165, 20);
+		newBreederPanel.add(txtFirstName);
 		
-		txtQueen = new JTextField();
-		txtQueen.setColumns(10);
-		txtQueen.setBounds(179, 24, 165, 20);
-		newBreederPanel.add(txtQueen);
+		txtLastName = new JTextField();
+		txtLastName.setColumns(10);
+		txtLastName.setBounds(179, 55, 165, 20);
+		newBreederPanel.add(txtLastName);
 		
-		txtYear = new JTextField();
-		txtYear.setColumns(10);
-		txtYear.setBounds(179, 55, 165, 20);
-		newBreederPanel.add(txtYear);
+		txtAddress = new JTextField();
+		txtAddress.setColumns(10);
+		txtAddress.setBounds(179, 86, 165, 20);
+		newBreederPanel.add(txtAddress);
 		
-		txtSwarmTendency = new JTextField();
-		txtSwarmTendency.setColumns(10);
-		txtSwarmTendency.setBounds(179, 86, 165, 20);
-		newBreederPanel.add(txtSwarmTendency);
+		txtTelephone = new JTextField();
+		txtTelephone.setColumns(10);
+		txtTelephone.setBounds(179, 117, 165, 20);
+		newBreederPanel.add(txtTelephone);
 		
-		txtTemper = new JTextField();
-		txtTemper.setColumns(10);
-		txtTemper.setBounds(179, 117, 165, 20);
-		newBreederPanel.add(txtTemper);
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(179, 148, 165, 20);
+		newBreederPanel.add(txtEmail);
 		
-		lblYear = new JLabel("\u00C5r:");
-		lblYear.setBounds(10, 58, 110, 14);
-		newBreederPanel.add(lblYear);
+		txtPassword = new JTextField();
+		txtPassword.setColumns(10);
+		txtPassword.setBounds(179, 179, 165, 20);
+		newBreederPanel.add(txtPassword);
 		
-		lblSwarmTendency = new JLabel("\u00C5rskarakter sv\u00E6rmetendens:");
-		lblSwarmTendency.setBounds(10, 89, 149, 14);
-		newBreederPanel.add(lblSwarmTendency);
+		String[] comboType = { "IkkeAdmin", "ErAdmin" };
+		comboBoxType = new JComboBox(comboType);
+		comboBoxType.setBounds(179, 210, 165, 20);
+		newBreederPanel.add(comboBoxType);
 		
-		lblTemper = new JLabel("\u00C5rskarakter temperament:");
-		lblTemper.setBounds(10, 120, 159, 14);
-		newBreederPanel.add(lblTemper);
+		lblFirstName = new JLabel("Fornavn:");
+		lblFirstName.setBounds(10, 27, 110, 14);
+		newBreederPanel.add(lblFirstName);
 		
-		btnCreateBreeder = new JButton("Indberet skema");
+		lblLastName = new JLabel("Efternavn:");
+		lblLastName.setBounds(10, 58, 110, 14);
+		newBreederPanel.add(lblLastName);
+		
+		lblAddress = new JLabel("Adresse:");
+		lblAddress.setBounds(10, 89, 149, 14);
+		newBreederPanel.add(lblAddress);
+		
+		lblTelephone = new JLabel("TelefonNr:");
+		lblTelephone.setBounds(10, 120, 149, 14);
+		newBreederPanel.add(lblTelephone);
+		
+		lblEmail = new JLabel("Email:");
+		lblEmail.setBounds(10, 151, 149, 14);
+		newBreederPanel.add(lblEmail);
+		
+		lblPassword = new JLabel("Kodeord:");
+		lblPassword.setBounds(10, 182, 149, 14);
+		newBreederPanel.add(lblPassword);
+		
+		lblIsAdmin = new JLabel("Brugertype:");
+		lblIsAdmin.setBounds(10, 213, 149, 14);
+		newBreederPanel.add(lblIsAdmin);
+		
+		btnCreateBreeder = new JButton("Opret Avler");
 		btnCreateBreeder.setBounds(223, 303, 121, 23);
 		btnCreateBreeder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -110,63 +125,25 @@ public class NewBreederPanel extends JPanel {
             }
 		});
 		newBreederPanel.add(btnCreateBreeder);
-		
-		txtHoneycombFirmness = new JTextField();
-		txtHoneycombFirmness.setColumns(10);
-		txtHoneycombFirmness.setBounds(179, 148, 165, 20);
-		newBreederPanel.add(txtHoneycombFirmness);
-		
-		lblHoneycombFirmness = new JLabel("\u00C5rskarakter tavlefasthed:");
-		lblHoneycombFirmness.setBounds(10, 151, 159, 14);
-		newBreederPanel.add(lblHoneycombFirmness);
-		
-		txtYearHoneyYield = new JTextField();
-		txtYearHoneyYield.setColumns(10);
-		txtYearHoneyYield.setBounds(179, 179, 165, 20);
-		newBreederPanel.add(txtYearHoneyYield);
-		
-		txtHoneyYield = new JTextField();
-		txtHoneyYield.setColumns(10);
-		txtHoneyYield.setBounds(179, 210, 165, 20);
-		newBreederPanel.add(txtHoneyYield);
-		
-		txtNosema = new JTextField();
-		txtNosema.setColumns(10);
-		txtNosema.setBounds(179, 241, 165, 20);
-		newBreederPanel.add(txtNosema);
-		
-		txtCleansingAbility = new JTextField();
-		txtCleansingAbility.setColumns(10);
-		txtCleansingAbility.setBounds(179, 272, 165, 20);
-		newBreederPanel.add(txtCleansingAbility);
-		
-		JLabel lblYearHoneyYield = new JLabel("\u00C5rskarakter honningudbytte:");
-		lblYearHoneyYield.setBounds(10, 182, 159, 14);
-		newBreederPanel.add(lblYearHoneyYield);
-		
-		JLabel lblHoneyYield = new JLabel("Honningudbytte:");
-		lblHoneyYield.setBounds(10, 213, 159, 14);
-		newBreederPanel.add(lblHoneyYield);
-		
-		JLabel lblNosema = new JLabel("Nosema:");
-		lblNosema.setBounds(10, 244, 159, 14);
-		newBreederPanel.add(lblNosema);
-		
-		JLabel lblCleansingAbility = new JLabel("Udrensningsevne:");
-		lblCleansingAbility.setBounds(10, 275, 159, 14);
-		newBreederPanel.add(lblCleansingAbility);
 	}
 	
 	public void createBreeder() throws SQLException {
 		//BreederPanel breederPanel = BreederPanel.getInstance();
-		String name = txtQueen.getText();
-		String address = txtYear.getText();
-		String country = txtSwarmTendency.getText();
-		String phoneNo = txtTemper.getText();
-		String email = txtHoneycombFirmness.getText();
+		String firstName = txtFirstName.getText();
+		String lastName = txtLastName.getText();
+		String address = txtAddress.getText();
+		String phoneNo = txtTelephone.getText();
+		String email = txtEmail.getText();
+		String password = txtPassword.getText();
+
 		
-		if(!name.isEmpty() && !address.isEmpty() && !country.isEmpty() && !phoneNo.isEmpty() && !email.isEmpty()) {
-			//cCtr.createBreeder(name, address, country, phoneNo, email);
+		if(!firstName.isEmpty() && !lastName.isEmpty() && !address.isEmpty() && !phoneNo.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+			boolean comboType = false;
+            String comboTypeString = comboBoxType.getSelectedItem().toString();
+                    if(comboTypeString == "ErAdmin") {
+                    	comboType = true;
+                    }
+			//cCtr.createBreeder(firstName, lastName, address, phoneNo, email, password, comboType);
 			//breederPanel.updateTable();
 		}else {
 			JOptionPane.showMessageDialog(newBreederPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
