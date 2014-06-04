@@ -6,6 +6,7 @@
  */
 package controllayer;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dblayer.*;
@@ -73,6 +74,37 @@ public class BreederCtr {
 	
 	public ArrayList<Breeder> getAllBreeders() {
 		return dbB.getAllBreeders(true);
+	}
+	
+	public int createBreeder(String fname, String lname, String address, String phone, String email, 
+			String password, boolean isAdmin, int breederID, City city) 
+	{
+		int returnValue = 0;
+		
+		//create breeder object
+		Breeder b = new Breeder(fname, lname, address, phone, email, password, isAdmin, breederID);
+		b.setCity(city);
+		
+		//insert to db
+		try {
+			returnValue = dbB.insertBreeder(b);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			returnValue = -1;
+		}
+		return returnValue;
+	}
+	
+	public Breeder getBreeder(int breederID)
+	{		
+		Breeder b = null;
+		
+		try {
+			b = dbB.selectSingleBreeder(breederID, true);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return b;
 	}
 
 }
