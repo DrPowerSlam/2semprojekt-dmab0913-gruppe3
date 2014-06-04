@@ -57,8 +57,10 @@ public class DBQueen implements IFDBQueen {
 	   		 pstmt.setInt(7, q.getHoneycomFirmness());
 	   		 pstmt.setInt(8, q.getClensingAbility());
 	   		 pstmt.setBoolean(9, q.isAlive());
-	   		 pstmt.setInt(10, q.getMother().getQueenID());
-	   		 pstmt.setInt(11, q.getFathersMother().getQueenID());
+	   		 pstmt.setInt(10, 1);
+	   		 pstmt.setInt(11, 2);
+//	   		pstmt.setInt(10, q.getMother().getQueenID());
+//	   		 pstmt.setInt(11, q.getFathersMother().getQueenID());
 	   		 pstmt.setInt(12, q.getBreeder().getBreederID());
 	         controlInt = pstmt.executeUpdate();
 	        } catch (SQLException sqlE) {
