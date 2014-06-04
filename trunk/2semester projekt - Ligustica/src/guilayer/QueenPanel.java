@@ -85,7 +85,7 @@ public class QueenPanel extends JPanel {
 	 * @throws SQLException 
 	 */
 	public void newQueen() throws SQLException {
-		newQueenPanel = new NewQueenPanel();
+		newQueenPanel = new AddQueenPanel();
 		cardPanel.add(newQueenPanel);
 		CardLayout cl = (CardLayout)(cardPanel.getLayout());
 		cl.last(cardPanel);

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modellayer.Breeder;
+import modellayer.Chart;
+import modellayer.PartChart;
 import modellayer.Queen;
 import modellayer.Settings;
 import dblayer.DBBreeder;
@@ -69,6 +71,43 @@ public class QueenCtr {
 			e.printStackTrace();
 		}
 		return queen;
+	}
+	
+	/**
+	 * Creates an Queen object at saves it to the database.
+	 * @param year
+	 * @param swarmTendency
+	 * @param temper
+	 * @param honeycombFirmness
+	 * @param honeyYield
+	 * @param nosema
+	 * @param cleansingAbility
+	 * @throws SQLException
+	 */
+	public void addQueen( String name, int year, int swarmTendency, 
+			int temper, int honeycombFirmness, 
+			int honeyYield, int nosema, int cleansingAbility) throws SQLException {
+
+		Queen nq = new Queen();
+		//Add the info to the object
+		nq.setName(name);
+		nq.setYear(year);
+		nq.setHoneyYield(honeyYield);
+		nq.setSwarmTendency(swarmTendency);
+		nq.setTemper(temper);
+		nq.setHoneycomFirmness(honeycombFirmness);
+		nq.setNosema(nosema);
+		nq.setClensingAbility(cleansingAbility);
+		nq.setAlive(true);
+		nq.setBreeder(settings.getBreeder());
+		//Save the Queen object to the database
+		try {
+			dbQ.insertQueen(nq);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }
