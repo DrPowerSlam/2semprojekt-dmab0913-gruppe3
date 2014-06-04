@@ -76,7 +76,11 @@ public class BreederCtr {
 		return dbB.getAllBreeders(true);
 	}
 	
-	public int createBreeder(String fname, String lname, String address, String phone, String email, 
+	/**
+	 * Insert breeder to DB
+	 * @return 1 if succeeded, -1 if failed.
+	 */
+	public int insertBreeder(String fname, String lname, String address, String phone, String email, 
 			String password, boolean isAdmin, int breederID, City city) 
 	{
 		int returnValue = 0;
@@ -95,6 +99,11 @@ public class BreederCtr {
 		return returnValue;
 	}
 	
+	/**
+	 * Get a breeder object from DB
+	 * @param breederID
+	 * @return a Breeder object if success, null if fail.
+	 */
 	public Breeder getBreeder(int breederID)
 	{		
 		Breeder b = null;
@@ -105,6 +114,50 @@ public class BreederCtr {
 			e.printStackTrace();
 		}
 		return b;
+	}
+	
+	/**
+	 * Delete a breeder from DB
+	 * @param breederID
+	 * @return 1 if delete succeeded, -1 if failed.
+	 */
+	public int deleteBreeder(int breederID)
+	{
+		int returnValue = 0;
+		//create breeder object and set breederID. Only breederID is used to delete so not necessary to get breeder from db.
+		Breeder b = new Breeder();
+		b.setBreederID(breederID);
+		
+		//delete from db
+		try {
+			returnValue = dbB.deleteBreeder(b);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			returnValue = -1;
+		}
+		
+		return returnValue;
+	}
+	
+	/**
+	 * Update breeder in DB
+	 * @return 1 if update succeeded, -1 if failed.
+	 */
+	public int updateBreeder(String fname, String lname, String address, String phone, String email, 
+			String password, boolean isAdmin, int breederID, City city)
+	{
+		int returnValue = 0;
+		Breeder b = new Breeder(fname, lname, address, phone, email, password, isAdmin, breederID);
+		b.setCity(city);
+		
+		try {
+			returnValue = dbB.updateBreeder(b);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			returnValue = -1;
+		}
+				
+		return returnValue;
 	}
 
 }
