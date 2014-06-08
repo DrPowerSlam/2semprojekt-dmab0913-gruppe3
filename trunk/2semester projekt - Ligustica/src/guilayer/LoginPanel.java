@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LoginPanel extends JPanel {
 	private JTextField txtEmail;
@@ -40,6 +42,14 @@ public class LoginPanel extends JPanel {
 		pane.setLayout(null);
 		
 		txtPassword = new JPasswordField();
+		txtPassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent kE) {
+				if(kE.getKeyCode() == KeyEvent.VK_ENTER) {
+					login(pane);
+				}
+			}
+		});
 		txtPassword.setBounds(115, 53, 251, 20);
 		pane.add(txtPassword);
 		
@@ -61,19 +71,25 @@ public class LoginPanel extends JPanel {
 		btnLogin.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String strPassword = new String(txtPassword.getPassword());
-				try {
-					validateLogin(txtEmail.getText(),  strPassword, pane);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				login(pane);
 			}
+
+			
 			
 		});
 		pane.add(btnLogin);
 		
 	}
 
+	private void login(final JPanel pane) {
+		String strPassword = new String(txtPassword.getPassword());
+		try {
+			validateLogin(txtEmail.getText(),  strPassword, pane);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void validateLogin(String email, String password, JPanel pane) throws SQLException {
 		BreederCtr breederCtr = new BreederCtr();
 		if(breederCtr.validateLogin(email, password)) {
