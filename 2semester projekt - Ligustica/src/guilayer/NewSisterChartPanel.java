@@ -89,6 +89,7 @@ public class NewSisterChartPanel extends JPanel {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+                ChartPanel.getInstance().updateTable();
             }
 		});
 		newChartPanel.add(btnCreateChart);
