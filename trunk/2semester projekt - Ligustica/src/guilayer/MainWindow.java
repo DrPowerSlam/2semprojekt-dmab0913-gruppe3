@@ -75,7 +75,7 @@ public class MainWindow extends JFrame {
 		} else {
 			initTabbedPane();
 		}
-		repaint();
+		contentPane.revalidate();		
 	}
 	
 
@@ -163,8 +163,8 @@ public class MainWindow extends JFrame {
 		}
 	}
 	
-	public boolean equals(Object o) {
-		return true;
-	}
+//	public boolean equals(Object o) {
+//		return true;
+//	}
 
 }
