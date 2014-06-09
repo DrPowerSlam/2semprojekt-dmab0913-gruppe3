@@ -21,6 +21,9 @@ public class ChartPanel extends JPanel {
 	private JScrollPane scrollPane;
 	private JPanel cardPanel, newSisterChartPanel, chooseQueenPanel, addQueenInfoPanel;
 	private static ChartPanel instance = null;
+	private JTable chartTable;
+	private ArrayList<Chart> charts;
+	ChartCtr cCtr = new ChartCtr();
 	
 	/**
 	 * Create the panel.
@@ -43,11 +46,12 @@ public class ChartPanel extends JPanel {
 	 * Initialize Table
 	 */
 	private void initTable() {
-		ChartCtr cCtr = new ChartCtr();
-		ArrayList<Chart> charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());	
+		//ArrayList<Chart> charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
+		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
 		ChartTableModel model = new ChartTableModel(charts);
-        JTable table = new JTable(model);
-		scrollPane = new JScrollPane(table);
+        //JTable table = new JTable(model);
+		chartTable = new JTable(model);
+		scrollPane = new JScrollPane(chartTable);
         scrollPane.setBounds(10, 11, 445, 400);
         add(scrollPane);
 	}
@@ -87,6 +91,9 @@ public class ChartPanel extends JPanel {
 	 */
 	public void updateTable() {
 		//TODO: Opdater table
+		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
+		ChartTableModel model = new ChartTableModel(charts);
+		chartTable.repaint();
 	}
 	
 	/**
