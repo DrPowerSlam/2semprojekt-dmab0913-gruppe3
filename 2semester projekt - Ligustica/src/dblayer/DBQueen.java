@@ -9,6 +9,7 @@ import modellayer.Queen;
 public class DBQueen implements IFDBQueen {
 	
 	private Connection con;
+	private DBBreeder dbBreeder = new DBBreeder();
 	
 	public DBQueen()
 	{
@@ -269,7 +270,10 @@ public class DBQueen implements IFDBQueen {
 	   		 qObj.setTemper(result.getInt("temper"));
 	   		 qObj.setHoneycomFirmness(result.getInt("honeycombfirmness"));
 	   		 qObj.setClensingAbility(result.getInt("cleansingAbility"));
-	   		 qObj.setAlive(result.getBoolean("isAlive")); 
+	   		 qObj.setAlive(result.getBoolean("isAlive"));
+	   		 qObj.setMother(selectSingleQueen(result.getInt("mother"), false));
+	   		 qObj.setFathersMother(selectSingleQueen(result.getInt("fathersMother"), false));
+	   		 qObj.setBreeder(dbBreeder.selectSingleBreeder(result.getInt("breederID"), false));
 	   		 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building Queen object, " +e);

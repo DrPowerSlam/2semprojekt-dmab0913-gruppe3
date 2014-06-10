@@ -283,6 +283,10 @@ INSERT INTO Queen VALUES(2012, 'KA015', 3, 3, 4, 5, 5, 3, 'true', NULL, NULL, 2)
 INSERT INTO Queen VALUES(2012, 'KA017', 3, 4, 4, 5, 5, 3, 'true', NULL, NULL, 2);
 INSERT INTO Queen VALUES(2012, 'KA021', 3, 5, 3, 5, 5, 3, 'true', NULL, NULL, 2);
 INSERT INTO Queen VALUES(2012, 'JE025', 4, 4, 4, 2, 1, 3, 'true', NULL, NULL, 1);
+INSERT INTO Queen VALUES(2012, 'JE027', 4, 4, 4, 2, 1, 3, 'true', NULL, NULL, 1);
+INSERT INTO Queen VALUES(2012, 'JE029', 4, 4, 4, 2, 1, 3, 'true', NULL, NULL, 1);
+INSERT INTO Queen VALUES(2012, 'JE031', 4, 4, 4, 2, 1, 3, 'true', NULL, NULL, 1);
+INSERT INTO Queen VALUES(2012, 'JE033', 4, 4, 4, 2, 1, 3, 'true', NULL, NULL, 1);
 
 UPDATE Queen SET mother = 2 WHERE queenID = 1;
 UPDATE Queen SET fathersMother = 3 WHERE queenID = 1;
@@ -296,6 +300,10 @@ UPDATE Queen SET mother = 10 WHERE queenID = 5;
 UPDATE Queen SET fathersMother = 11 WHERE queenID = 5;
 UPDATE Queen SET mother = 12 WHERE queenID = 6;
 UPDATE Queen SET fathersMother = 13 WHERE queenID = 6;
+UPDATE Queen SET mother = 14 WHERE queenID = 7;
+UPDATE Queen SET fathersMother = 15 WHERE queenID = 7;
+UPDATE Queen SET mother = 16 WHERE queenID = 8;
+UPDATE Queen SET fathersMother = 17 WHERE queenID = 8;
 
 INSERT INTO Chart VALUES(3, 2013, 'test', 'true', 1);
 
