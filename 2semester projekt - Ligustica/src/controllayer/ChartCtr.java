@@ -40,14 +40,7 @@ public class ChartCtr {
 	 * @return Returns the chart object
 	 */
 	public Chart startChart() {
-		Chart chart = new Chart(settings.getBreeder(), true);
-		try {
-			dbC.insertChart(chart);
-			chart.setChartID(dbC.getMaxID());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+		Chart chart = new Chart(settings.getBreeder(), true);		
 		return chart;
 	}
 	
@@ -70,11 +63,34 @@ public class ChartCtr {
 	public void saveChart(Chart chart, int year, String pedigree) {
 		chart.setYear(year);
 		chart.setPedigree(pedigree);
+		
 		try {
-			dbC.updateChart(chart);
+			dbC.insertChart(chart);
+			chart.setChartID(dbC.getMaxID());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		//Save all the PartChart objects to the database
+		for(PartChart pC : chart.getAllPartCharts()) {
+			pC.setChart(chart);
+			
+			
+			try {
+				dbPC.insertPartChart(pC);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			//set id
+			try {
+				pC.setPartChartID(dbPC.selectSinglePartChart(dbPC.getMaxID(), false).getPartChartID());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	/**
@@ -106,16 +122,6 @@ public class ChartCtr {
 		pC.setHoneyYieldYear(honeyYieldYear);
 		pC.setNosema(nosema);
 		pC.setClensingAbility(cleansingAbility);
-		
-		//Save the PartChart object to the database
-		try {
-			dbPC.insertPartChart(pC);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		//set id
-		pC.setPartChartID(dbPC.selectSinglePartChart(dbPC.getMaxID(), false).getPartChartID());
 		
 		//Add the saved partChart to the chart objects arrayList
 		chart.addPartChart(pC);
