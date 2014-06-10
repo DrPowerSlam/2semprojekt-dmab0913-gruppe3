@@ -34,6 +34,8 @@ public class Skeleton extends JFrame {
 
                 Skeleton sk = new Skeleton();
                 sk.setVisible(true);
+                //sk.setVisible(false);
+                //sk.dispose();
             }
         });
     }
