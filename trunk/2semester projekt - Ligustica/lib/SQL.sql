@@ -269,13 +269,13 @@ INSERT INTO Breeder VALUES('Karsten', 'IkkeAdmin', 'Sofiendalsvej 60', '2500', '
 INSERT INTO Breeder VALUES('Jesper', 'ErAdmin', 'Sofiendalsvej 60', '2500', '12345678', 'er@admin.dk', 'test123', 'true');
 INSERT INTO Breeder VALUES('Test', 'IkkeAdmin', 'Sofiendalsvej 60', '2500', '12345678', 'a', 'a', 'false');
 INSERT INTO Compendium VALUES('TEST', 'TEST');
-INSERT INTO Queen VALUES(2012, 'TI023', 3, 4, 4, 5, 5, 3, 'true', 2, 3, 3);
-INSERT INTO Queen VALUES(2012, 'TI024', 4, 4, 1, 5, 5, 3, 'true', 4, 5, 3);
-INSERT INTO Queen VALUES(2012, 'TI025', 4, 5, 4, 3, 5, 3, 'true', 6, 7, 3);
-INSERT INTO Queen VALUES(2012, 'TI026', 3, 4, 4, 5, 5, 3, 'true', 8, 9, 3);
-INSERT INTO Queen VALUES(2012, 'TI027', 4, 4, 1, 5, 5, 3, 'true', 10, 11, 3);
-INSERT INTO Queen VALUES(2012, 'TI028', 4, 5, 4, 4, 5, 3, 'true', 12, 13, 3);
-INSERT INTO Queen VALUES(2012, 'TI029', 3, 4, 5, 5, 5, 3, 'true', 14, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'TI023', 3, 4, 4, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'TI024', 4, 4, 1, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'TI025', 4, 5, 4, 3, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'TI026', 3, 4, 4, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'TI027', 4, 4, 1, 5, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'TI028', 4, 5, 4, 4, 5, 3, 'true', NULL, NULL, 3);
+INSERT INTO Queen VALUES(2012, 'TI029', 3, 4, 5, 5, 5, 3, 'true', NULL, NULL, 3);
 INSERT INTO Queen VALUES(2012, 'TI030', 4, 4, 1, 5, 5, 3, 'true', NULL, NULL, 3);
 INSERT INTO Queen VALUES(2012, 'TI010', 4, 5, 4, 5, 5, 3, 'true', NULL, NULL, 3);
 INSERT INTO Queen VALUES(2012, 'KA013', 3, 4, 2, 5, 5, 3, 'true', NULL, NULL, 2);
@@ -283,6 +283,21 @@ INSERT INTO Queen VALUES(2012, 'KA015', 3, 3, 4, 5, 5, 3, 'true', NULL, NULL, 2)
 INSERT INTO Queen VALUES(2012, 'KA017', 3, 4, 4, 5, 5, 3, 'true', NULL, NULL, 2);
 INSERT INTO Queen VALUES(2012, 'KA021', 3, 5, 3, 5, 5, 3, 'true', NULL, NULL, 2);
 INSERT INTO Queen VALUES(2012, 'JE025', 4, 4, 4, 2, 1, 3, 'true', NULL, NULL, 1);
+
+UPDATE Queen SET mother = 2 WHERE queenID = 1;
+UPDATE Queen SET fathersMother = 3 WHERE queenID = 1;
+UPDATE Queen SET mother = 4 WHERE queenID = 2;
+UPDATE Queen SET fathersMother = 5 WHERE queenID = 2;
+UPDATE Queen SET mother = 6 WHERE queenID = 3;
+UPDATE Queen SET fathersMother = 7 WHERE queenID = 3;
+UPDATE Queen SET mother = 8 WHERE queenID = 4;
+UPDATE Queen SET fathersMother = 9 WHERE queenID = 4;
+UPDATE Queen SET mother = 10 WHERE queenID = 5;
+UPDATE Queen SET fathersMother = 11 WHERE queenID = 5;
+UPDATE Queen SET mother = 12 WHERE queenID = 6;
+UPDATE Queen SET fathersMother = 13 WHERE queenID = 6;
+
 INSERT INTO Chart VALUES(3, 2013, 'test', 'true', 1);
+
 INSERT INTO PartChart VALUES('50/70', 2, 3, 3, 5, 5, 3, 1, 1);
 INSERT INTO PartChart VALUES('50/70', 3, 3, 4, 5, 5, 3, 1, 3);
