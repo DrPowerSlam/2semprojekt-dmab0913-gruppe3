@@ -132,10 +132,10 @@ public class NewSisterChartPanel extends JPanel {
 	
 	public void saveChart() throws SQLException {
 		String years = txtYear.getText();
-		String pedigree = txtPedigree.getText();
-		int year = Integer.parseInt(years);
+		String pedigree = txtPedigree.getText();		
 		try {
-			if(cCtr.validateYear(years)) {						
+			if(cCtr.validateYear(years)) {	
+				int year = Integer.parseInt(years);
 				if (year < 2000) { 
 					int option = JOptionPane.showConfirmDialog (null, "Du har indtastet et år før år 2000 ("+ txtYear.getText() +"). Vil du fortsætte?");
 					if (option == JOptionPane.YES_OPTION ) {
