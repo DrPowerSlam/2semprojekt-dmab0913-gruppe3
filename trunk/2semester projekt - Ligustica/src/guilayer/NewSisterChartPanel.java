@@ -132,21 +132,43 @@ public class NewSisterChartPanel extends JPanel {
 	
 	public void saveChart() throws SQLException {
 		String years = txtYear.getText();
-		String pedigree = txtPedigree.getText();	
+		String pedigree = txtPedigree.getText();
+		int year = Integer.parseInt(years);
 		try {
-			if(cCtr.validateYear(years)) {
-				int year = Integer.parseInt(years);
-				cCtr.saveChart(chart, year, pedigree);
-				JOptionPane.showMessageDialog(newChartPanel, "Skemaet er blevet indberettet", 
-						"Succes", JOptionPane.INFORMATION_MESSAGE);
-			} else {
+			if(cCtr.validateYear(years)) {						
+				if (year < 2000) { 
+					int option = JOptionPane.showConfirmDialog (null, "Du har indtastet et år før år 2000 ("+ txtYear.getText() +"). Vil du fortsætte?");
+					if (option == JOptionPane.YES_OPTION ) {
+						commitChart(pedigree, year);
+				}
+					else if (option == JOptionPane.NO_OPTION) {
+					txtYear.setText("");
+				}
+			}
+				
+				if (year >= 2000) {
+					commitChart(pedigree, year);
+				}
+			} 			
+				
+			else if (!cCtr.validateYear(years)) {
 				JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre",
 						"Fejl", JOptionPane.ERROR_MESSAGE);
 			}
-		}catch (NumberFormatException e1) {
+			
+		}
+			
+			catch (NumberFormatException e1) {
 			JOptionPane.showMessageDialog(newChartPanel, "År skal være et tal på 4 cifre",
 					"Fejl", JOptionPane.ERROR_MESSAGE);
 		}
 		
+	}
+
+
+	private void commitChart(String pedigree, int year) {
+		cCtr.saveChart(chart, year, pedigree);
+		JOptionPane.showMessageDialog(newChartPanel, "Skemaet er blevet indberettet", 
+			"Succes", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
