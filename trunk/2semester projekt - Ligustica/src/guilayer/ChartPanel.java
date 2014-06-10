@@ -24,6 +24,7 @@ public class ChartPanel extends JPanel {
 	private JTable chartTable;
 	private ArrayList<Chart> charts;
 	ChartCtr cCtr = new ChartCtr();
+	private ChartTableModel model;
 	
 	/**
 	 * Create the panel.
@@ -48,7 +49,7 @@ public class ChartPanel extends JPanel {
 	private void initTable() {
 		//ArrayList<Chart> charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
 		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
-		ChartTableModel model = new ChartTableModel(charts);
+		model = new ChartTableModel(charts);
         //JTable table = new JTable(model);
 		chartTable = new JTable(model);
 		scrollPane = new JScrollPane(chartTable);
@@ -92,9 +93,9 @@ public class ChartPanel extends JPanel {
 	public void updateTable() {
 		//TODO: Opdater table
 		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
-		ChartTableModel model = new ChartTableModel(charts);
+		model = new ChartTableModel(charts);
 		model.fireTableDataChanged();
-		chartTable.repaint();
+		//chartTable.repaint();
 	}
 	
 	/**
