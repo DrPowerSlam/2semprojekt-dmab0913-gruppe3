@@ -20,19 +20,20 @@ import controllayer.BreederCtr;
 public class NewBreederPanel extends JPanel {
 	private JPanel newBreederPanel;
 	
-	private BreederCtr cCtr;
+	private BreederCtr bCtr;
 	private JTextField txtFirstName, txtLastName, txtAddress, txtTelephone, txtEmail, txtPassword, txtCity;
 	private JButton btnCreateBreeder;
 	private JLabel lblFirstName, lblLastName, lblAddress, lblTelephone, lblEmail, lblPassword, lblIsAdmin, lblCity;
 	private JComboBox comboBoxType;
-	private City city;
+	private City city = new City();
+	private BreederPanel breederPanel = BreederPanel.getInstance();
 
 	/**
 	 * Create the panel.
 	 * @throws SQLException 
 	 */
 	public NewBreederPanel() throws SQLException {
-		cCtr = new BreederCtr();
+		bCtr = new BreederCtr();
 		initPanel();
 		initComponents();
 		
@@ -82,7 +83,7 @@ public class NewBreederPanel extends JPanel {
 		newBreederPanel.add(txtPassword);
 		
 		String[] comboType = { "IkkeAdmin", "ErAdmin" };
-		comboBoxType = new JComboBox(comboType);
+		comboBoxType = new JComboBox<String>(comboType);
 		comboBoxType.setBounds(179, 210, 165, 20);
 		newBreederPanel.add(comboBoxType);
 		
@@ -139,24 +140,36 @@ public class NewBreederPanel extends JPanel {
 	}
 	
 	public void createBreeder() throws SQLException {
-		//BreederPanel breederPanel = BreederPanel.getInstance();
 		String firstName = txtFirstName.getText();
 		String lastName = txtLastName.getText();
 		String address = txtAddress.getText();
 		String phoneNo = txtTelephone.getText();
 		String email = txtEmail.getText();
 		String password = txtPassword.getText();
+		if(!txtCity.getText().isEmpty()) {
+		city.setZipCode(Integer.parseInt(txtCity.getText())); 
+		}
+		int control = 0;
 		
 		if(!firstName.isEmpty() && !lastName.isEmpty() && !address.isEmpty() && !phoneNo.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
 			
-			//cCtr.createBreeder(firstName, lastName, address, phoneNo, email, password, IsAdmin(), city);
-			//breederPanel.updateTable();
+			control = bCtr.insertBreeder(firstName, lastName, address, phoneNo, email, password, isAdmin(), 0, city);
+			if(control == 1) {
+				JOptionPane.showMessageDialog(this, "Avler er oprettet!", 
+						"Succes", JOptionPane.INFORMATION_MESSAGE);
+				breederPanel.updateTable();
+			}
+			else {
+				JOptionPane.showMessageDialog(this, "Fejl! Avler ikke oprettet.",
+						"Fejl", JOptionPane.ERROR_MESSAGE);
+			}
+			
 		}else {
-			JOptionPane.showMessageDialog(newBreederPanel, "1 or more fields are empty", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(newBreederPanel, "Alle felter skal være udfyldt!", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
-	private boolean IsAdmin() {
+	private boolean isAdmin() {
 		boolean comboType = false;
         String comboTypeString = comboBoxType.getSelectedItem().toString();
         if(comboTypeString == "ErAdmin") {

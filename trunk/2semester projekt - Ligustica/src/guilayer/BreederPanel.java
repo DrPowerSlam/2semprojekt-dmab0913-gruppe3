@@ -19,16 +19,24 @@ public class BreederPanel extends JPanel {
 	private JScrollPane scrollPane;
 	private JPanel cardPanel, newBreederPanel;
 	private BreederCtr breederCtr;
+	private static BreederPanel instance = null;
 	
 	/**
 	 * Create the panel.
 	 */
-	public BreederPanel() {
+	private BreederPanel() {
 		breederCtr = new BreederCtr();
 		setLayout(null);
 		initTable();
 		initSeconPanel();
 		initButtons();
+	}
+	
+	public static BreederPanel getInstance() {
+		if(instance == null) {
+			instance = new BreederPanel();
+		}
+		return instance;
 	}
 	
 	/**
@@ -57,7 +65,7 @@ public class BreederPanel extends JPanel {
 	}
 	
 	public void initButtons() {
-		JButton btnNewBreeder = new JButton("Ny skema");
+		JButton btnNewBreeder = new JButton("Ny avler");
         btnNewBreeder.setBounds(366, 422, 89, 23);
         btnNewBreeder.addActionListener(new ActionListener(){
 			@Override
@@ -78,7 +86,7 @@ public class BreederPanel extends JPanel {
 	 * Updates the Table
 	 */
 	public void updateTable() {
-		//TODO: Opdater table
+		initTable();
 	}
 	
 	/**
