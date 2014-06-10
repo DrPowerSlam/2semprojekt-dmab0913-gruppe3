@@ -47,10 +47,8 @@ public class ChartPanel extends JPanel {
 	 * Initialize Table
 	 */
 	private void initTable() {
-		//ArrayList<Chart> charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
 		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
 		model = new ChartTableModel(charts);
-        //JTable table = new JTable(model);
 		chartTable = new JTable(model);
 		scrollPane = new JScrollPane(chartTable);
         scrollPane.setBounds(10, 11, 445, 400);
@@ -91,11 +89,10 @@ public class ChartPanel extends JPanel {
 	 * Updates the Table
 	 */
 	public void updateTable() {
-		//TODO: Opdater table
-		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
-		model = new ChartTableModel(charts);
-		model.fireTableDataChanged();
-		//chartTable.repaint();
+		//charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
+		//model = new ChartTableModel(charts);
+		//model.fireTableDataChanged();
+		initTable();
 	}
 	
 	/**

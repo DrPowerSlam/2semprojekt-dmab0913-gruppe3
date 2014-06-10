@@ -34,6 +34,7 @@ public class NewSisterChartPanel extends JPanel {
 	private JTextField txtPedigree;
 	private JLabel lblYear;
 	private JLabel lblPedigree;
+	ChartPanel chartPanel = ChartPanel.getInstance();
 	
 	private Chart chart;
 
@@ -89,7 +90,7 @@ public class NewSisterChartPanel extends JPanel {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-                ChartPanel.getInstance().updateTable();
+                chartPanel.updateTable();
             }
 		});
 		newChartPanel.add(btnCreateChart);
@@ -120,7 +121,6 @@ public class NewSisterChartPanel extends JPanel {
 	}
 	
 	public void chooseQueen(Chart chart) {
-		ChartPanel chartPanel = ChartPanel.getInstance();
 		try {
 
 			chartPanel.chooseQueenPanel(chart);
