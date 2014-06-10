@@ -22,7 +22,7 @@ public class BreederTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -40,6 +40,9 @@ public class BreederTableModel extends AbstractTableModel {
             	break;
             case 3:
             	name = "Telefon nr.";
+            	break;
+            case 4:
+            	name = "By";
             	break;
         }
         return name;
@@ -75,6 +78,8 @@ public class BreederTableModel extends AbstractTableModel {
             case 3:
             	value = breeder.getPhone();
             	break;
+            case 4:
+            	value = breeder.getCity().getCity();
         }
         return value;
     }            
