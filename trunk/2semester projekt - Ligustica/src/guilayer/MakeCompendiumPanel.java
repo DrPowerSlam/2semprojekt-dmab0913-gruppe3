@@ -24,7 +24,7 @@ public class MakeCompendiumPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				CompendiumCtr compCtr = new CompendiumCtr();
 				//IFDBCompendium
-				//compCtr.createPDF(compendium);
+				compCtr.createPDF();
 			}
 			
 		});

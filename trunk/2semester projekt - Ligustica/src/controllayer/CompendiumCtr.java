@@ -33,7 +33,7 @@ public class CompendiumCtr {
 		cCtr = new ChartCtr();
 	}
 	
-	public void createPDF(Compendium compendium) {
+	public void createPDF() {
 		Document document = new Document();
 		Date date = new Date();
 		
