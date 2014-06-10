@@ -92,8 +92,8 @@ public class ChartPanel extends JPanel {
 	 */
 	public void updateTable() {
 		//TODO: Opdater table
-		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
-		model = new ChartTableModel(charts);
+//		charts =  cCtr.getAllBreederCharts(Settings.getInstance().getBreeder());
+//		model = new ChartTableModel(charts);
 		model.fireTableDataChanged();
 		//chartTable.repaint();
 	}
