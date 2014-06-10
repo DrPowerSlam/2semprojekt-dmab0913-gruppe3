@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -15,6 +16,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JTabbedPane;
+
 import controllayer.BreederCtr;
 import modellayer.Settings;
 
@@ -27,6 +29,7 @@ public class MainWindow extends JFrame {
 	
 	private static final long serialVersionUID = 7596122900802093283L;
 	private JPanel contentPane;
+	private BreederPanel breederPanel = BreederPanel.getInstance();
 
 	/**
 	 * Launch the application.
@@ -152,13 +155,13 @@ public class MainWindow extends JFrame {
 		tabbedPane.addTab("Dronninger", null, queenPanel, null);
 		
 		if(settings.getBreeder() != null && settings.getBreeder().isAdmin()) {
-			JPanel breederPanel = new BreederPanel();
+			//JPanel breederPanel = new BreederPanel();
 			tabbedPane.addTab("Avlere", null, breederPanel, null);
 			
 			JPanel makeCompendiumPanel = new MakeCompendiumPanel();
 			tabbedPane.addTab("Saml kompendie", null, makeCompendiumPanel, null);
 		} else {
-			JPanel breederPanel = new BreederPanel();
+			//JPanel breederPanel = new BreederPanel();
 			tabbedPane.addTab("Avler", null, breederPanel, null);
 		}
 	}
