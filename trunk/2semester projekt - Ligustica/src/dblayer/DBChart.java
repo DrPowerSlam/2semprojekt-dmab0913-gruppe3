@@ -176,6 +176,8 @@ public class DBChart implements IFDBChart{
 					 
 					 IFDBCompendium dbComp = new DBCompendium();
 					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
+					 
+					 
 				 }				 
 		         list.add(cObj);	
 			 }//end while
