@@ -181,7 +181,7 @@ public class Breeder {
 	 * @return true //if the objects are equal
 	 * @return false //if the objects are not equal
 	 */
-	public boolean equals(Breeder b)
+	public boolean equalsNew(Breeder b)
 	{
 		boolean result = false;
 		

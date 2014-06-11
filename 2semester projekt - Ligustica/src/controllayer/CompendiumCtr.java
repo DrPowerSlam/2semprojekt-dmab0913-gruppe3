@@ -158,7 +158,7 @@ public class CompendiumCtr {
 			document.close();
 			System.out.println("SÅDAN!!!!!! YAAAA!");
 		}catch(Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	
