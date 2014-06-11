@@ -12,20 +12,25 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import controllayer.QueenCtr;
+import modellayer.Settings;
 
 public class QueenPanel extends JPanel {
 
 	private JScrollPane scrollPane;
 	private JPanel cardPanel, newQueenPanel;
+	private QueenCtr qCtr;
 	
 	/**
 	 * Create the panel.
 	 */
 	public QueenPanel() {
+		qCtr = new QueenCtr();
 		setLayout(null);
 		initTable();
 		initSeconPanel();
 		initButtons();
+		
 	}
 	
 	/**
@@ -34,7 +39,7 @@ public class QueenPanel extends JPanel {
 	private void initTable() {
 		
 		//TODO Lav tablemodel og smid den i scrollpane
-		ArrayList<Queen> queens =  new ArrayList<Queen>();	
+		ArrayList<Queen> queens =  qCtr.findQueensByBreeder(Settings.getInstance().getBreeder());
 		QueenTableModel model = new QueenTableModel(queens);
         JTable table = new JTable(model);
 		scrollPane = new JScrollPane(table);
