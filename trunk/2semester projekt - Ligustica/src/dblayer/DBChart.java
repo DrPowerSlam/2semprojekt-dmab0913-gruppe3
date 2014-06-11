@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import modellayer.Chart;
+import modellayer.PartChart;
 import modellayer.Queen;
 
 /**
@@ -177,7 +178,13 @@ public class DBChart implements IFDBChart{
 					 IFDBCompendium dbComp = new DBCompendium();
 					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
 					 
-					 
+					 IFDBPartChart dbPC = new DBPartChart();
+					 ArrayList<PartChart> pCs = dbPC.getAllPartCharts(true);
+					 for(PartChart pC : pCs) {
+						 if(pC.getChart().getChartID() == cObj.getChartID()) {
+							 cObj.addPartChart(pC);
+						 }
+					 }
 				 }				 
 		         list.add(cObj);	
 			 }//end while
@@ -217,7 +224,15 @@ public class DBChart implements IFDBChart{
 					 
 					 IFDBCompendium dbComp = new DBCompendium();
 					 cObj.setCompendium(dbComp.selectSingleCompendium(results.getInt("compendiumID"), false));
-					 //igen er jeg ikke sikker på at jeg ved hvad der skal med
+					 
+					 IFDBPartChart dbPC = new DBPartChart();
+					 ArrayList<PartChart> pCs = dbPC.getAllPartCharts(true);
+					 for(PartChart pC : pCs) {
+						 if(pC.getChart().getChartID() == cObj.getChartID()) {
+							 cObj.addPartChart(pC);
+						 }
+					 }
+					 
 				 }	
 				
 			}else{ //No chart found
@@ -260,7 +275,7 @@ public class DBChart implements IFDBChart{
 	   		 cObj.setChartID(result.getInt("chartID"));
 	   		 cObj.setYear(result.getInt("year"));
 	   		 cObj.setPedigree(result.getString("pedigree"));
-	   		 cObj.setType(result.getString("type"));  		 
+	   		 cObj.setType(result.getString("type"));  
 
 	   	 } catch (Exception e) {
 	   		 System.out.println("error building Chart object, " +e);
