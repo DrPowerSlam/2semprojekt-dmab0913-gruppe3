@@ -156,8 +156,9 @@ public class CompendiumCtr {
 				
 			}//end for breeder
 			document.close();
+			System.out.println("SÅDAN!!!!!! YAAAA!");
 		}catch(Exception e) {
-			//
+			System.out.println(e);
 		}
 	}
 	
