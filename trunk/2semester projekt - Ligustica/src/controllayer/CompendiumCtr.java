@@ -147,7 +147,8 @@ public class CompendiumCtr {
 			            tableChart.setHorizontalAlignment(Element.ALIGN_LEFT); //Aligner tabellen mod venstre
 						document.add(tableChart);
 						Paragraph emptyLines = new Paragraph();
-			    		addEmptyLine(emptyLines, 3);
+			    		addEmptyLine(emptyLines, 2);
+			    		document.add(emptyLines);
 			    		
 					} //end if
 					
