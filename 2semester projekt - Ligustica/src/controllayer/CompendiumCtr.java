@@ -56,14 +56,11 @@ public class CompendiumCtr {
     	    //titel
     	    Paragraph preface = new Paragraph();
     		addEmptyLine(preface, 1);
-    		preface.add(new Paragraph("Test af PDF", catFont));
-    		addEmptyLine(preface, 1);	
-    		preface.add(new Paragraph("Et dokument med en test tabel generet med iText",
-    		        smallBold));
-    		addEmptyLine(preface, 8);
+    		preface.add(new Paragraph("Kompendium", catFont));
+    		addEmptyLine(preface, 2);	
     		document.add(preface); 
     		
-    		float[] widths = {25f, 25f}; //Hvor meget hver kolonno m� fylde i bredden, relativt til hinanden
+    		float[] widths = {35f, 35f}; //Hvor meget hver kolonno m� fylde i bredden, relativt til hinanden
 			
 			
 			for(Breeder breeder : bCtr.getAllBreeders()) { // Hver breeder
@@ -76,7 +73,6 @@ public class CompendiumCtr {
 				
 				for(Chart chart : cCtr.getAllCharts()) { // hver chart
 					
-					//if(chart.getBreeder().equals(breeder)) {
 					if(chart.getBreeder().getBreederID() == breeder.getBreederID()) {
 						
 						PdfPTable tableHead = new PdfPTable(2); // 2 kolonner.
@@ -98,7 +94,7 @@ public class CompendiumCtr {
 			            tableHead.addCell(pedigreeCell);
 			            
 			            tableHead.setWidths(widths);
-			            tableHead.setWidthPercentage(50); //Hvor meget hele tabellen m� fylde p� hele siden
+			            tableHead.setWidthPercentage(100); //Hvor meget hele tabellen m� fylde p� hele siden
 			            tableHead.setHorizontalAlignment(Element.ALIGN_LEFT); //Aligner tabellen mod venstre
 			            document.add(tableHead); //Tilf�jer tabellen
 						
@@ -127,14 +123,14 @@ public class CompendiumCtr {
 			            
 						for(PartChart pC : chart.getAllPartCharts()) { //hver partchart
 							PdfPCell queenCell2 = new PdfPCell(new Paragraph(pC.getQueen().getName()));
-				            PdfPCell year2Cell2 = new PdfPCell(new Paragraph(pC.getYear()));
-				            PdfPCell swarmCell2 = new PdfPCell(new Paragraph(pC.getSwarmTendency()));
-				            PdfPCell tempCell2 = new PdfPCell(new Paragraph(pC.getSwarmTendency()));
-				            PdfPCell honeyCombFirmCell2 = new PdfPCell(new Paragraph(pC.getHoneycomFirmness()));
-				            PdfPCell honeyYeildYearCell2 = new PdfPCell(new Paragraph(pC.getHoneyYieldYear()));
+				            PdfPCell year2Cell2 = new PdfPCell(new Paragraph(Integer.toString(pC.getYear())));
+				            PdfPCell swarmCell2 = new PdfPCell(new Paragraph(Integer.toString(pC.getSwarmTendency())));
+				            PdfPCell tempCell2 = new PdfPCell(new Paragraph(Integer.toString(pC.getSwarmTendency())));
+				            PdfPCell honeyCombFirmCell2 = new PdfPCell(new Paragraph(Integer.toString(pC.getHoneycomFirmness())));
+				            PdfPCell honeyYeildYearCell2 = new PdfPCell(new Paragraph(Integer.toString(pC.getHoneyYieldYear())));
 				            PdfPCell honeyYieldCell2 = new PdfPCell(new Paragraph(pC.getHoneyYield()));
-				            PdfPCell nosemaCell2 = new PdfPCell(new Paragraph(pC.getNosema()));
-				            PdfPCell cleansingCell2 = new PdfPCell(new Paragraph(pC.getClensingAbility()));
+				            PdfPCell nosemaCell2 = new PdfPCell(new Paragraph(Integer.toString(pC.getNosema())));
+				            PdfPCell cleansingCell2 = new PdfPCell(new Paragraph(Integer.toString(pC.getClensingAbility())));
 				            
 				            tableChart.addCell(queenCell2);
 				            tableChart.addCell(year2Cell2);
@@ -147,7 +143,7 @@ public class CompendiumCtr {
 				            tableChart.addCell(cleansingCell2);
 						}//end for partchart
 						//tableChart.setWidths(widths);
-			            tableChart.setWidthPercentage(75); //Hvor meget hele tabellen m� fylde p� hele siden
+			            tableChart.setWidthPercentage(100); //Hvor meget hele tabellen m� fylde p� hele siden
 			            tableChart.setHorizontalAlignment(Element.ALIGN_LEFT); //Aligner tabellen mod venstre
 						document.add(tableChart);
 						Paragraph emptyLines = new Paragraph();
