@@ -17,7 +17,7 @@ public class MakeCompendiumPanel extends JPanel {
 	public MakeCompendiumPanel() {
 		setLayout(null);
 		
-		JButton btnLavKompendie = new JButton("Lav kompendie");
+		JButton btnLavKompendie = new JButton("Saml kompendie");
 		btnLavKompendie.setBounds(91, 91, 120, 23);
 		btnLavKompendie.addActionListener(new ActionListener(){
 			@Override
