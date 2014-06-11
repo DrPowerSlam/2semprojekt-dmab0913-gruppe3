@@ -62,6 +62,8 @@ public class CompendiumCtr {
     		        smallBold));
     		addEmptyLine(preface, 8);
     		document.add(preface); 
+    		
+    		float[] widths = {25f, 25f}; //Hvor meget hver kolonno m� fylde i bredden, relativt til hinanden
 			
 			
 			for(Breeder breeder : bCtr.getAllBreeders()) { // Hver breeder
@@ -74,7 +76,8 @@ public class CompendiumCtr {
 				
 				for(Chart chart : cCtr.getAllCharts()) { // hver chart
 					
-					if(chart.getBreeder().equals(breeder)) {
+					//if(chart.getBreeder().equals(breeder)) {
+					if(chart.getBreeder().getBreederID() == breeder.getBreederID()) {
 						
 						PdfPTable tableHead = new PdfPTable(2); // 2 kolonner.
 			            //linie 1
@@ -93,7 +96,7 @@ public class CompendiumCtr {
 			            tableHead.addCell(initialsCell);
 			            tableHead.addCell(yearCell);
 			            tableHead.addCell(pedigreeCell);
-			            float[] widths = {25f, 25f, 50f}; //Hvor meget hver kolonno m� fylde i bredden, relativt til hinanden
+			            
 			            tableHead.setWidths(widths);
 			            tableHead.setWidthPercentage(50); //Hvor meget hele tabellen m� fylde p� hele siden
 			            tableHead.setHorizontalAlignment(Element.ALIGN_LEFT); //Aligner tabellen mod venstre
@@ -143,8 +146,8 @@ public class CompendiumCtr {
 				            tableChart.addCell(nosemaCell2);
 				            tableChart.addCell(cleansingCell2);
 						}//end for partchart
-						tableChart.setWidths(widths);
-			            tableChart.setWidthPercentage(50); //Hvor meget hele tabellen m� fylde p� hele siden
+						//tableChart.setWidths(widths);
+			            tableChart.setWidthPercentage(75); //Hvor meget hele tabellen m� fylde p� hele siden
 			            tableChart.setHorizontalAlignment(Element.ALIGN_LEFT); //Aligner tabellen mod venstre
 						document.add(tableChart);
 						Paragraph emptyLines = new Paragraph();
